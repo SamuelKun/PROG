@@ -9,16 +9,15 @@ Date::Date(string date){
 	stringstream date_info(date);
 	string temp;
 	vector<string> date_temp;
+
 	while (getline(date_info, temp, '/'))
 	{
 		date_temp.push_back(temp);
 	}
 
-	Date date_comp;
-	date_comp.year = stoi(date_temp[0]);
-	date_comp.month = stoi(date_temp[1]);
-	date_comp.day = stoi(date_temp[2]);
-
+	year = stoi(date_temp[0]);
+	month = stoi(date_temp[1]);
+	day = stoi(date_temp[2]);
 }
 
 

@@ -10,11 +10,6 @@
 using namespace std;
 
 class Date{
- private:
-  unsigned short day;
-  unsigned short month;
-  unsigned year;
-
  public:
   Date();
   Date(string date);
@@ -34,5 +29,9 @@ class Date{
   // outhet methods */
   
   friend ostream& operator<<(ostream& out, const Date & date);
-
+	
+private:
+	unsigned short day;
+	unsigned short month;
+	unsigned year;
 };
