@@ -7,7 +7,7 @@ using namespace std;
 
 Agency::Agency(string file_name)
 {
-
+	
 	//Read Agency File
 	ifstream info(file_name);
 	vector<string> agency_info;
@@ -21,13 +21,14 @@ Agency::Agency(string file_name)
 		info.close();
 	}
 	else cout << "Unable to open file"; //Add later: TRY AGAIN
+	/*
 
 	this->name = agency_info[0];
 	this->VATnumber = stoi(agency_info[1]);
 	this->URL = agency_info[2];
 	Address AgencyAddress = agency_info[3];
 	this->address = AgencyAddress;
-	/*
+	
 	//
 	// Client Information
 	//

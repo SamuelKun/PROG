@@ -16,7 +16,7 @@ int main()
   Agency agency("Agency.txt");   // create the agency
 
 
-  
+  _getwch();
   return 0;
 
 }
