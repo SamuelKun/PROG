@@ -36,6 +36,7 @@ public:
 
 	// other methods */
 
+	void showClients();
 	friend ostream& operator<<(ostream& out, const Agency & agency);
 
  private:

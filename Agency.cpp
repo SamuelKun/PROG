@@ -179,6 +179,20 @@ void Agency::setAddress(Address address){
 	 this->packets = packets;
  }
 
+ void Agency::showClients()
+ {
+	 for (size_t i = 0; i < clients.size(); i++)
+	 {
+		 cout << endl;
+		 cout << clients[i].getName() << endl;
+		 cout << clients[i].getVATnumber() << endl;
+		 cout << clients[i].getFamilySize() << endl;
+		 cout << clients[i].getAddress() << endl;
+		 cout << clients[i].getPacketList << endl;
+		 cout << clients[i].getTotalPurchased << endl;
+	 }
+ }
+
 /*********************************
  * Mostrar Loja
  ********************************/  
