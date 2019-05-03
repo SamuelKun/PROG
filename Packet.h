@@ -4,21 +4,12 @@
 #include <string>
 #include <vector>
 
-
 #include "defs.h"
 #include "Date.h"
 
 using namespace std;
 
 class Packet{
- private:
-  unsigned id; // packet unique identifier
-  vector<string> sites; // touristic sites to visit
-  Date begin;  // begin date
-  Date end;  // end date
-  double pricePerPerson; // price per person
-  unsigned maxPersons; // number of persons still available in the packet (updated whenever the packet is sold to a new client)
-  
  public:
   Packet(vector<string> sites, Date begin, Date end, double pricePerPerson, unsigned maxPersons);
 
@@ -41,4 +32,12 @@ class Packet{
   // other methods
 
   friend ostream& operator<<(ostream& out, const Packet & packet);
+
+private:
+	unsigned id; // packet unique identifier
+	vector<string> sites; // touristic sites to visit
+	Date begin;  // begin date
+	Date end;  // end date
+	double pricePerPerson; // price per person
+	unsigned maxPersons; // number of persons still available in the packet (updated whenever the packet is sold to a new client)
 };
