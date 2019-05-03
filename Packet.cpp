@@ -1,12 +1,14 @@
 #include "Packet.h"
 
-Packet::Packet(vector<string> sites, Date begin, Date end, double pricePerPerson, unsigned maxPersons)
+Packet::Packet(unsigned id, vector<string> sites, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
+	this->id = id;
 	this->places = sites;
 	this->begin = begin;
 	this->end = end;
 	this->pricePerPerson = pricePerPerson;
-	this->maxPersons = maxPersons;
+	this->maxTickets = maxTickets;
+	this->availableTickets = availableTickets;
 }
 
 /*********************************

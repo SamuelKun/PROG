@@ -13,7 +13,7 @@ class Address{
 
 public:
 	Address();
-	Address(string info);
+	Address(string addressString);
 	Address(string street, unsigned short doorNumber, string floor, string postalCode, string location);
 
 	// metodos GET

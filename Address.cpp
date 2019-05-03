@@ -7,9 +7,9 @@ Address::Address()
 
 }
 
-Address::Address(string info)
+Address::Address(string addressString)
 {
-	stringstream address_info(info);
+	stringstream address_info(addressString);
 	string temp;
 	vector<string> address_temp;
 

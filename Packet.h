@@ -11,7 +11,7 @@ using namespace std;
 
 class Packet{
  public:
-  Packet(vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxPersons);
+	 Packet(unsigned id, vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets);
 
   // GET methods
   unsigned getId() const;
@@ -39,5 +39,6 @@ private:
 	Date begin;  // begin date
 	Date end;  // end date
 	double pricePerPerson; // price per person
-	unsigned maxPersons; // number of persons still available in the packet (updated whenever the packet is sold to a new client)
+	unsigned maxTickets; // máximo de lugares disponíveis
+	unsigned availableTickets; // número de lugares já reservados
 };
