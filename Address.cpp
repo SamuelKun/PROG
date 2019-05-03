@@ -1,4 +1,5 @@
 #include "Address.h"
+#include <sstream>
 
 
 Address::Address(){
@@ -6,63 +7,93 @@ Address::Address(){
 
 Address::Address(string street, unsigned short doorNumber, string floor, string postalCode, string location){
 
-  // REQUIRES IMPLEMENTATION
+
+	stringstream address_info(info);
+	string temp;
+	vector<string> address_temp;
+
+	while (getline(address_info, temp, '/'))
+	{
+		//Remove leading and trailing spaces
+		while (temp[0] == ' ') temp.erase(0, 1);
+		while (temp[temp.size() - 1] == ' ') temp.erase(temp.size() - 1, temp.size());
+
+		address_temp.push_back(temp);
+	}
+
+	Address address_comp;
+	street = address_temp[0];
+	doorNumber = stoi(address_temp[1]);
+	floor = address_temp[2];
+	postalCode = address_temp[3];
+	location = address_temp[4];
+
 }
 
   // metodos GET
 
 
-string Address::getStreet() const{
+string Address::getStreet() const
+{
 
-  // REQUIRES IMPLEMENTATION
+	return street;
 }
 
-unsigned short Address::getDoorNumber() const{
+unsigned short Address::getDoorNumber() const
+{
 
-  // REQUIRES IMPLEMENTATION
+	return doorNumber;
 }
 
-string Address::getFloor() const{
+string Address::getFloor() const
+{
   
-  // REQUIRES IMPLEMENTATION
+	return floor;
 }
 
-string Address::getPostalCode() const{
+string Address::getPostalCode() const
+{
 
-  // REQUIRES IMPLEMENTATION
+	return postalCode;
 }
 
-string Address::getLocation() const{
+string Address::getLocation() const
+{
 
-  // REQUIRES IMPLEMENTATION
+	return location;
 }
 
 
   // metodos SET
 
-void Address::setStreet(string street){
+void Address::setStreet(string street)
+{
 
-  // REQUIRES IMPLEMENTATION
+	this->street = street;
 }
 
-void Address::setDoorNumber(unsigned short doorNumber){
+void Address::setDoorNumber(unsigned short doorNumber)
+{
 
-  // REQUIRES IMPLEMENTATION
+	this->doorNumber = doorNumber;
 }
 
-void Address::setFloor(string floor){
+void Address::setFloor(string floor)
+{
 
-  // REQUIRES IMPLEMENTATION
+	this->floor = floor;
 }
 
-void Address::setPostalCode(string postalCode){
+void Address::setPostalCode(string postalCode)
+{
 
-  // REQUIRES IMPLEMENTATION
+	this->postalCode = postalCode;
 }
 
-void Address::setLocation(string  location){
+void Address::setLocation(string  location)
+{
 
-  // REQUIRES IMPLEMENTATION
+	this->location = location;
 }
 
 
@@ -71,7 +102,8 @@ void Address::setLocation(string  location){
  ********************************/  
 
 // discplyes an address in a nice format
-ostream& operator<<(ostream& out, const Address & address){
+ostream& operator<<(ostream& out, const Address & address)
+{
 
   // REQUIRES IMPLEMENTATION
 
