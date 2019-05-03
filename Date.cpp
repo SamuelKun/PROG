@@ -23,7 +23,10 @@ Date::Date(string date){
 
 Date::Date(unsigned short day, unsigned short month, unsigned year){
 
-  // REQUIRES IMPLEMENTATION
+	this->day = day;
+	this->month = month;
+	this->year = year;
+
 }
 
 /*********************************
