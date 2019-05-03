@@ -1,6 +1,7 @@
 #include "Agency.h"
 #include <fstream>
 #include <sstream>
+#include <string>
 
 
 
@@ -24,8 +25,8 @@ Agency::Agency(string file_name)
 	name = agency_info[0];
 	VATnumber = stoi(agency_info[1]);
 	URL = agency_info[2];
-	Address Agency_Address(agency_info[3]);
-	address = Agency_Address;
+	Address AgencyAddress = agency_info[3];
+	address = AgencyAddress;
 
 	//
 	// Client Information
@@ -39,18 +40,7 @@ Agency::Agency(string file_name)
 		if (name != "::::::::::") client_list.push_back(name);
 		else
 		{
-			string name = client_list[0];
-			unsigned VAT = stoi(client_list[1]);
-			unsigned short household = stoi(client_list[2]);
-			Address ClientAddress(client_list[3]);
-			//vector<Packet> packs_bought = getPacks(client_list[4]);
-			//unsigned total_purchases = temp_client.packs_bought.size();
-
-			vector_client.push_back(temp_client);
-			client_list.clear();
-
-			Client temp_client();
-
+			Client temp_client(client_list[0], stoi(client_list[1]), stoi(client_list[2]), client_list[3], client_list[4], temp_client.packs_bought.size());
 			vector_client.push_back(temp_client);
 			client_list.clear();
 		}
@@ -67,16 +57,24 @@ Agency::Agency(string file_name)
 	// TravelPack Information
 	ifstream pack_info(agency_info[5]);
 	vector<string> pack_list;
-	vector<TravelPack> vector_pacote;
-	TravelPack pacote;
+	vector<Packet> vector_pacote;
 
-	getline(pack_info, NiceHolidays.lastTravelPack);
 
 	while (getline(pack_info, name))
 	{
 		if (name != "::::::::::") pack_list.push_back(name);
 		else
 		{
+			vector<string> v_locals;
+			string temp;
+
+			while (getline(pack_list[1], temp, ','))
+			{
+				v_locals.push_back(temp);
+			}
+
+			Packet pacote(stoi(pack_list[0]),)
+
 			pacote.identifier = pack_list[0];
 			pacote.locals = pack_list[1];
 			pacote.start_date = getDate(pack_list[2]);
