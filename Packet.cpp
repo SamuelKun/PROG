@@ -1,15 +1,16 @@
 #include "Packet.h"
 
-Packet::Packet(unsigned id, vector<string> sites, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
+Packet::Packet(unsigned id, vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
 	this->id = id;
-	this->places = sites;
+	this->places = places;
 	this->begin = begin;
 	this->end = end;
 	this->pricePerPerson = pricePerPerson;
 	this->maxTickets = maxTickets;
 	this->availableTickets = availableTickets;
 }
+
 
 /*********************************
  * GET Methods
@@ -40,9 +41,14 @@ double Packet::getPricePerPerson() const
 	return pricePerPerson;
 }
 
-unsigned Packet::getMaxPersons() const
+unsigned Packet::getMaxTickets() const
 {
-	return maxPersons;
+	return maxTickets;
+}
+
+unsigned Packet::getAvailableTickets() const
+{
+	return availableTickets;
 }
 
 /*********************************
@@ -74,13 +80,18 @@ void Packet::setEndDate(Date end)
 void Packet::setPricePerPerson(double pricePerPerson)
 {
 
-	this->pricePerPerson=maxPersons;
+	this->pricePerPerson=pricePerPerson;
 }
 
-void Packet::setMaxPersons(unsigned maxPersons)
+void Packet::setMaxTickets(unsigned maxTickets)
 {
 
-	this->maxPersons = maxPersons;
+	this->maxTickets = maxTickets;
+}
+
+void Packet::setAvailableTickets(unsigned availableTickets)
+{
+	this->availableTickets = availableTickets;
 }
 
 

@@ -19,7 +19,8 @@ class Packet{
   Date getBeginDate() const;
   Date getEndDate() const;
   double getPricePerPerson() const;
-  unsigned getMaxPersons() const;
+  unsigned getMaxTickets() const;
+  unsigned getAvailableTickets() const;
 
   // SET methods
   void setId(unsigned id);  // to set negatve if "deprecated"
@@ -27,7 +28,8 @@ class Packet{
   void setBeginDate(Date begin);
   void setEndDate(Date end);
   void setPricePerPerson(double pricePerPerson);
-  void setMaxPersons(unsigned maxPersons);
+  void setMaxTickets(unsigned maxTickets);
+  void setAvailableTickets(unsigned avaiabaleTickets);
 
   // other methods
 
