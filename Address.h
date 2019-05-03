@@ -13,6 +13,7 @@ class Address{
 
 public:
 	Address();
+	Address(string info);
 	Address(string street, unsigned short doorNumber, string floor, string postalCode, string location);
 
 	// metodos GET
@@ -30,7 +31,6 @@ public:
 	void setLocation(string  location);
 
 	// outros */
-
 	friend ostream& operator<<(ostream& out, const Address & address);
 
  private:

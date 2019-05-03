@@ -6,6 +6,7 @@
 
 Agency::Agency(string file_name)
 {
+
 	//Read Agency File
 	ifstream info(file_name);
 	vector<string> agency_info;
@@ -23,24 +24,8 @@ Agency::Agency(string file_name)
 	name = agency_info[0];
 	VATnumber = stoi(agency_info[1]);
 	URL = agency_info[2];
-
-	//GET ADDRESS
-	stringstream address_info(agency_info[3]);
-	string temp;
-	vector<string> address_temp;
-
-	while (getline(address_info, temp, '/'))
-	{
-		//Remove leading and trailing spaces
-		while (temp[0] == ' ') temp.erase(0, 1);
-		while (temp[temp.size() - 1] == ' ') temp.erase(temp.size() - 1, temp.size());
-
-		address_temp.push_back(temp);
-	}
-
-	Address address_comp(address_temp[0], stoi(address_temp[1]), address_temp[2], address_temp[3], address_temp[4]);
-
-
+	Address AgencyAddress = agency_info[3];
+	address = AgencyAddress;
 
 	//
 	// Client Information
@@ -48,31 +33,20 @@ Agency::Agency(string file_name)
 	string name;
 	vector<string> client_list;
 	vector<Client> vector_client;
-	Client temp_client;
 
 	while (getline(client_info, name))
 	{
 		if (name != "::::::::::") client_list.push_back(name);
 		else
 		{
-			temp_client.name = client_list[0];
-			temp_client.nif = client_list[1];
-			temp_client.household = client_list[2];
-			temp_client.address = getAddress(client_list[3]);
-			temp_client.packs_bought = getPacks(client_list[4]);
-			temp_client.total_purchases = temp_client.packs_bought.size();
+			Client temp_client(client_list[0], stoi(client_list[1]), stoi(client_list[2]), client_list[3], client_list[4], temp_client.packs_bought.size());
 			vector_client.push_back(temp_client);
 			client_list.clear();
 		}
 	}
 
 	//Add the last client
-	temp_client.name = client_list[0];
-	temp_client.nif = client_list[1];
-	temp_client.household = client_list[2];
-	temp_client.address = getAddress(client_list[3]);
-	temp_client.packs_bought = getPacks(client_list[4]);
-	temp_client.total_purchases = temp_client.packs_bought.size();
+	Client temp_client(client_list[0], client_list[1], client_list[2], client_list[3], client_list[4], temp_client.packs_bought.size());
 	vector_client.push_back(temp_client);
 	client_list.clear();
 	NiceHolidays.clients = vector_client;
