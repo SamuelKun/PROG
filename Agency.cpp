@@ -22,15 +22,16 @@ Agency::Agency(string file_name)
 	}
 	else cout << "Unable to open file"; //Add later: TRY AGAIN
 
-	name = agency_info[0];
-	VATnumber = stoi(agency_info[1]);
-	URL = agency_info[2];
+	this->name = agency_info[0];
+	this->VATnumber = stoi(agency_info[1]);
+	this->URL = agency_info[2];
 	Address AgencyAddress = agency_info[3];
-	address = AgencyAddress;
+	this->address = AgencyAddress;
 
 	//
 	// Client Information
 	//
+
 	ifstream client_info(agency_info[4]);
 	string name;
 	vector<string> client_list;
@@ -88,10 +89,52 @@ Agency::Agency(string file_name)
 	vector_client.push_back(temp_client);
 	client_list.clear();
 
+	this->clients = vector_client;
+
 	//
 	// Packs Information
 	//
 
+	ifstream pack_info(agency_info[5]);
+	vector<string> pack_list;
+	vector<Packet> vector_pack;
+	string lastTravelPack;
+
+	getline(pack_info, lastTravelPack);
+
+	while (getline(pack_info, name))
+	{
+		if (name != "::::::::::") pack_list.push_back(name);
+		else
+		{
+			unsigned id = stoi(pack_list[0]);
+			string locals = pack_list[1];
+			Date start_date(pack_list[2]);
+			Date end_date(pack_list[3]);
+			double price = stoi(pack_list[4]);
+			unsigned max = stoi(pack_list[5]);
+			unsigned available = stoi(pack_list[6]);
+
+			Packet temp_packet(id, locals, start_date, end_date, price, max, available);
+			vector_pack.push_back(temp_packet);
+			pack_list.clear();
+		}
+	}
+
+	//Add the last pack
+	unsigned id = stoi(pack_list[0]);
+	string locals = pack_list[1];
+	Date start_date(pack_list[2]);
+	Date end_date(pack_list[3]);
+	double price = stoi(pack_list[4]);
+	unsigned max = stoi(pack_list[5]);
+	unsigned available = stoi(pack_list[6]);
+
+	Packet temp_packet(id, locals, start_date, end_date, price, max, available);
+	vector_pack.push_back(temp_packet);
+	pack_list.clear();
+
+	this->packets = vector_pack;
 
 }
 
