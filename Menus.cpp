@@ -1,9 +1,35 @@
 #include "Menus.h"
 
 
-unsigned mainMenu(Agency agency){
+Agency NiceHolydays("agency.txt");
 
-  // A IMPLEMENTAR
+unsigned mainMenu(Agency agency)
+{
+	char menu;
+	cout << "Main Menu" << endl <<  endl;
+
+	cout << "[1] Show all Clients" << endl;
+	cout << "[2] Show all Packs" << endl;
+	
+	cin >> menu;
+
+	switch (menu)
+	{
+	case('1'):
+		
+
+
+		break;
+
+	case('2'):
+
+		break;
+
+	}
+
+
+  
+
   
   return 0;
 }
