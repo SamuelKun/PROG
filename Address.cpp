@@ -1,6 +1,7 @@
 #include "Address.h"
 #include <sstream>
 
+using namespace std;
 
 Address::Address()
 {

@@ -1,5 +1,7 @@
 #include "Client.h"
 
+using namespace std;
+
 Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address)
 {
 	//New CLIENT
@@ -44,7 +46,7 @@ Address Client::getAddress() const
 	return address;
 }
 
-vector<Packet> Client::getPacketList() const
+vector<string> Client::getPacketList() const
 { 
 	return packets;
 }
@@ -76,19 +78,15 @@ void Client::setAddress(Address address)
 {
 	this->address = address;
 }
-void Client::setPacketList(vector<Packet> &packets)
+void Client::setPacketList(vector<string> &packets)
 {
 	this->packets = packets;
 }
-unsigned Client::setTotalPurchased(unsigned totalPurchased)
+
+void Client::setTotalPurchased(unsigned totalPurchased)
 {
 	this->totalPurchased = totalPurchased;
 }
   
   // outros metodos
 
-ostream& operator<<(ostream& out, const Client & client){
-
-  // REQUIRES IMPLEMENTATION 
-
-}

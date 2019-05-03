@@ -27,7 +27,7 @@ Agency::Agency(string file_name)
 	this->URL = agency_info[2];
 	Address AgencyAddress = agency_info[3];
 	this->address = AgencyAddress;
-
+	/*
 	//
 	// Client Information
 	//
@@ -136,7 +136,7 @@ Agency::Agency(string file_name)
 	pack_list.clear();
 
 	this->packets = vector_pack;
-
+	*/
 }
 
   // metodos GET
@@ -200,38 +200,4 @@ void Agency::setAddress(Address address){
  void Agency::setPackets(vector<Packet> & packets)
  {
 	 this->packets = packets;
- }
-
- void Agency::showClients()
- {
-	 for (size_t i = 0; i < clients.size(); i++)
-	 {
-		 cout << endl;
-		 cout << clients[i].getName() << endl;
-		 cout << clients[i].getVATnumber() << endl;
-		 cout << clients[i].getFamilySize() << endl;
-		 cout << clients[i].getAddress() << endl;
-		 cout << clients[i].getPacketList << endl;
-		 cout << clients[i].getTotalPurchased << endl;
-	 }
- }
-
- void Agency::showPackets()
- {
-	 for (size_t i = 0; i < packets.size(); i++)
-	 {
-		 cout << endl;
-		 cout << packets[i].getId() << endl;
-		 for (size_t j = 0; j < packets[i].getSites().size(); j++)
-		 {
-			 cout << packets[i].getSites()[j];
-			 if (j != packets[i].getSites().size())
-				 cout << " , ";
-		 }
-		 cout << endl << packets[i].getBeginDate() << endl;
-		 cout << packets[i].getEndDate() << endl;
-		 cout << packets[i].getPricePerPerson << endl;
-		 cout << packets[i].getMaxTickets << endl;
-		 cout << packets[i].getAvailableTickets << endl;
-	 }
  }

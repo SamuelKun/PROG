@@ -36,10 +36,6 @@ public:
 
 	// other methods */
 
-	void showClients();
-	void showPackets();
-	friend ostream& operator<<(ostream& out, const Agency & agency);
-
  private:
   string name; // name of the  agency
   unsigned int VATnumber; // VAT number of the agency

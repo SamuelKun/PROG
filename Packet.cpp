@@ -1,5 +1,7 @@
 #include "Packet.h"
 
+using namespace std;
+
 Packet::Packet(unsigned id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
 	this->id = id;

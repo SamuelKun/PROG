@@ -23,7 +23,7 @@ public:
 	unsigned getVATnumber() const;
 	unsigned short getFamilySize() const;
 	Address getAddress() const;
-	vector<Packet> getPacketList() const;
+	vector<string> getPacketList() const;
 	unsigned getTotalPurchased() const;
 
 	// SET methods
@@ -32,12 +32,9 @@ public:
 	void setVATnumber(unsigned VATnumber);
 	void setFamilySize(unsigned short familySize);
 	void setAddress(Address address);
-	void setPacketList(vector<Packet> & packets);
-	unsigned setTotalPurchased(unsigned totalPurchased);
+	void setPacketList(vector<string> &packets);
+	void setTotalPurchased(unsigned totalPurchased);
 
-	// other methods
-
-	friend ostream& operator<<(ostream& out, const Client & client);
 
  private:
   string name; // name of the client
