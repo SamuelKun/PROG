@@ -10,65 +10,69 @@ Client::Client(string name, unsigned VATnumber, unsigned short familySize, Addre
   // REQUIRES IMPLEMENTATION 
 }
 
-  // GET methods
+/*********************************
+ * GET Methods
+ ********************************/
 
-string Client::getName() const{
-  
-  // REQUIRES IMPLEMENTATION 
+string Client::getName() const
+{  
+	return name;
 }
   
-unsigned Client::getVATnumber() const{
-  
-  // REQUIRES IMPLEMENTATION 
-}
-
-unsigned short Client::getFamilySize() const{
-  
-  // REQUIRES IMPLEMENTATION 
+unsigned Client::getVATnumber() const
+{  
+	return  VATnumber;
 }
 
-Address Client::getAddress() const{
-  
-  // REQUIRES IMPLEMENTATION 
+unsigned short Client::getFamilySize() const
+{ 
+	return familySize;
 }
 
-vector<Packet> Client::getPacketList() const{
-  
-  // REQUIRES IMPLEMENTATION 
+Address Client::getAddress() const
+{  
+	return address;
 }
 
-unsigned Client::getTotalPurchased() const{
-  
-  // REQUIRES IMPLEMENTATION 
+vector<Packet> Client::getPacketList() const
+{ 
+	return packets;
+}
+
+unsigned Client::getTotalPurchased() const
+{ 
+	return totalPurchased;
 }
   
-  // metodos SET
+/*********************************
+ * SET Methods
+ ********************************/
 	  
-void Client::setName(string nome){
-  
-  // REQUIRES IMPLEMENTATION 
+void Client::setName(string name)
+{ 
+	this->name = name;
 }
 
-void Client::setVATnumber(unsigned VATnumber){
-  
-  // REQUIRES IMPLEMENTATION 
+void Client::setVATnumber(unsigned VATnumber)
+{
+	this->VATnumber = VATnumber;
 }
 
-void Client::setFamilySize(unsigned short familySize){
-  
-  // REQUIRES IMPLEMENTATION 
+void Client::setFamilySize(unsigned short familySize)
+{
+	this->familySize = familySize;
 }
-void Client::setAddress(Address address){
-  
-  // REQUIRES IMPLEMENTATION 
+void Client::setAddress(Address address)
+{
+	this->address = address;
 }
-void Client::setPacketList(vector<Packet> & packets){
-  
-  // REQUIRES IMPLEMENTATION 
+void Client::setPacketList(vector<Packet> &packets)
+{
+	this->packets = packets;
 }
-unsigned Client::setTotalPurchased(unsigned totalPurchased){
-  
-  // REQUIRES IMPLEMENTATION 
+unsigned Client::setTotalPurchased(unsigned totalPurchased)
+{
+	this->totalPurchased = totalPurchased;
 }
   
   // outros metodos
