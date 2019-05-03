@@ -32,22 +32,22 @@ Date::Date(unsigned short day, unsigned short month, unsigned year){
 /*********************************
  * GET Methods
  ********************************/
-unsigned short Date::getDay() const{
+unsigned short Date::getDay() const {
 
-  // REQUIRES IMPLEMENTATION
+	return day;
+
+}
+
+
+unsigned short Date::getMonth() const {
+
+	return month;
 
 }
 
-  
-unsigned short Date::getMonth() const{
+unsigned Date::getYear() const {
 
-  // REQUIRES IMPLEMENTATION
-
-}
-    
-unsigned Date::getYear() const{
-
-  // REQUIRES IMPLEMENTATION
+	return year;
 
 }
 
@@ -55,20 +55,19 @@ unsigned Date::getYear() const{
  * SET Methods
  ********************************/
 
-void Date::setDay(unsigned short day){
-  
-  // REQUIRES IMPLEMENTATION
+void Date::setDay(unsigned short day) {
+
+	this->day = day;
 
 }
-void Date::setMonth(unsigned short month){
-  
-  // REQUIRES IMPLEMENTATION
+void Date::setMonth(unsigned short month) {
 
+	this->month = month;
 }
 
-void Date::setYear(unsigned year){
+void Date::setYear(unsigned year) {
 
-  // REQUIRES IMPLEMENTATION
+	this->year = year;
 
 }
 
