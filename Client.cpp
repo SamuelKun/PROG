@@ -1,17 +1,23 @@
 #include "Client.h"
 
-Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address){
-  
+Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address)
+{
+	//New CLIENT
 	this->name = name;
 	this->VATnumber = VATnumber;
 	this->familySize = familySize;
 	this->address = address;
-
 }
 
-Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<Packet> & packets, unsigned totalPurchased){
-  
-  // REQUIRES IMPLEMENTATION 
+Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<Packet> & packets, unsigned totalPurchased)
+{
+	//Open FILE
+	this->name = name;
+	this->VATnumber = VATnumber;
+	this->familySize = familySize;
+	this->address = address;
+	this->packets = packets;
+	this->totalPurchased = totalPurchased;
 }
 
 /*********************************
