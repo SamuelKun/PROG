@@ -2,7 +2,11 @@
 
 Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address){
   
-  // REQUIRES IMPLEMENTATION 
+	this->name = name;
+	this->VATnumber = VATnumber;
+	this->familySize = familySize;
+	this->address = address;
+
 }
 
 Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<Packet> & packets, unsigned totalPurchased){
