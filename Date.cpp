@@ -33,22 +33,16 @@ Date::Date(unsigned short day, unsigned short month, unsigned year){
  * GET Methods
  ********************************/
 unsigned short Date::getDay() const {
-
 	return day;
-
 }
 
 
 unsigned short Date::getMonth() const {
-
 	return month;
-
 }
 
 unsigned Date::getYear() const {
-
 	return year;
-
 }
 
 /*********************************
@@ -56,12 +50,9 @@ unsigned Date::getYear() const {
  ********************************/
 
 void Date::setDay(unsigned short day) {
-
 	this->day = day;
-
 }
 void Date::setMonth(unsigned short month) {
-
 	this->month = month;
 }
 
@@ -78,7 +69,5 @@ void Date::setYear(unsigned year) {
 
 // disply a Date in a nice format
 ostream& operator<<(ostream& out, const Date & date){
-
   // REQUIRES IMPLEMENTATION
-
 }
