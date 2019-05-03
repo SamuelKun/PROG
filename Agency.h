@@ -35,6 +35,8 @@ public:
 	void setPackets(vector<Packet> & packets);
 
 	// other methods */
+	void showPackets();
+	void showClients();
 
  private:
   string name; // name of the  agency

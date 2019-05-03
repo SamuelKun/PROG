@@ -220,3 +220,47 @@ void Agency::setAddress(Address address){
  {
 	 this->packets = packets;
  }
+
+ void Agency::showPackets()
+ {
+	 for (size_t i = 0; i < packets.size(); i++)
+	 {
+		 cout << endl;
+		 cout << packets[i].getId() << endl;
+		 for (size_t j = 0; j < packets[i].getPlaces().size(); j++)
+		 {
+			 cout << packets[i].getPlaces()[j];
+			 if (j != packets[i].getPlaces().size())
+				 cout << " , ";
+		 }
+		 cout << endl << packets[i].getBeginDate().getDay() << endl;
+		 cout << packets[i].getEndDate().getDay() << endl;
+		 cout << packets[i].getPricePerPerson() << endl;
+		 cout << packets[i].getMaxTickets() << endl;
+		 cout << packets[i].getAvailableTickets() << endl;
+	 }
+ }
+
+ void Agency::showClients()
+ {
+	 for (size_t i = 0; i < getClients().size(); i++)
+	 {
+		 cout << endl;
+		 cout << getClients()[i].getName() << endl;
+		 cout << getClients()[i].getVATnumber() << endl;
+		 cout << getClients()[i].getFamilySize() << endl;
+		 cout << getClients()[i].getAddress().getStreet() << " / ";
+		 cout << getClients()[i].getAddress().getDoorNumber() << " / ";
+		 cout << getClients()[i].getAddress().getFloor() << " / ";
+		 cout << getClients()[i].getAddress().getPostalCode() << " / ";
+		 cout << getClients()[i].getAddress().getLocation() << endl;
+		 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+		 {
+			 cout << getClients()[i].getPacketList()[j];
+			 if (j != getClients()[i].getPacketList().size()-1)
+				 cout << " , ";
+		 }
+		 cout << endl;
+		 cout << getClients()[i].getTotalPurchased() << endl;
+	 }
+ }
