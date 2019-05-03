@@ -215,6 +215,26 @@ void Agency::setAddress(Address address){
 	 }
  }
 
+ void Agency::showPackets()
+ {
+	 for (size_t i = 0; i < packets.size(); i++)
+	 {
+		 cout << endl;
+		 cout << packets[i].getId() << endl;
+		 for (size_t j = 0; j < packets[i].getSites().size(); j++)
+		 {
+			 cout << packets[i].getSites()[j];
+			 if (j != packets[i].getSites().size())
+				 cout << " , ";
+		 }
+		 cout << endl << packets[i].getBeginDate() << endl;
+		 cout << packets[i].getEndDate() << endl;
+		 cout << packets[i].getPricePerPerson << endl;
+		 cout << packets[i].getMaxTickets << endl;
+		 cout << packets[i].getAvailableTickets << endl;
+	 }
+ }
+
 /*********************************
  * Mostrar Loja
  ********************************/  

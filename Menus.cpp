@@ -17,12 +17,11 @@ unsigned mainMenu(Agency agency)
 	{
 	case('1'):
 		
-
-
+		NiceHolydays.showClients;
 		break;
 
 	case('2'):
-
+		NiceHolydays.showPackets;
 		break;
 
 	}
