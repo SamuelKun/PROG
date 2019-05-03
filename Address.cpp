@@ -8,25 +8,11 @@ Address::Address(){
 Address::Address(string street, unsigned short doorNumber, string floor, string postalCode, string location){
 
 
-	stringstream address_info(info);
-	string temp;
-	vector<string> address_temp;
-
-	while (getline(address_info, temp, '/'))
-	{
-		//Remove leading and trailing spaces
-		while (temp[0] == ' ') temp.erase(0, 1);
-		while (temp[temp.size() - 1] == ' ') temp.erase(temp.size() - 1, temp.size());
-
-		address_temp.push_back(temp);
-	}
-
-	Address address_comp;
-	street = address_temp[0];
-	doorNumber = stoi(address_temp[1]);
-	floor = address_temp[2];
-	postalCode = address_temp[3];
-	location = address_temp[4];
+	this->street = street;
+	this->doorNumber = doorNumber;
+	this->floor = floor;
+	this->postalCode = postalCode;
+	this->location = location;
 
 }
 
