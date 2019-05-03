@@ -2,7 +2,7 @@
 
 Packet::Packet(vector<string> sites, Date begin, Date end, double pricePerPerson, unsigned maxPersons)
 {
-	this->sites = sites;
+	this->places = sites;
 	this->begin = begin;
 	this->end = end;
 	this->pricePerPerson = pricePerPerson;
@@ -20,31 +20,26 @@ unsigned Packet::getId() const
 
 vector<string> Packet::getSites() const
 {
-
-	return sites;
+	return places;
 }
 
 Date Packet::getBeginDate() const
 {
-
 	return begin;
 }
 
 Date Packet::getEndDate() const
 {
-
 	return end;
 }
 
 double Packet::getPricePerPerson() const
 {
-
 	return pricePerPerson;
 }
 
 unsigned Packet::getMaxPersons() const
 {
-
 	return maxPersons;
 }
 
@@ -54,14 +49,12 @@ unsigned Packet::getMaxPersons() const
 
 void Packet::setId(unsigned id)
 {
-
 	this->id = id;
 }
 
 void Packet::setSites(vector<string> sites)
 {
-
-	this->sites = sites;
+	this->places = sites;
 }
 
 void Packet::setBeginDate(Date begin)
