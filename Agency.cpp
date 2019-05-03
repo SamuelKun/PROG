@@ -103,34 +103,34 @@ Agency::Agency(string file_name){
 }
 
   // metodos GET
-string Agency::getName() const{
-
-  //  IMPLEMENTATION REQUIRED 
+string Agency::getName() const
+{
+	return name;
 }
 
-unsigned Agency::getVATnumber() const{
-
-  //  IMPLEMENTATION REQUIRED 
+unsigned Agency::getVATnumber() const
+{
+	return VATnumber;
 }
 
-Address Agency::getAddress() const{
-
-  //  IMPLEMENTATION REQUIRED 
+Address Agency::getAddress() const
+{
+	return address;
 }
 
-string Agency::getURL() const{
-
-  //  IMPLEMENTATION REQUIRED 
+string Agency::getURL() const
+{
+	return URL;
 }
 
-vector<Client> Agency::getClients() const{
-
-  //  IMPLEMENTATION REQUIRED 
+vector<Client> Agency::getClients() const
+{
+	return clients;
 }
 
 vector<Packet> Agency::getPackets() const{
 
-  //  IMPLEMENTATION REQUIRED 
+	return packets;
 }
 
   
@@ -138,33 +138,32 @@ vector<Packet> Agency::getPackets() const{
 
 void Agency::setName(string name){
 
-  //  IMPLEMENTATION REQUIRED 
+	this->name = name;
 }
 
 void Agency::setVATnumber(unsigned VATnumber){
 
-  //  IMPLEMENTATION REQUIRED 
+	this->VATnumber = VATnumber;
 }
 
 void Agency::setAddress(Address address){
 
-  //  IMPLEMENTATION REQUIRED 
+	this->address= address;
 }
-  void Agency::setURL(string url){
 
-  //  IMPLEMENTATION REQUIRED 
-
+ void Agency::setURL(string url)
+{
+	 this->URL = url;
 }
-  void Agency::setClients(vector<Client> & clients){
 
-  //  IMPLEMENTATION REQUIRED 
-
-  }
-  void Agency::setPackets(vector<Packet> & packets){
-
-  //  IMPLEMENTATION REQUIRED 
-
-}
+ void Agency::setClients(vector<Client> & clients)
+ {
+	 this->clients = clients;
+ }
+ void Agency::setPackets(vector<Packet> & packets)
+ {
+	 this->packets = packets;
+ }
 
 /*********************************
  * Mostrar Loja

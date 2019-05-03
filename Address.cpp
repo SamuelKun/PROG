@@ -2,7 +2,9 @@
 #include <sstream>
 
 
-Address::Address(){
+Address::Address()
+{
+
 }
 
 Address::Address(string street, unsigned short doorNumber, string floor, string postalCode, string location){
