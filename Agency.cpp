@@ -38,7 +38,7 @@ Agency::Agency(string file_name)
 		address_temp.push_back(temp);
 	}
 
-	Address address_comp(address_temp[0], address_temp[1], address_temp[2], address_temp[3], address_temp[4]);
+	Address address_comp(address_temp[0], stoi(address_temp[1]), address_temp[2], address_temp[3], address_temp[4]);
 
 
 
