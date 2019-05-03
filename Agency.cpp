@@ -2,7 +2,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <iostream>
 
 
 
@@ -31,6 +30,7 @@ Agency::Agency(string file_name)
 
 	//
 	// Client Information
+	//
 	ifstream client_info(agency_info[4]);
 	string name;
 	vector<string> client_list;
@@ -45,13 +45,20 @@ Agency::Agency(string file_name)
 			unsigned VAT = stoi(client_list[1]);
 			unsigned short household = stoi(client_list[2]);
 			Address ClientAddress(client_list[3]);
-			//vector<Packet> packs_bought = getPacks(client_list[4]);
-			//unsigned total_purchases = temp_client.packs_bought.size();
+			//Get Packs
+			vector<string> packs_bought;
+			stringstream pack_info(client_list[4]);
+			string temp;
+			while (getline(pack_info, temp, ';'))
+			{
+				//Remove leading and trailing spaces
+				while (temp[0] == ' ') temp.erase(0, 1);
+				while (temp[temp.size() - 1] == ' ') temp.erase(temp.size() - 1, temp.size());
 
-			vector_client.push_back(temp_client);
-			client_list.clear();
-
-			Client temp_client();
+				packs_bought.push_back(temp);
+			}
+			unsigned total_purchases = packs_bought.size();
+			Client temp_client(name, VAT, household, ClientAddress, packs_bought, total_purchases);
 
 			vector_client.push_back(temp_client);
 			client_list.clear();
@@ -59,60 +66,32 @@ Agency::Agency(string file_name)
 	}
 
 	//Add the last client
-	Client temp_client(client_list[0], client_list[1], client_list[2], client_list[3], client_list[4], temp_client.packs_bought.size());
+	string name = client_list[0];
+	unsigned VAT = stoi(client_list[1]);
+	unsigned short household = stoi(client_list[2]);
+	Address ClientAddress(client_list[3]);
+	//Get Packs
+	vector<string> packs_bought;
+	stringstream pack_info(client_list[4]);
+	string temp;
+	while (getline(pack_info, temp, ';'))
+	{
+		//Remove leading and trailing spaces
+		while (temp[0] == ' ') temp.erase(0, 1);
+		while (temp[temp.size() - 1] == ' ') temp.erase(temp.size() - 1, temp.size());
+
+		packs_bought.push_back(temp);
+	}
+	unsigned total_purchases = packs_bought.size();
+	Client temp_client(name, VAT, household, ClientAddress, packs_bought, total_purchases);
+
 	vector_client.push_back(temp_client);
 	client_list.clear();
-	NiceHolidays.clients = vector_client;
-	client_info.close();
 
 	//
-	// TravelPack Information
-	ifstream pack_info(agency_info[5]);
-	vector<string> pack_list;
-	vector<Packet> vector_pacote;
+	// Packs Information
+	//
 
-
-	while (getline(pack_info, name))
-	{
-		if (name != "::::::::::") pack_list.push_back(name);
-		else
-		{
-			vector<string> v_locals;
-			string temp;
-
-			while (getline(pack_list[1], temp, ','))
-			{
-				v_locals.push_back(temp);
-			}
-
-			Packet pacote(stoi(pack_list[0]),)
-
-			pacote.identifier = pack_list[0];
-			pacote.locals = pack_list[1];
-			pacote.start_date = getDate(pack_list[2]);
-			pacote.end_date = getDate(pack_list[3]);
-			pacote.price = stoi(pack_list[4]);
-			pacote.capacity = pack_list[5];
-			pacote.sold = stoi(pack_list[6]);
-			vector_pacote.push_back(pacote);
-			pack_list.clear();
-		}
-	}
-
-	//Add the last pack
-	pacote.identifier = pack_list[0];
-	pacote.locals = pack_list[1];
-	pacote.start_date = getDate(pack_list[2]);
-	pacote.end_date = getDate(pack_list[3]);
-	pacote.price = stoi(pack_list[4]);
-	pacote.capacity = pack_list[5];
-	pacote.sold = stoi(pack_list[6]);
-	vector_pacote.push_back(pacote);
-	pack_list.clear();
-
-
-	pack_info.close();
-	NiceHolidays.packages = vector_pacote;
 
 }
 
