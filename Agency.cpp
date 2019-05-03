@@ -1,10 +1,12 @@
 #include "Agency.h"
 #include <fstream>
+#include <sstream>
 
 
 
-Agency::Agency(string file_name){
-
+Agency::Agency(string file_name)
+{
+	//Read Agency File
 	ifstream info(file_name);
 	vector<string> agency_info;
 	string name;
@@ -16,12 +18,29 @@ Agency::Agency(string file_name){
 		}
 		info.close();
 	}
-	else cout << "Unable to open file";
+	else cout << "Unable to open file"; //Add later: TRY AGAIN
 
 	name = agency_info[0];
 	VATnumber = stoi(agency_info[1]);
 	URL = agency_info[2];
-	//FAZER ISTO DEPOIS address = getAddress(agency_info[3]);
+
+	//GET ADDRESS
+	stringstream address_info(agency_info[3]);
+	string temp;
+	vector<string> address_temp;
+
+	while (getline(address_info, temp, '/'))
+	{
+		//Remove leading and trailing spaces
+		while (temp[0] == ' ') temp.erase(0, 1);
+		while (temp[temp.size() - 1] == ' ') temp.erase(temp.size() - 1, temp.size());
+
+		address_temp.push_back(temp);
+	}
+
+	Address address_comp(address_temp[0], address_temp[1], address_temp[2], address_temp[3], address_temp[4]);
+
+
 
 	//
 	// Client Information
