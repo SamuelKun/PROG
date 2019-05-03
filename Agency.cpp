@@ -24,8 +24,8 @@ Agency::Agency(string file_name)
 	name = agency_info[0];
 	VATnumber = stoi(agency_info[1]);
 	URL = agency_info[2];
-	Address AgencyAddress = agency_info[3];
-	address = AgencyAddress;
+	Address Agency_Address(agency_info[3]);
+	address = Agency_Address;
 
 	//
 	// Client Information
@@ -39,7 +39,18 @@ Agency::Agency(string file_name)
 		if (name != "::::::::::") client_list.push_back(name);
 		else
 		{
-			Client temp_client(client_list[0], stoi(client_list[1]), stoi(client_list[2]), client_list[3], client_list[4], temp_client.packs_bought.size());
+			string name = client_list[0];
+			unsigned VAT = stoi(client_list[1]);
+			unsigned short household = stoi(client_list[2]);
+			Address ClientAddress(client_list[3]);
+			//vector<Packet> packs_bought = getPacks(client_list[4]);
+			//unsigned total_purchases = temp_client.packs_bought.size();
+
+			vector_client.push_back(temp_client);
+			client_list.clear();
+
+			Client temp_client();
+
 			vector_client.push_back(temp_client);
 			client_list.clear();
 		}
