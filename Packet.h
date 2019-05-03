@@ -15,7 +15,7 @@ class Packet{
 
   // GET methods
   unsigned getId() const;
-  vector<string> getSites() const;
+  string getPlaces() const;
   Date getBeginDate() const;
   Date getEndDate() const;
   double getPricePerPerson() const;
@@ -24,7 +24,7 @@ class Packet{
 
   // SET methods
   void setId(unsigned id);  // to set negatve if "deprecated"
-  void setSites(vector<string> sites);
+  void setPlaces(string sites);
   void setBeginDate(Date begin);
   void setEndDate(Date end);
   void setPricePerPerson(double pricePerPerson);

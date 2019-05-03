@@ -234,13 +234,3 @@ void Agency::setAddress(Address address){
 		 cout << packets[i].getAvailableTickets << endl;
 	 }
  }
-
-/*********************************
- * Mostrar Loja
- ********************************/  
-
-// mostra o conteudo de uma agencia
-ostream& operator<<(ostream& out, const Agency & agency){
-
-  // A IMPLEMENTATION REQUIRED 
-}

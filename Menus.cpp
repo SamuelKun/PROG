@@ -1,6 +1,3 @@
-#include "Menus.h"
-
-
 Agency NiceHolydays("agency.txt");
 
 unsigned mainMenu(Agency agency)
@@ -17,11 +14,11 @@ unsigned mainMenu(Agency agency)
 	{
 	case('1'):
 		
-		NiceHolydays.showClients;
+		NiceHolydays.showClients();
 		break;
 
 	case('2'):
-		NiceHolydays.showPackets;
+		NiceHolydays.showPackets();
 		break;
 
 	}

@@ -30,8 +30,6 @@ public:
 	void setPostalCode(string postalCode);
 	void setLocation(string  location);
 
-	// outros */
-	friend ostream& operator<<(ostream& out, const Address & address);
 
  private:
   string street; // street name

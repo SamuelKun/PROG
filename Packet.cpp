@@ -1,6 +1,6 @@
 #include "Packet.h"
 
-Packet::Packet(unsigned id, vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
+Packet::Packet(unsigned id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
 	this->id = id;
 	this->places = places;
@@ -21,7 +21,7 @@ unsigned Packet::getId() const
 	return id;
 }
 
-vector<string> Packet::getSites() const
+string Packet::getPlaces() const
 {
 	return places;
 }
@@ -60,7 +60,7 @@ void Packet::setId(unsigned id)
 	this->id = id;
 }
 
-void Packet::setSites(vector<string> sites)
+void Packet::setPlaces(string sites)
 {
 	this->places = sites;
 }
