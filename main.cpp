@@ -14,7 +14,9 @@ int main()
 {
   Agency agency("Agency.txt");   // create the agency
 
-
+  cout << agency.getName() << endl;
+  cout << agency.getAddress().getLocation() << endl;
+  cout << agency.getClients()[0].getName() << endl;
   _getwch();
   return 0;
 
