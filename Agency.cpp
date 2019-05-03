@@ -78,6 +78,7 @@ Agency::Agency(string file_name)
 
 			vector_client.push_back(temp_client);
 			client_list.clear();
+			packs_bought.clear();
 		}
 	}
 	
