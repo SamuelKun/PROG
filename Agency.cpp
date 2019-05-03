@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-
+using namespace std;
 
 Agency::Agency(string file_name)
 {
@@ -11,12 +11,12 @@ Agency::Agency(string file_name)
 	//Read Agency File
 	ifstream info(file_name);
 	vector<string> agency_info;
-	string name;
+	string name_temp;
 	if (info.is_open())
 	{
-		while (getline(info, name))
+		while (getline(info, name_temp))
 		{
-			agency_info.push_back(name);
+			agency_info.push_back(name_temp);
 		}
 		info.close();
 	}
@@ -33,16 +33,16 @@ Agency::Agency(string file_name)
 	//
 
 	ifstream client_info(agency_info[4]);
-	string name;
+	string name_client;
 	vector<string> client_list;
 	vector<Client> vector_client;
 
-	while (getline(client_info, name))
+	while (getline(client_info, name_client))
 	{
-		if (name != "::::::::::") client_list.push_back(name);
+		if (name_client != "::::::::::") client_list.push_back(name_client);
 		else
 		{
-			string name = client_list[0];
+			string name_client = client_list[0];
 			unsigned VAT = stoi(client_list[1]);
 			unsigned short household = stoi(client_list[2]);
 			Address ClientAddress(client_list[3]);
@@ -59,7 +59,7 @@ Agency::Agency(string file_name)
 				packs_bought.push_back(temp);
 			}
 			unsigned total_purchases = packs_bought.size();
-			Client temp_client(name, VAT, household, ClientAddress, packs_bought, total_purchases);
+			Client temp_client(name_client, VAT, household, ClientAddress, packs_bought, total_purchases);
 
 			vector_client.push_back(temp_client);
 			client_list.clear();
@@ -67,7 +67,7 @@ Agency::Agency(string file_name)
 	}
 
 	//Add the last client
-	string name = client_list[0];
+	string name_client = client_list[0];
 	unsigned VAT = stoi(client_list[1]);
 	unsigned short household = stoi(client_list[2]);
 	Address ClientAddress(client_list[3]);
@@ -84,7 +84,7 @@ Agency::Agency(string file_name)
 		packs_bought.push_back(temp);
 	}
 	unsigned total_purchases = packs_bought.size();
-	Client temp_client(name, VAT, household, ClientAddress, packs_bought, total_purchases);
+	Client temp_client(name_client, VAT, household, ClientAddress, packs_bought, total_purchases);
 
 	vector_client.push_back(temp_client);
 	client_list.clear();
@@ -98,13 +98,14 @@ Agency::Agency(string file_name)
 	ifstream pack_info(agency_info[5]);
 	vector<string> pack_list;
 	vector<Packet> vector_pack;
+	string name_pack;
 	string lastTravelPack;
 
 	getline(pack_info, lastTravelPack);
 
-	while (getline(pack_info, name))
+	while (getline(pack_info, name_pack))
 	{
-		if (name != "::::::::::") pack_list.push_back(name);
+		if (name_pack != "::::::::::") pack_list.push_back(name_pack);
 		else
 		{
 			unsigned id = stoi(pack_list[0]);

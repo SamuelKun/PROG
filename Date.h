@@ -26,9 +26,6 @@ class Date{
   void setMonth(unsigned short month);
   void setYear(unsigned year);
 
-  // outhet methods */
-  
-  friend ostream& operator<<(ostream& out, const Date & date);
 	
 private:
 	unsigned short day;

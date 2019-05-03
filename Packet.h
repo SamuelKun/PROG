@@ -31,9 +31,6 @@ class Packet{
   void setMaxTickets(unsigned maxTickets);
   void setAvailableTickets(unsigned avaiabaleTickets);
 
-  // other methods
-
-  friend ostream& operator<<(ostream& out, const Packet & packet);
 
 private:
 	unsigned id; // packet unique identifier

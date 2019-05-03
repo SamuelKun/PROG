@@ -99,9 +99,3 @@ void Packet::setAvailableTickets(unsigned availableTickets)
  * Show Packet information
  ********************************/  
 
-// shows a packet content 
-ostream& operator<<(ostream& out, const Packet & packet)
-{
-
-  // REQUIRES IMPLEMENTATION
-}

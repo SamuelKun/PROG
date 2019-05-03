@@ -11,10 +11,9 @@
 // #include "utils.h"
 
 
-int main(){
+int main()
+{
   Agency agency("agency.txt");   // create the agency
-
-  mainMenu(agency); // initial menu inicial with the major options of the application
 
 
   
