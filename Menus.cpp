@@ -14,6 +14,9 @@ Agency NiceHolydays("agency.txt");
 unsigned mainMenu(Agency agency)
 {
 	char menu;
+
+	system("CLS");    //Clear Screen
+
 	cout << "Main Menu" << endl <<  endl;
 
 	cout << "[1] Manage Clients" << endl;
@@ -26,19 +29,15 @@ unsigned mainMenu(Agency agency)
 
 	switch (menu)
 	{
-	case('1'):
+	case('1'):        //Manage Clients
 
 		break;
 
-	case('2'):
+	case('2'):        //Manage Packs
 
 		break;
 
 	}
-
-
-  
-
   
   return 0;
 }
@@ -47,7 +46,7 @@ void manageClients()
 {
 	char menu;
 
-	system("CLS");     //Clear Screen
+	system("CLS");    //Clear Screen
 
 	cout << "[1] Adicionar clientes " << endl;
 	cout << "[2] Remover clientes " << endl;
@@ -57,10 +56,10 @@ void manageClients()
 
 	switch (menu)
 	{
-	case('1'):          //Add Clients
+	case('1'):        //Add Clients
 
 		break;
-	case('2'):          //Remove Clients
+	case('2'):        //Remove Clients
 
 		break;
 	}
@@ -81,10 +80,10 @@ void managePacks()
 
 	switch (menu)
 	{
-	case('1'):          //Add Packs
+	case('1'):        //Add Packs
 
 		break;
-	case('2'):          //Remove packs
+	case('2'):        //Remove packs
 
 		break;
 	}
@@ -118,4 +117,24 @@ void viewInformation()
 	}
 }
 
-void viewClietns
+void viewClients()
+{
+	char menu;
+
+	system("CLS");    //Clear Screen
+
+	cout << "[1] View All Clients " << endl;
+	cout << "[2] View 1 client " << endl;
+
+	cin >> menu;
+
+	switch (menu)
+	{
+	case('1'):        //View All Clients
+
+		break;
+	case('2'):        //View 1 Client
+
+		break;
+	}
+}
