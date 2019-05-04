@@ -171,7 +171,9 @@ Agency::Agency(string file_name)
 		///////////////////////////////////////////////////////////////////////////////////////////////////////// FOR NOW HAHAHA
 }
 
-  // metodos GET
+/*********************************
+ * GET Methods
+ ********************************/
 string Agency::getName() const
 {
 	return name;
@@ -202,8 +204,9 @@ vector<Packet> Agency::getPackets() const{
 	return packets;
 }
 
-  
-  // SET Methods
+/*********************************
+ * SET Methods
+ ********************************/
 
 void Agency::setName(string name){
 
@@ -234,7 +237,53 @@ void Agency::setAddress(Address address){
 	 this->packets = packets;
  }
 
- void Agency::showPackets()
+ /*********************************
+ * MANAGE CLIENTS methods
+ ********************************/
+
+ void AddClient()
+ {
+	 string client_name; // name of the client
+	 unsigned client_VATnumber; // VAT number of client
+	 unsigned short client_familySize;  // number of family members
+	 //Address client_address(); 
+	 // Client Address
+	 string client_street;
+	 unsigned short client_doorNumber;
+	 string client_floor;
+	 string client_postalCode;
+	 string client_location;
+
+	 cin.ignore(1000, '\n');
+	 cout << "Name: " << endl;
+	 getline(cin, client_name);
+	 cout << "NIF: " << endl;
+	 cin >> client_VATnumber;
+	 cout << "Size of household: " << endl;
+	 cin >> client_familySize;
+	 cin.ignore(1000, '\n');
+	 cout << "Adress:" << endl;
+	 cout << "	Street: ";
+	 getline(cin, client_street);
+	 cout << "	Door: ";
+	 cin >> client_doorNumber;
+	 cout << "	Floor: ";
+	 cin.ignore(1000, '\n');
+	 getline(cin, client_floor);
+	 cout << "	Postal Code: ";
+	 getline(cin, client_postalCode);
+	 cout << "	Locality: ";
+	 getline(cin, client_location);
+
+	 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
+
+ }
+
+ /*********************************
+* SHOW methods
+********************************/
+
+ void Agency::showPackets() const
  {
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
@@ -249,7 +298,7 @@ void Agency::setAddress(Address address){
 	 }
  }
 
- void Agency::showClients()
+ void Agency::showClients() const
  {
 	 for (size_t i = 0; i < getClients().size(); i++)
 	 {
