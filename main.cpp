@@ -25,23 +25,6 @@ int main()
   agency.showPackets();
  
 
-  for (size_t i = 0; i < agency.getPackets().size(); i++)
-  {
-	  cout << endl;
-	  cout << agency.getPackets()[i].getId() << endl;
-	  for (size_t j = 0; j < agency.getPackets()[i].getPlaces().size(); j++)
-	  {
-		  cout << agency.getPackets()[i].getPlaces()[j];
-		  if (j != agency.getPackets()[i].getPlaces().size())
-			  cout << " , ";
-	  }
-	  cout << endl << agency.getPackets()[i].getBeginDate().getDay() << endl;
-	  cout << agency.getPackets()[i].getEndDate().getDay() << endl;
-	  cout << agency.getPackets()[i].getPricePerPerson() << endl;
-	  cout << agency.getPackets()[i].getMaxTickets() << endl;
-	  cout << agency.getPackets()[i].getAvailableTickets() << endl;
-  }
-
   _getwch();
   return 0;
 

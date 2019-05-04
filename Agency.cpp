@@ -238,15 +238,10 @@ void Agency::setAddress(Address address){
  {
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 cout << endl;
+		 cout << endl << endl;
 		 cout << packets[i].getId() << endl;
-		 for (size_t j = 0; j < packets[i].getPlaces().size(); j++)
-		 {
-			 cout << packets[i].getPlaces()[j];
-			 if (j != packets[i].getPlaces().size())
-				 cout << " , ";
-		 }
-		 cout << endl << packets[i].getBeginDate().getDay() << endl;
+		 cout << packets[i].getPlaces() << endl;
+		 cout << packets[i].getBeginDate().getDay() << endl;
 		 cout << packets[i].getEndDate().getDay() << endl;
 		 cout << packets[i].getPricePerPerson() << endl;
 		 cout << packets[i].getMaxTickets() << endl;
