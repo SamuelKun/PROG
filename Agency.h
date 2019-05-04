@@ -34,9 +34,12 @@ public:
 	void setClients(vector<Client> & clients);
 	void setPackets(vector<Packet> & packets);
 
-	// other methods */
-	void showPackets();
-	void showClients();
+	// MANAGE CLIENTS methods
+
+
+	// SHOW methods
+	void showPackets() const;
+	void showClients() const;
 
  private:
   string name; // name of the  agency
