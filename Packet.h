@@ -11,10 +11,10 @@ using namespace std;
 
 class Packet{
  public:
-	 Packet(unsigned id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets);
+	 Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets);
 
   // GET methods
-  unsigned getId() const;
+  short getId() const;
   string getPlaces() const;
   Date getBeginDate() const;
   Date getEndDate() const;
@@ -33,7 +33,7 @@ class Packet{
 
 
 private:
-	unsigned id; // packet unique identifier
+	short id; // packet unique identifier
 	string places; // touristic sites to visit
 	Date begin;  // begin date
 	Date end;  // end date

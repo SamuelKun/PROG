@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Packet::Packet(unsigned id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
+Packet::Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
 	this->id = id;
 	this->places = places;
@@ -18,7 +18,7 @@ Packet::Packet(unsigned id, string places, Date begin, Date end, double pricePer
  * GET Methods
  ********************************/
 
-unsigned Packet::getId() const
+short Packet::getId() const
 {
 	return id;
 }
