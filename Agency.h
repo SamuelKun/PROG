@@ -36,10 +36,18 @@ public:
 
 	// MANAGE CLIENTS methods
 	void addClient();
+	void changeClient();
+	void removeClient(int position);
+
+	// MANAGE PACKS methods
+	void addPack();
+	void changePack();
+	void removePack();
 
 	// SHOW methods
-	void showClients() const;
-	void showPackets() const;
+	void showAllClientsName() const;
+	void showAllClients() const;
+	void showAllPackets() const;
 
  private:
   string name; // name of the  agency

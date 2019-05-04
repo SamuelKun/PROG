@@ -281,11 +281,32 @@ void Agency::setAddress(Address address){
 	 this->clients.push_back(newclient);
  }
 
+ void Agency::changeClient()
+ {
+
+ }
+
+ void Agency::removeClient(int position)
+ {
+	 this->clients.erase(this->clients.begin() + position);
+ }
+
+ /*********************************
+* MANAGE PACKS methods
+********************************/
+
+
  /*********************************
 * SHOW methods
 ********************************/
+ void Agency::showAllClientsName() const
+ {
+	 for (size_t i = 0; i < getClients().size(); i++)
+		 cout << i << " - " << getClients()[i].getName() << endl;
+ }
 
- void Agency::showClients() const
+
+ void Agency::showAllClients() const
  {
 	 for (size_t i = 0; i < getClients().size(); i++)
 	 {
@@ -311,7 +332,7 @@ void Agency::setAddress(Address address){
 	 }
  }
 
- void Agency::showPackets() const
+ void Agency::showAllPackets() const
  {
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
