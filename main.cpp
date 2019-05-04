@@ -48,9 +48,9 @@ int main()
   Agency agency(filename);   // create the agency
 
   cout << agency.getClients()[0].getName() << endl;
-  agency.showClients();
+  agency.showAllClients();
   cout << endl;
-  agency.showPackets();
+  agency.showAllPackets();
  
 
   while (true) {

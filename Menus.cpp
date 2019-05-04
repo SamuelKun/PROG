@@ -95,7 +95,7 @@ void viewClients(Agency agency)
 		agency.showAllClients();
 		break;
 	case('2'):
-		agency.showAllClientsName;
+		agency.showAllClientsName();
 		break;
 	case('3'):        //View 1 Client
 		//agency.show1Client();
@@ -156,10 +156,10 @@ void managePacks(Agency agency)
 		agency.addPack();
 		break;
 	case('2'):        //Remove Packs
-		agency.removePack();
+		//agency.removePack(0);
 		break;
 	case('3'):        //Change Packs
-		agency.changePack();
+		//agency.changePack(0);
 		break;
 	default:
 		managePacks(agency);
@@ -187,10 +187,10 @@ void manageClients(Agency agency)
 		agency.addClient();
 		break;
 	case('2'):        //Remove Clients
-		agency.removeClient();
+		//agency.removeClient();
 		break;
 	case('3'):
-		agency.changeClient();
+		//agency.changeClient();
 		break;
 	default:
 		manageClients(agency);
