@@ -53,8 +53,11 @@ int main()
   cout << endl;
   agency.showAllPackets();
 
-  mainMenu(agency);
- 
+  bool dontEnd = true;
+  while (dontEnd)
+  {
+	  dontEnd = mainMenu(agency);
+  }
   _getwch();
   return 0;
 
