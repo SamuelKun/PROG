@@ -36,13 +36,18 @@ unsigned mainMenu(Agency agency)
 	case('2'):        //Manage Packs
 
 		break;
+	case('3'):        //View Information
 
+		break;
+	case('4'):        //Buy Packs
+
+		break;
 	}
   
   return 0;
 }
 
-void manageClients()
+void manageClients(Agency agency)
 {
 	char menu;
 
@@ -57,7 +62,7 @@ void manageClients()
 	switch (menu)
 	{
 	case('1'):        //Add Clients
-
+		agency.AddClient();
 		break;
 	case('2'):        //Remove Clients
 
@@ -66,7 +71,7 @@ void manageClients()
 
 }
 
-void managePacks()
+void managePacks(Agency agency)
 {
 	char menu;
 
@@ -90,7 +95,7 @@ void managePacks()
 
 }
 
-void viewInformation()
+void viewInformation(Agency agency)
 {
 	char menu;
 
@@ -117,7 +122,7 @@ void viewInformation()
 	}
 }
 
-void viewClients()
+void viewClients(Agency agency)
 {
 	char menu;
 
@@ -134,6 +139,59 @@ void viewClients()
 
 		break;
 	case('2'):        //View 1 Client
+
+		break;
+	}
+}
+
+
+void viewPacks(Agency agency)
+{
+	char menu;
+
+	system("CLS");    //Clear Screen
+
+	cout << "[1] View All Packs " << endl;
+	cout << "[2] View Specific Packs " << endl;
+
+	cin >> menu;
+
+	switch (menu)
+	{
+	case('1'):        //View All Packs
+
+		break;
+	case('2'):        //View Specific Packs
+
+		break;
+	}
+}
+
+void viewSpecificPacks(Agency agency)
+{
+	char menu;
+
+	system("CLS");    //Clear Screen
+
+	cout << "[1] Destiny " << endl;
+	cout << "[2] Date " << endl;
+	cout << "[3] Destiny and Date" << endl;
+	cout << "[4] Client" << endl;
+
+	cin >> menu;
+
+	switch (menu)
+	{
+	case('1'):        //Destiny
+
+		break;
+	case('2'):        //Date
+
+		break;
+	case('3'):        //Destiny and Date
+
+		break;
+	case('4'):        //Client
 
 		break;
 	}
