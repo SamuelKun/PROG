@@ -11,7 +11,7 @@ using namespace std;
  * [1] MANAGE CLIENTS
  ********************************/
 
-int manageClients(Agency agency)
+int manageClients(Agency &agency)
 {
 	char menu;
 	int idx;
@@ -61,7 +61,7 @@ int manageClients(Agency agency)
 /*********************************
  * [2] MANAGE PACKS
  ********************************/
-int managePacks(Agency agency)
+int managePacks(Agency &agency)
 {
 	char menu;
 
@@ -104,7 +104,7 @@ int managePacks(Agency agency)
   * VIEW METHODS
   ********************************/
 
-int viewSpecificPacks(Agency agency)
+int viewSpecificPacks(Agency &agency)
 {
 	char menu;
 
@@ -140,7 +140,7 @@ int viewSpecificPacks(Agency agency)
 	return 0;
 }
 
-int viewPacks(Agency agency)
+int viewPacks(Agency &agency)
 {
 	char menu;
 
@@ -175,7 +175,7 @@ int viewPacks(Agency agency)
 }
 
 
-int viewClients(Agency agency)
+int viewClients(Agency &agency)
 {
 	char menu;
 
@@ -213,7 +213,7 @@ int viewClients(Agency agency)
  * VIEW MAIN MENU
  ********************************/
 
-int viewInformation(Agency agency)
+int viewInformation(Agency &agency)
 {
 	char menu;
 
@@ -264,7 +264,7 @@ int viewInformation(Agency agency)
 
 
 
-unsigned mainMenu(Agency agency)
+unsigned mainMenu(Agency &agency)
 {
 	char menu;
 
