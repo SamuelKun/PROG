@@ -48,11 +48,6 @@ int main()
 
   Agency agency(filename);   // create the agency
 
-  cout << agency.getClients()[0].getName() << endl;
-  agency.showAllClients();
-  cout << endl;
-  agency.showAllPackets();
-
   bool dontEnd = true;
   while (dontEnd)
   {
