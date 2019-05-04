@@ -36,7 +36,12 @@ unsigned mainMenu(Agency agency)
 	case('2'):        //Manage Packs
 
 		break;
+	case('3'):        //View Information
 
+		break;
+	case('4'):        //Buy Packs
+
+		break;
 	}
   
   return 0;
@@ -134,6 +139,59 @@ void viewClients()
 
 		break;
 	case('2'):        //View 1 Client
+
+		break;
+	}
+}
+
+
+void viewPacks()
+{
+	char menu;
+
+	system("CLS");    //Clear Screen
+
+	cout << "[1] View All Packs " << endl;
+	cout << "[2] View Specific Packs " << endl;
+
+	cin >> menu;
+
+	switch (menu)
+	{
+	case('1'):        //View All Packs
+
+		break;
+	case('2'):        //View Specific Packs
+
+		break;
+	}
+}
+
+void viewSpecificPacks()
+{
+	char menu;
+
+	system("CLS");    //Clear Screen
+
+	cout << "[1] Desteny " << endl;
+	cout << "[2] Date " << endl;
+	cout << "[3] Destiny and Date" << endl;
+	cout << "[4] Client" << endl;
+
+	cin >> menu;
+
+	switch (menu)
+	{
+	case('1'):
+
+		break;
+	case('2'):
+
+		break;
+	case('3'):
+
+		break;
+	case('4'):
 
 		break;
 	}
