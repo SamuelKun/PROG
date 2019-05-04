@@ -47,7 +47,7 @@ unsigned mainMenu(Agency agency)
   return 0;
 }
 
-void manageClients()
+void manageClients(Agency agency)
 {
 	char menu;
 
@@ -62,7 +62,7 @@ void manageClients()
 	switch (menu)
 	{
 	case('1'):        //Add Clients
-
+		agency.AddClient();
 		break;
 	case('2'):        //Remove Clients
 
@@ -71,7 +71,7 @@ void manageClients()
 
 }
 
-void managePacks()
+void managePacks(Agency agency)
 {
 	char menu;
 
@@ -95,7 +95,7 @@ void managePacks()
 
 }
 
-void viewInformation()
+void viewInformation(Agency agency)
 {
 	char menu;
 
@@ -122,7 +122,7 @@ void viewInformation()
 	}
 }
 
-void viewClients()
+void viewClients(Agency agency)
 {
 	char menu;
 
@@ -145,7 +145,7 @@ void viewClients()
 }
 
 
-void viewPacks()
+void viewPacks(Agency agency)
 {
 	char menu;
 
@@ -167,7 +167,7 @@ void viewPacks()
 	}
 }
 
-void viewSpecificPacks()
+void viewSpecificPacks(Agency agency)
 {
 	char menu;
 
