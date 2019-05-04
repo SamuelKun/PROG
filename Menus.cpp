@@ -173,7 +173,7 @@ void viewSpecificPacks()
 
 	system("CLS");    //Clear Screen
 
-	cout << "[1] Desteny " << endl;
+	cout << "[1] Destiny " << endl;
 	cout << "[2] Date " << endl;
 	cout << "[3] Destiny and Date" << endl;
 	cout << "[4] Client" << endl;
@@ -182,16 +182,16 @@ void viewSpecificPacks()
 
 	switch (menu)
 	{
-	case('1'):
+	case('1'):        //Destiny
 
 		break;
-	case('2'):
+	case('2'):        //Date
 
 		break;
-	case('3'):
+	case('3'):        //Destiny and Date
 
 		break;
-	case('4'):
+	case('4'):        //Client
 
 		break;
 	}
