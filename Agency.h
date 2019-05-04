@@ -17,7 +17,7 @@ class Agency{
 public:
 	Agency(string fileName);
 
-	// methods GET
+	// GET methods
 	string getName() const;
 	unsigned getVATnumber() const;
 	Address getAddress() const;
@@ -25,8 +25,7 @@ public:
 	vector<Client> getClients() const;
 	vector<Packet> getPackets() const;
 
-
-	// methods SET
+	// SET methods
 	void setName(string name);
 	void setVATnumber(unsigned VATnumber);
 	void setAddress(Address address);
@@ -36,16 +35,17 @@ public:
 
 	// MANAGE CLIENTS methods
 	void addClient();
-	void changeClient();
+	void changeClient(int position);
 	void removeClient(int position);
 
 	// MANAGE PACKS methods
 	void addPack();
-	void changePack();
-	void removePack();
+	void changePack(int position);
+	void removePack(int position);
 
 	// SHOW methods
 	void showAllClientsName() const;
+	void showAllPacksID() const;
 	void showAllClients() const;
 	void showAllPackets() const;
 

@@ -281,9 +281,55 @@ void Agency::setAddress(Address address){
 	 this->clients.push_back(newclient);
  }
 
- void Agency::changeClient()
+ void Agency::changeClient(int position)
  {
+	 string client_name; // name of the client
+	 unsigned client_VATnumber; // VAT number of client
+	 unsigned short client_familySize;  // number of family members
+	 //Address client_address(); 
+	 // Client Address
+	 string client_street;
+	 unsigned short client_doorNumber;
+	 string client_floor;
+	 string client_postalCode;
+	 string client_location;
+	 string client_packs;
 
+	 cin.ignore(1000, '\n');
+	 cout << "Name: " << endl;
+	 getline(cin, client_name);
+	 cout << "NIF: " << endl;
+	 cin >> client_VATnumber;
+	 cout << "Size of household: " << endl;
+	 cin >> client_familySize;
+	 cin.ignore(1000, '\n');
+	 cout << "Adress:" << endl;
+	 cout << "	Street: ";
+	 getline(cin, client_street);
+	 cout << "	Door: ";
+	 cin >> client_doorNumber;
+	 cout << "	Floor: ";
+	 cin.ignore(1000, '\n');
+	 getline(cin, client_floor);
+	 cout << "	Postal Code: ";
+	 getline(cin, client_postalCode);
+	 cout << "	Locality: ";
+	 getline(cin, client_location);
+
+	 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
+	 clients[position].setName(client_name);
+	 clients[position].setVATnumber(client_VATnumber);
+	 clients[position].setFamilySize(client_familySize);
+	 clients[position].setAddress(client_address);
+	 vector<string> all_client_packs = clients[position].getPacketList();
+
+	 cout << "New Packs: "; //DO LOOP HERE!!!
+	 cin >> client_packs;
+
+	 all_client_packs.push_back(client_packs);
+
+	 clients[position].setPacketList(all_client_packs);
+	 clients[position].setTotalPurchased(all_client_packs.size());
  }
 
  void Agency::removeClient(int position)
@@ -294,7 +340,82 @@ void Agency::setAddress(Address address){
  /*********************************
 * MANAGE PACKS methods
 ********************************/
+ void Agency::addPack()
+ {
+	 short pack_id; // packet unique identifier
+	 string pack_places; // touristic sites to visit
+	 string begin_date;  // begin date
+	 string end_date;  // end date
+	 double pack_pricePerPerson; // price per person
+	 unsigned pack_maxTickets; // máximo de lugares disponíveis
+	 unsigned pack_availableTickets; // número de lugares já reservados
 
+	 cout << "Identifier: " << endl;
+	 cin >> pack_id;
+	 cout << "Locals: " << endl;
+	 cin.ignore(1000, '\n');
+	 getline(cin, pack_places);
+	 cout << "Start Date: (Year/Month/Day)" << endl;
+	 getline(cin, begin_date);
+	 cout << "End Date: (Year/Month/Day)" << endl;
+	 getline(cin, end_date);
+	 cout << "Price: " << endl;
+	 cin >> pack_pricePerPerson;
+	 cout << "Capacity: " << endl;
+	 cin >> pack_maxTickets;
+	 cout << "Sold Tickets: " << endl;
+	 cin >> pack_availableTickets;
+	
+	 Date pack_begin(begin_date);
+	 Date pack_end(end_date);
+	 
+	 Packet newPack(pack_id, pack_places, pack_begin, pack_end, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
+
+	 this->packets.push_back(newPack);
+ }
+
+ void Agency::changePack(int position)
+ {
+	 short pack_id; // packet unique identifier
+	 string pack_places; // touristic sites to visit
+	 string begin_date;  // begin date
+	 string end_date;  // end date
+	 double pack_pricePerPerson; // price per person
+	 unsigned pack_maxTickets; // máximo de lugares disponíveis
+	 unsigned pack_availableTickets; // número de lugares já reservados
+
+	 cout << "Identifier: " << endl;
+	 cin >> pack_id;
+	 cout << "Locals: " << endl;
+	 cin.ignore(1000, '\n');
+	 getline(cin, pack_places);
+	 cout << "Start Date: (Year/Month/Day)" << endl;
+	 getline(cin, begin_date);
+	 cout << "End Date: (Year/Month/Day)" << endl;
+	 getline(cin, end_date);
+	 cout << "Price: " << endl;
+	 cin >> pack_pricePerPerson;
+	 cout << "Capacity: " << endl;
+	 cin >> pack_maxTickets;
+	 cout << "Places already reserved: : " << endl;
+	 cin >> pack_availableTickets;
+
+	 Date pack_begin(begin_date);
+	 Date pack_end(end_date);
+
+	 packets[position].setId(pack_id);
+	 packets[position].setPlaces(pack_places);
+	 packets[position].setBeginDate(pack_begin);
+	 packets[position].setEndDate(pack_end);
+	 packets[position].setPricePerPerson(pack_pricePerPerson);
+	 packets[position].setMaxTickets(pack_maxTickets);
+	 packets[position].setAvailableTickets(pack_availableTickets);
+ }
+
+ void Agency::removePack(int position)
+ {
+	 this->packets.erase(this->packets.begin() + position);
+ }
 
  /*********************************
 * SHOW methods
@@ -305,6 +426,14 @@ void Agency::setAddress(Address address){
 		 cout << i << " - " << getClients()[i].getName() << endl;
  }
 
+ void Agency::showAllPacksID() const
+ {
+	 cout << "Packs: " << endl;
+	 for (size_t i = 0; i < getPackets().size(); i++)
+	 {
+		 cout << i << " - " << getPackets()[i].getId() << endl;
+	 }
+ }
 
  void Agency::showAllClients() const
  {
@@ -345,6 +474,6 @@ void Agency::setAddress(Address address){
 		 packets[i].getEndDate().showDate(); 
 		 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
 		 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-		 cout << "Available Tickets: " << packets[i].getAvailableTickets() << endl;
+		 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
 	 }
  }
