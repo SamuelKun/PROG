@@ -52,11 +52,9 @@ int main()
   agency.showAllClients();
   cout << endl;
   agency.showAllPackets();
- 
 
-  while (true) {
-	  menu(agency);
-  }
+  mainMenu(agency);
+ 
   _getwch();
   return 0;
 

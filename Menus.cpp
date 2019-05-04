@@ -216,18 +216,21 @@ unsigned mainMenu(Agency agency)
 
 	switch (menu)
 	{
-	case('1'):        //Manage Clients
+	case '1':        //Manage Clients
 		manageClients(agency);
 		break;
 
-	case('2'):        //Manage Packs
+	case '2':        //Manage Packs
 		managePacks(agency);
 		break;
-	case('3'):        //View Information
+	case '3':        //View Information
 		viewInformation(agency);
 		break;
-	case('4'):        //Buy Packs
+	case '4':        //Buy Packs
 		//agency.buyPacks();
+		break;
+	case  '0':
+		return 0;
 		break;
 	default:
 		mainMenu(agency);
