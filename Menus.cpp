@@ -14,7 +14,7 @@ using namespace std;
 int manageClients(Agency agency)
 {
 	char menu;
-
+	int idx;
 	system("CLS");    //Clear Screen
 
 	cout << "[1] Add clients " << endl;
@@ -27,11 +27,23 @@ int manageClients(Agency agency)
 
 	switch (menu)
 	{
-	case('1'):        //Add Clients
+	case '1':        //Add Clients
+		system("CLS");
 		agency.addClient();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
-	case('2'):        //Remove Clients
-		//agency.removeClient();
+	case '2':        //Remove Clients
+		system("CLS");
+		agency.showAllClientsName();
+		cout << "Wich one you want to remove? ";
+		cin >> idx;
+		cin.ignore(10000, '\n');
+		agency.removeClient(idx);
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case('3'):
 		//agency.changeClient();

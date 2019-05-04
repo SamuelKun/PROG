@@ -334,7 +334,7 @@ void Agency::setAddress(Address address){
 
  void Agency::removeClient(int position)
  {
-	 this->clients.erase(this->clients.begin() + position);
+	 clients.erase(clients.begin() + position);
  }
 
  /*********************************
@@ -414,7 +414,8 @@ void Agency::setAddress(Address address){
 
  void Agency::removePack(int position)
  {
-	 this->packets.erase(this->packets.begin() + position);
+	 int newId = -packets[position].getId();
+	 this->packets[position].setId(newId);
  }
 
  /*********************************
