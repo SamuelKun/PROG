@@ -161,7 +161,7 @@ void viewPacks(Agency agency)
 		agency.showPackets();
 		break;
 	case('2'):        //View Specific Packs
-
+		//agency.showSpecificPacket();
 		break;
 	}
 }
@@ -182,16 +182,16 @@ void viewSpecificPacks(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //Destiny
-
+		//agency.destiny();
 		break;
 	case('2'):        //Date
-
+		//agency.date();
 		break;
 	case('3'):        //Destiny and Date
-
+		//agency.destinyAndDate();
 		break;
 	case('4'):        //Client
-
+		
 		break;
 	}
 }
