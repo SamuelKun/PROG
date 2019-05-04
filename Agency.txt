@@ -3,4 +3,4 @@ NiceHolidays
 http://www.niceholiday.pt
 Rua Sem Nome / 100 / - / 4400-345 / Porto
 clients.txt
-packets.tx
+packs.txt
