@@ -52,8 +52,9 @@ void viewPacks(Agency agency)
 
 	system("CLS");    //Clear Screen
 
-	cout << "[1] View All Packs " << endl;
-	cout << "[2] View Specific Packs " << endl;
+	cout << "[1] View all packs " << endl;
+	cout << "[2] View all packs' IDs " << endl;
+	cout << "[3] View Specific Packs " << endl;
 
 	cin >> menu;
 
@@ -62,7 +63,10 @@ void viewPacks(Agency agency)
 	case('1'):        //View All Packs
 		agency.showAllPackets();
 		break;
-	case('2'):        //View Specific Packs
+	case('2'):
+		agency.showAllPacksID();
+		break;
+	case('3'):        //View Specific Packs
 		//agency.showSpecificPacket();
 		break;
 	}
@@ -74,8 +78,9 @@ void viewClients(Agency agency)
 
 	system("CLS");    //Clear Screen
 
-	cout << "[1] View All Clients " << endl;
-	cout << "[2] View 1 client " << endl;
+	cout << "[1] View all clients " << endl;
+	cout << "[2] View all clients' name " << endl;
+	cout << "[3] View 1 client " << endl;
 
 	cin >> menu;
 
@@ -84,7 +89,10 @@ void viewClients(Agency agency)
 	case('1'):        //View All Clients
 		agency.showAllClients();
 		break;
-	case('2'):        //View 1 Client
+	case('2'):
+		agency.showAllClientsName;
+		break;
+	case('3'):        //View 1 Client
 		//agency.show1Client();
 		break;
 	}
@@ -98,8 +106,8 @@ void viewInformation(Agency agency)
 
 	system("CLS");    //Clear Screen
 
-	cout << "[1] View Clients " << endl;
-	cout << "[2] View Packs " << endl;
+	cout << "[1] View clients " << endl;
+	cout << "[2] View packs " << endl;
 	cout << "[3] View the ammount of packs sold and earned currency " << endl;
 
 	cin >> menu;
@@ -127,16 +135,20 @@ void managePacks(Agency agency)
 
 	cout << "[1] Add Packs " << endl;
 	cout << "[2] Remove Packs " << endl;
+	cout << "[3] Change Packs " << endl;
 
 	cin >> menu;
 
 	switch (menu)
 	{
 	case('1'):        //Add Packs
-		//agency.addPack();
+		agency.addPack();
 		break;
-	case('2'):        //Remove packs
-		//agency.removePack();
+	case('2'):        //Remove Packs
+		agency.removePack();
+		break;
+	case('3'):        //Change Packs
+		agency.changePack();
 		break;
 	}
 
@@ -148,8 +160,9 @@ void manageClients(Agency agency)
 
 	system("CLS");    //Clear Screen
 
-	cout << "[1] Adicionar clientes " << endl;
-	cout << "[2] Remover clientes " << endl;
+	cout << "[1] Add clients " << endl;
+	cout << "[2] Remove clients " << endl;
+	cout << "[2] Change clients " << endl;
 
 	cin >> menu;
 
@@ -160,10 +173,15 @@ void manageClients(Agency agency)
 		agency.addClient();
 		break;
 	case('2'):        //Remove Clients
-		//agency.removeClient();
+		agency.removeClient();
+		break;
+	case('3'):
+		agency.changeClient();
+		break;
+	default:
+		manageClients(agency);
 		break;
 	}
-
 }
 
 unsigned mainMenu(Agency agency)
