@@ -152,6 +152,18 @@ Agency::Agency(string file_name)
 			pack_list.clear();
 		}
 	}
+	//Add last pack
+	id = stoi(pack_list[0]);
+	locals = pack_list[1];
+	Date start_date(pack_list[2]);
+	Date end_date(pack_list[3]);
+	price = stoi(pack_list[4]);
+	max = stoi(pack_list[5]);
+	available = stoi(pack_list[6]);
+
+	Packet temp_packet(id, locals, start_date, end_date, price, max, available);
+	vector_pack.push_back(temp_packet);
+	pack_list.clear();
 
 	this->packets = vector_pack;
 	
