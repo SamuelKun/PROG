@@ -35,7 +35,7 @@ public:
 	void setPackets(vector<Packet> & packets);
 
 	// MANAGE CLIENTS methods
-
+	void AddClient();
 
 	// SHOW methods
 	void showPackets() const;

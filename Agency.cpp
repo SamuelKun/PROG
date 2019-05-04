@@ -241,7 +241,7 @@ void Agency::setAddress(Address address){
  * MANAGE CLIENTS methods
  ********************************/
 
- void AddClient()
+ void Agency::AddClient()
  {
 	 string client_name; // name of the client
 	 unsigned client_VATnumber; // VAT number of client
@@ -276,7 +276,9 @@ void Agency::setAddress(Address address){
 	 getline(cin, client_location);
 
 	 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
-
+	 Client newclient(client_name, client_VATnumber, client_familySize, client_address);
+	 
+	 this->clients.push_back(newclient);
  }
 
  /*********************************

@@ -1,3 +1,4 @@
+#include <vector>
 #include "Client.h"
 
 using namespace std;
@@ -9,6 +10,7 @@ Client::Client(string name, unsigned VATnumber, unsigned short familySize, Addre
 	this->VATnumber = VATnumber;
 	this->familySize = familySize;
 	this->address = address;
+	this->totalPurchased = 0;
 }
 
 Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<string> &packets, unsigned totalPurchased)
