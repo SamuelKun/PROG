@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "Address.h"
 #include "Agency.h"
@@ -12,19 +13,27 @@ using namespace std;
 
 int main()
 {
-  Agency agency("Agency.txt");   // create the agency
-  /*
-  cout << agency.getName() << endl;
-  cout << agency.getAddress().getLocation() << endl;
-  cout << agency.getClients()[0].getName() << endl;
+	ifstream AgencyFile;
+	string filename;
+	cout << "Enter the agency file: ";
+	cin >> filename;
 
-  */
+	AgencyFile.open(filename);
+	while (AgencyFile.fail())
+	{
+		//AgencyFile.clear();
+		cout << "Incorrect filename, please enter again: ";
+		cin >> filename;
+		AgencyFile.open(filename);
+	}
+
+  Agency agency(filename);   // create the agency
+
   cout << agency.getClients()[0].getName() << endl;
   agency.showClients();
   cout << endl;
   agency.showPackets();
  
-
   _getwch();
   return 0;
 
