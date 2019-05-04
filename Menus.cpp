@@ -41,7 +41,9 @@ void viewSpecificPacks(Agency agency)
 		//agency.destinyAndDate();
 		break;
 	case('4'):        //Client
-		
+		break;
+	default:
+		viewSpecificPacks(agency);
 		break;
 	}
 }
@@ -69,6 +71,9 @@ void viewPacks(Agency agency)
 	case('3'):        //View Specific Packs
 		//agency.showSpecificPacket();
 		break;
+	default:
+		viewPacks(agency);
+		break;
 	}
 }
 
@@ -94,6 +99,9 @@ void viewClients(Agency agency)
 		break;
 	case('3'):        //View 1 Client
 		//agency.show1Client();
+		break;
+	default:
+		viewClients(agency);
 		break;
 	}
 }
@@ -123,6 +131,9 @@ void viewInformation(Agency agency)
 	case('3'):        //View the ammount of packs sold and earned currency
 		//agency.sold();
 		break;
+	default:
+		viewInformation(agency);
+		break;
 	}
 }
 
@@ -149,6 +160,9 @@ void managePacks(Agency agency)
 		break;
 	case('3'):        //Change Packs
 		agency.changePack();
+		break;
+	default:
+		managePacks(agency);
 		break;
 	}
 
@@ -214,6 +228,9 @@ unsigned mainMenu(Agency agency)
 		break;
 	case('4'):        //Buy Packs
 		//agency.buyPacks();
+		break;
+	default:
+		mainMenu(agency);
 		break;
 	}
 
