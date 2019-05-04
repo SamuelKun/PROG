@@ -285,34 +285,21 @@ void Agency::setAddress(Address address){
 * SHOW methods
 ********************************/
 
- void Agency::showPackets() const
- {
-	 for (size_t i = 0; i < packets.size(); i++)
-	 {
-		 cout << endl << endl;
-		 cout << packets[i].getId() << endl;
-		 cout << packets[i].getPlaces() << endl;
-		 cout << packets[i].getBeginDate().getDay() << endl;
-		 cout << packets[i].getEndDate().getDay() << endl;
-		 cout << packets[i].getPricePerPerson() << endl;
-		 cout << packets[i].getMaxTickets() << endl;
-		 cout << packets[i].getAvailableTickets() << endl;
-	 }
- }
-
  void Agency::showClients() const
  {
 	 for (size_t i = 0; i < getClients().size(); i++)
 	 {
 		 cout << endl;
-		 cout << getClients()[i].getName() << endl;
-		 cout << getClients()[i].getVATnumber() << endl;
-		 cout << getClients()[i].getFamilySize() << endl;
-		 cout << getClients()[i].getAddress().getStreet() << " / ";
-		 cout << getClients()[i].getAddress().getDoorNumber() << " / ";
-		 cout << getClients()[i].getAddress().getFloor() << " / ";
-		 cout << getClients()[i].getAddress().getPostalCode() << " / ";
-		 cout << getClients()[i].getAddress().getLocation() << endl;
+		 cout << "Name: " << getClients()[i].getName() << endl;
+		 cout << "NIF: "  << getClients()[i].getVATnumber() << endl;
+		 cout << "FamilySize: " << getClients()[i].getFamilySize() << endl;
+		 cout << "Address: " << endl;
+		 cout << "     Street: " << getClients()[i].getAddress().getStreet() << endl;
+		 cout << "     Door Number: " << getClients()[i].getAddress().getDoorNumber() << endl;
+		 cout << "     Floor: " << getClients()[i].getAddress().getFloor() << endl;
+		 cout << "     Postal Code: " << getClients()[i].getAddress().getPostalCode() << endl;
+		 cout << "     Location: " << getClients()[i].getAddress().getLocation() << endl;
+		 cout << "Pack List: ";
 		 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
 		 {
 			 cout << getClients()[i].getPacketList()[j];
@@ -320,6 +307,23 @@ void Agency::setAddress(Address address){
 				 cout << " , ";
 		 }
 		 cout << endl;
-		 cout << getClients()[i].getTotalPurchased() << endl;
+		 cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
+	 }
+ }
+
+ void Agency::showPackets() const
+ {
+	 for (size_t i = 0; i < packets.size(); i++)
+	 {
+		 cout << endl;
+		 cout << "Identifier: " << packets[i].getId() << endl;
+		 cout << "Places: " << packets[i].getPlaces() << endl;
+		 cout << "Departure Date: "; 
+		 packets[i].getBeginDate().showDate(); 
+		 cout << "Arrival Date: "; 
+		 packets[i].getEndDate().showDate(); 
+		 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
+		 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
+		 cout << "Available Tickets: " << packets[i].getAvailableTickets() << endl;
 	 }
  }

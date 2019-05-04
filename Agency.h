@@ -38,8 +38,8 @@ public:
 	void AddClient();
 
 	// SHOW methods
-	void showPackets() const;
 	void showClients() const;
+	void showPackets() const;
 
  private:
   string name; // name of the  agency

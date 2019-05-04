@@ -4,10 +4,11 @@
 
 using namespace std;
 
-Date::Date(){
-}
+Date::Date()
+{}
 
-Date::Date(string date){
+Date::Date(string date)
+{
   
 	stringstream date_info(date);
 	string temp;
@@ -24,8 +25,8 @@ Date::Date(string date){
 }
 
 
-Date::Date(unsigned short day, unsigned short month, unsigned year){
-
+Date::Date(unsigned short day, unsigned short month, unsigned year)
+{
 	this->day = day;
 	this->month = month;
 	this->year = year;
@@ -35,16 +36,19 @@ Date::Date(unsigned short day, unsigned short month, unsigned year){
 /*********************************
  * GET Methods
  ********************************/
-unsigned short Date::getDay() const {
+unsigned short Date::getDay() const 
+{
 	return day;
 }
 
 
-unsigned short Date::getMonth() const {
+unsigned short Date::getMonth() const
+{
 	return month;
 }
 
-unsigned Date::getYear() const {
+unsigned Date::getYear() const 
+{
 	return year;
 }
 
@@ -52,20 +56,25 @@ unsigned Date::getYear() const {
  * SET Methods
  ********************************/
 
-void Date::setDay(unsigned short day) {
+void Date::setDay(unsigned short day) 
+{
 	this->day = day;
 }
-void Date::setMonth(unsigned short month) {
+void Date::setMonth(unsigned short month) 
+{
 	this->month = month;
 }
 
-void Date::setYear(unsigned year) {
-
+void Date::setYear(unsigned year) 
+{
 	this->year = year;
-
 }
-
 
 /*********************************
  * Show Date
- ********************************/  
+ ********************************/ 
+
+void Date::showDate() const
+{
+	cout << year << '/' << month << '/' << day << endl;
+}

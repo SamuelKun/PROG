@@ -26,6 +26,8 @@ class Date{
   void setMonth(unsigned short month);
   void setYear(unsigned year);
 
+  //Show methods
+  void showDate() const;
 	
 private:
 	unsigned short day;
