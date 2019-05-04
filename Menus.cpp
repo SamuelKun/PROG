@@ -30,17 +30,17 @@ unsigned mainMenu(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //Manage Clients
-
+		manageClients(agency);
 		break;
 
 	case('2'):        //Manage Packs
-
+		managePacks(agency);
 		break;
 	case('3'):        //View Information
-
+		viewInformation(agency);
 		break;
 	case('4'):        //Buy Packs
-
+		//agency.buyPacks();
 		break;
 	}
   
@@ -62,10 +62,10 @@ void manageClients(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //Add Clients
-		agency.AddClient();
+		agency.addClient();
 		break;
 	case('2'):        //Remove Clients
-
+		//agency.removeClient();
 		break;
 	}
 
@@ -86,10 +86,10 @@ void managePacks(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //Add Packs
-
+		//agency.addPack();
 		break;
 	case('2'):        //Remove packs
-
+		//agency.removePack();
 		break;
 	}
 
@@ -110,14 +110,13 @@ void viewInformation(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //View Clients
-
+		viewClients(agency);
 		break;
-
 	case('2'):        //View Packs
-
+		viewPacks(agency);
 		break;
 	case('3'):        //View the ammount of packs sold and earned currency
-
+		//agency.sold();
 		break;
 	}
 }
@@ -136,10 +135,10 @@ void viewClients(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //View All Clients
-
+		agency.showClients();
 		break;
 	case('2'):        //View 1 Client
-
+		//agency.show1Client();
 		break;
 	}
 }
@@ -159,7 +158,7 @@ void viewPacks(Agency agency)
 	switch (menu)
 	{
 	case('1'):        //View All Packs
-
+		agency.showPackets();
 		break;
 	case('2'):        //View Specific Packs
 
