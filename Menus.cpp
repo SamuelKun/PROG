@@ -215,7 +215,11 @@ int viewPacks(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '3':        //View Specific Packs
+		system("CLS");
 		viewSpecificPacks(agency);
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '0':
 		return 0;
