@@ -19,7 +19,7 @@ int manageClients(Agency &agency)
 
 	cout << "[1] Add clients " << endl;
 	cout << "[2] Remove clients " << endl;
-	cout << "[2] Change clients " << endl;
+	cout << "[3] Change clients " << endl;
 	cout << "[0] Back to Main Menu " << endl;
 
 	cin >> menu;
@@ -45,8 +45,16 @@ int manageClients(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case('3'):
-		//agency.changeClient();
+	case '3':
+		system("CLS");
+		agency.showAllClientsName();
+		cout << "Wich one you want to change? ";
+		cin >> idx;
+		cin.ignore(10000, '\n');
+		agency.changeClient(idx);
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '0':
 		return 0;
@@ -64,7 +72,7 @@ int manageClients(Agency &agency)
 int managePacks(Agency &agency)
 {
 	char menu;
-
+	int idx;
 	system("CLS");    //Clear Screen
 	cout << "Introduza a operacao que deseja efetuar  " << endl << endl;
 
@@ -79,12 +87,31 @@ int managePacks(Agency &agency)
 	{
 	case('1'):        //Add Packs
 		agency.addPack();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case('2'):        //Remove Packs
-		//agency.removePack(0);
+		system("CLS");
+		agency.showAllPacksID();
+		cout << "Wich one you want to remove? ";
+		cin >> idx;
+		cin.ignore(10000, '\n');
+		agency.removePack(idx);
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case('3'):        //Change Packs
-		//agency.changePack(0);
+		system("CLS");
+		agency.showAllPacksID();
+		cout << "Wich one you want to change? ";
+		cin >> idx;
+		cin.ignore(10000, '\n');
+		agency.changePack(idx);
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '0':
 		return 0;
@@ -147,7 +174,7 @@ int viewPacks(Agency &agency)
 	system("CLS");    //Clear Screen
 
 	cout << "[1] View all packs " << endl;
-	cout << "[2] View all packs' IDs " << endl;
+	cout << "[2] View all packs IDs " << endl;
 	cout << "[3] View Specific Packs " << endl;
 	cout << "[0] Back to Main Menu" << endl;
 
@@ -156,10 +183,18 @@ int viewPacks(Agency &agency)
 	switch (menu)
 	{
 	case('1'):        //View All Packs
+		system("CLS");
 		agency.showAllPackets();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case('2'):
+		system("CLS");
 		agency.showAllPacksID();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case('3'):        //View Specific Packs
 		//agency.showSpecificPacket();
@@ -192,9 +227,15 @@ int viewClients(Agency &agency)
 	{
 	case '1':        //View All Clients
 		agency.showAllClients();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '2':
 		agency.showAllClientsName();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '3':        //View 1 Client
 		//agency.show1Client();
