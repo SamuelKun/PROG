@@ -295,7 +295,6 @@ void Agency::setAddress(Address address){
 	 string client_location;
 	 string client_packs;
 
-	 cin.ignore(1000, '\n');
 	 cout << "Name: " << endl;
 	 getline(cin, client_name);
 	 cout << "NIF: " << endl;
