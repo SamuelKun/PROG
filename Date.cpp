@@ -70,6 +70,29 @@ void Date::setYear(unsigned year)
 	this->year = year;
 }
 
+bool Date::isEqualTo(const Date & date)
+{
+	if (date.getYear() == year && date.getMonth() == month && date.getDay() == day)
+		return true;
+	return false;
+}
+
+bool Date::isAfter(const Date &date)
+{
+	if (year > date.year) return true;
+	if (year == date.year && month > date.month) return true;
+	if (year == date.year && month == date.month && day > date.day) return true;
+	return false;
+}
+
+bool Date::isBefore(const Date &date)
+{
+	if (year < date.year) return true;
+	if (year == date.year && month < date.month) return true;
+	if (year == date.year && month == date.month && day < date.day) return true;
+	return false;
+}
+
 /*********************************
  * Show Date
  ********************************/ 

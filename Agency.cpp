@@ -419,7 +419,7 @@ void Agency::setAddress(Address address){
  }
 
  /*********************************
-* SHOW methods
+* SHOW ALL methods
 ********************************/
  void Agency::showAllClientsName() const
  {
@@ -478,3 +478,104 @@ void Agency::setAddress(Address address){
 		 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
 	 }
  }
+
+ /*********************************
+* SHOW SPECIFIC methods
+********************************/
+
+ void Agency::showDestinyPacks() const
+ {
+	 string destiny;
+
+	 cin.ignore(1000, '\n');
+	 cout << "Choose the destiny you desire: ";
+	 getline(cin, destiny);
+
+	 for (size_t i = 0; i < packets.size(); i++)
+	 {
+		 if (packets[i].getPlaces().find(destiny) != -1)
+		 {
+			 cout << endl;
+			 cout << "Identifier: " << packets[i].getId() << endl;
+			 cout << "Places: " << packets[i].getPlaces() << endl;
+			 cout << "Departure Date: ";
+			 packets[i].getBeginDate().showDate();
+			 cout << "Arrival Date: ";
+			 packets[i].getEndDate().showDate();
+			 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
+			 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
+			 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+		 }
+	 }
+ }
+
+ void Agency::showDatePacks() const
+ {
+	 string start, end;
+
+	 cin.ignore(1000, '\n');
+	 cout << "Choose the date interval you desire: " << endl;
+	 cout << "Choose the beginning date: ";
+	 getline(cin, start);
+	 cout << "Choose the ending date: ";
+	 getline(cin, end);
+
+	 for (size_t i = 0; i < packets.size(); i++)
+	 {
+		 if ((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end)))
+		 {
+			 cout << endl;
+				 cout << "Identifier: " << packets[i].getId() << endl;
+				 cout << "Places: " << packets[i].getPlaces() << endl;
+				 cout << "Departure Date: ";
+				 packets[i].getBeginDate().showDate();
+				 cout << "Arrival Date: ";
+				 packets[i].getEndDate().showDate();
+				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
+				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
+				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+		 }
+	 }
+ }
+
+ void Agency::showDestinyAndDatePacks() const
+ {
+	 string start, end, destiny;
+
+	 cin.ignore(1000, '\n');
+	 cout << "Choose the destiny you desire: ";
+	 getline(cin, destiny);
+	 cout << "Choose the date interval you desire: " << endl;
+	 cout << "Choose the beginning date: ";
+	 getline(cin, start);
+	 cout << "Choose the ending date: ";
+	 getline(cin, end);
+
+	 for (size_t i = 0; i < packets.size(); i++)
+	 {
+		 if (((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end))) && packets[i].getPlaces().find(destiny) != -1)
+		 {
+			 cout << endl;
+			 cout << "Identifier: " << packets[i].getId() << endl;
+			 cout << "Places: " << packets[i].getPlaces() << endl;
+			 cout << "Departure Date: ";
+			 packets[i].getBeginDate().showDate();
+			 cout << "Arrival Date: ";
+			 packets[i].getEndDate().showDate();
+			 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
+			 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
+			 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+		 }
+	 }
+
+ }
+
+ void Agency::show1Client() const
+ {
+	 string client;
+
+	 
+
+ }
+
+

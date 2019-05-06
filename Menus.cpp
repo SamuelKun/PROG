@@ -15,7 +15,7 @@ int manageClients(Agency &agency)
 {
 	char menu;
 	int idx;
-	system("CLS");    //Clear Screen
+	system("CLS");   //Clear Screen
 
 	cout << "[1] Add clients " << endl;
 	cout << "[2] Remove clients " << endl;
@@ -148,15 +148,33 @@ int viewSpecificPacks(Agency &agency)
 	switch (menu)
 	{
 	case '1':        //Destiny
-		//agency.destiny();
+
+		system("CLS");
+		agency.showDestinyPacks();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '2':        //Date
-		//agency.date();
+		system("CLS");
+		agency.showDatePacks();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '3':        //Destiny and Date
-		//agency.destinyAndDate();
+		system("CLS");
+		agency.showDestinyAndDatePacks();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '4':        //Client
+		system("CLS");
+		//agency.show1Client();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '0':
 		return 0;
@@ -197,7 +215,7 @@ int viewPacks(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case('3'):        //View Specific Packs
-		//agency.showSpecificPacket();
+		//viewSpecificPacks(agency);
 		break;
 	case '0':
 		return 0;

@@ -26,6 +26,12 @@ class Date{
   void setMonth(unsigned short month);
   void setYear(unsigned year);
 
+  // COMPARE methods
+
+  bool isEqualTo(const Date & date);
+  bool isAfter(const Date & date);
+  bool isBefore(const Date & date);
+
   //Show methods
   void showDate() const;
 	

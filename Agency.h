@@ -43,11 +43,19 @@ public:
 	void changePack(int position);
 	void removePack(int position);
 
-	// SHOW methods
+	// SHOW ALL methods
 	void showAllClientsName() const;
 	void showAllPacksID() const;
 	void showAllClients() const;
 	void showAllPackets() const;
+
+	// SHOW SPECIFIC methods
+	void showDestinyPacks() const;
+	void showDatePacks() const;
+	void showDestinyAndDatePacks() const;
+	void show1Client() const;
+
+
 
  private:
   string name; // name of the  agency
