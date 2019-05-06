@@ -645,7 +645,7 @@ void Agency::setAddress(Address address){
  }
 
  /*********************************
-* AMMOUNT SOLD AND EARNED CURRENCY methods
+* AMMOUNT SOLD AND EARNED CURRENCY method
 ********************************/
 
  void Agency::ammountSold()
@@ -664,6 +664,32 @@ void Agency::setAddress(Address address){
 
 	 cout << "There have been sold " << counter << " packs" << endl;
 	 cout << "The total value of selling those " << counter << " packs is: " << total << endl;
+ }
+
+ void Agency::buyPack()
+ {
+	 int id;
+	 string name, number;
+
+	 cin.ignore(1000, '\n');
+	 cout << "Type the client's name: ";
+	 getline(cin, name);
+	 cout << "Type the client's VAT number: ";
+	 getline(cin, number);
+
+	 cout << "\n This are all the packs available " << endl;
+
+	 showAllPackets();
+
+	 cout << endl << "Select the identifier of the pack you wish to purchase (type 0 to leave): ";
+	 cin >> id;
+
+	 for (size_t i = 0; i < getPackets().size(); i++)
+	 {
+		 //if (getPackets()[i].getId() == id)
+			 
+	 }
+	 
  }
 
 

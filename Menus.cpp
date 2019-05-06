@@ -366,7 +366,10 @@ unsigned mainMenu(Agency &agency)
 			viewInformation(agency);
 			break;
 		case '4':        //Buy Packs
-			//agency.buyPacks();
+			system("CLS");
+			agency.buyPack();
+			cin >> menu;
+			cin.ignore(10000, '\n');
 			break;
 		case '0':
 			return 0;
