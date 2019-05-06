@@ -50,7 +50,7 @@ int manageClients(Agency &agency)
 		agency.showAllClientsName();
 		cout << "Wich one you want to change? ";
 		cin >> idx;
-		cin.ignore(10000, '\n');
+		cin.ignore(1000, '\n');
 		agency.changeClient(idx);
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
