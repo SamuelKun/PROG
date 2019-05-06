@@ -570,12 +570,78 @@ void Agency::setAddress(Address address){
 
  }
 
+ void Agency::show1ClientPacks() const
+ {
+	 string name, number;
+
+	 cin.ignore(1000, '\n');
+	 cout << "Type the client's name: ";
+	 getline(cin, name);
+	 cout << "Type the client's VAT number: ";
+	 getline(cin, number);
+
+	 for (size_t i = 0; i < getClients().size(); i++)
+	 {
+		 if (getClients()[i].getName() == name && getClients()[i].getVATnumber() == stoi(number))
+		 {
+			 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+			 {
+				 for (size_t k = 0; k < getPackets().size(); k++)
+				 {
+					 if (getPackets()[k].getId() == stoi(getClients()[i].getPacketList()[j]))
+					 {
+						 cout << endl;
+						 cout << "Identifier: " << packets[k].getId() << endl;
+						 cout << "Places: " << packets[k].getPlaces() << endl;
+						 cout << "Departure Date: ";
+						 packets[k].getBeginDate().showDate();
+						 cout << "Arrival Date: ";
+						 packets[k].getEndDate().showDate();
+						 cout << "Price per Person: " << packets[k].getPricePerPerson() << endl;
+						 cout << "Capacity: " << packets[k].getMaxTickets() << endl;
+						 cout << "Places already reserved: " << packets[k].getAvailableTickets() << endl;
+					 }
+				 }
+			 }
+		 }
+	 }
+ }
+
  void Agency::show1Client() const
  {
-	 string client;
+	 string name, number;
 
-	 
+	 cin.ignore(1000, '\n');
+	 cout << "Type the client's name: ";
+	 getline(cin, name);
+	 cout << "Type the client's VAT number: ";
+	 getline(cin, number);
 
+	 for (size_t i = 0; i < getClients().size(); i++)
+	 {
+		 if (getClients()[i].getName() == name && getClients()[i].getVATnumber() == stoi(number))
+		 {
+			 cout << endl;
+			 cout << "Name: " << getClients()[i].getName() << endl;
+			 cout << "NIF: " << getClients()[i].getVATnumber() << endl;
+			 cout << "FamilySize: " << getClients()[i].getFamilySize() << endl;
+			 cout << "Address: " << endl;
+			 cout << "     Street: " << getClients()[i].getAddress().getStreet() << endl;
+			 cout << "     Door Number: " << getClients()[i].getAddress().getDoorNumber() << endl;
+			 cout << "     Floor: " << getClients()[i].getAddress().getFloor() << endl;
+			 cout << "     Postal Code: " << getClients()[i].getAddress().getPostalCode() << endl;
+			 cout << "     Location: " << getClients()[i].getAddress().getLocation() << endl;
+			 cout << "Pack List: ";
+			 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+			 {
+				 cout << getClients()[i].getPacketList()[j];
+				 if (j != getClients()[i].getPacketList().size() - 1)
+					 cout << " , ";
+			 }
+			 cout << endl;
+			 cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
+		 }
+	 }
  }
 
 

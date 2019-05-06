@@ -53,6 +53,7 @@ public:
 	void showDestinyPacks() const;
 	void showDatePacks() const;
 	void showDestinyAndDatePacks() const;
+	void show1ClientPacks() const;
 	void show1Client() const;
 
 

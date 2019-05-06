@@ -85,13 +85,13 @@ int managePacks(Agency &agency)
 
 	switch (menu)
 	{
-	case('1'):        //Add Packs
+	case'1':        //Add Packs
 		agency.addPack();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case('2'):        //Remove Packs
+	case'2':        //Remove Packs
 		system("CLS");
 		agency.showAllPacksID();
 		cout << "Wich one you want to remove? ";
@@ -102,7 +102,7 @@ int managePacks(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case('3'):        //Change Packs
+	case'3':        //Change Packs
 		system("CLS");
 		agency.showAllPacksID();
 		cout << "Wich one you want to change? ";
@@ -171,7 +171,7 @@ int viewSpecificPacks(Agency &agency)
 		break;
 	case '4':        //Client
 		system("CLS");
-		//agency.show1Client();
+		agency.show1ClientPacks();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
@@ -200,22 +200,22 @@ int viewPacks(Agency &agency)
 
 	switch (menu)
 	{
-	case('1'):        //View All Packs
+	case '1':        //View All Packs
 		system("CLS");
 		agency.showAllPackets();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case('2'):
+	case '2':
 		system("CLS");
 		agency.showAllPacksID();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case('3'):        //View Specific Packs
-		//viewSpecificPacks(agency);
+	case '3':        //View Specific Packs
+		viewSpecificPacks(agency);
 		break;
 	case '0':
 		return 0;
@@ -244,19 +244,25 @@ int viewClients(Agency &agency)
 	switch (menu)
 	{
 	case '1':        //View All Clients
+		system("CLS");
 		agency.showAllClients();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '2':
+		system("CLS");
 		agency.showAllClientsName();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '3':        //View 1 Client
-		//agency.show1Client();
+		system("CLS");
+		agency.show1Client();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '0':
 		return 0;
@@ -354,7 +360,7 @@ unsigned mainMenu(Agency &agency)
 		case '4':        //Buy Packs
 			//agency.buyPacks();
 			break;
-		case  '0':
+		case '0':
 			return 0;
 			break;
 		default:
