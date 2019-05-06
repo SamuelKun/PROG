@@ -73,7 +73,7 @@ Agency::Agency(string file_name)
 			}
 
 
-			total_purchases = packs_bought.size();
+			total_purchases = stoi(client_list[5]);
 			Client temp_client(name_client, VAT, household, ClientAddress, packs_bought, total_purchases);
 
 			vector_client.push_back(temp_client);
@@ -102,7 +102,7 @@ Agency::Agency(string file_name)
 	}
 
 
-	total_purchases = packs_bought.size();
+	total_purchases = total_purchases = stoi(client_list[5]);
 	Client temp_client(name_client, VAT, household, ClientAddress, packs_bought, total_purchases);
 
 	vector_client.push_back(temp_client);
@@ -418,6 +418,7 @@ void Agency::setAddress(Address address){
 	 this->packets[position].setId(newId);
  }
 
+
  /*********************************
 * SHOW ALL methods
 ********************************/
@@ -642,6 +643,28 @@ void Agency::setAddress(Address address){
 			 cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
 		 }
 	 }
+ }
+
+ /*********************************
+* AMMOUNT SOLD AND EARNED CURRENCY methods
+********************************/
+
+ void Agency::ammountSold()
+ {
+	 int counter = 0, total = 0;
+
+	 for (size_t i = 0; i < getClients().size(); i++)
+	 {
+		 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+		 {
+			 counter = counter + getClients()[i].getFamilySize();
+		 }
+
+		 total = total + getClients()[i].getTotalPurchased();
+	 }
+
+	 cout << "There have been sold " << counter << " packs" << endl;
+	 cout << "The total value of selling those " << counter << " packs is: " << total << endl;
  }
 
 

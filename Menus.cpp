@@ -304,7 +304,11 @@ int viewInformation(Agency &agency)
 		viewSpecificPacks(agency);
 		break;
 	case '4':        //View the ammount of packs sold and earned currency
-		//agency.sold();
+		system("CLS");
+		agency.ammountSold();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '0':
 		return 0;

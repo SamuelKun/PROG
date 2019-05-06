@@ -56,6 +56,9 @@ public:
 	void show1ClientPacks() const;
 	void show1Client() const;
 
+	// AMMOUNT SOLD AND EARNED CURRENCY methods
+	void ammountSold();
+
 
 
  private:
