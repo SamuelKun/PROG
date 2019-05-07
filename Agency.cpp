@@ -671,26 +671,59 @@ void Agency::setAddress(Address address){
 * BUYING PACKS method
 ********************************/
  
- //NÃO SEI PQ MAS N FUNCIONA AJDASHLjadsçdashSHDAHDA
  void Agency::buyPack()
  {
 	 int  total;
 	 string name, number, id;
 	 vector<string> v_packs;
+	 bool b_name = true , b_number = true , b_id = true;
 
 	 cin.ignore(1000, '\n');
 	 cout << "Type the client's name: ";
 	 getline(cin, name);
+	 for (size_t i = 0; i < getClients().size(); i++)
+		 if (getClients()[i].getName() == name) b_name = false;
+
+	 while (b_name)
+	 {
+		 cout << "Incorrect name" << endl;
+		 cout << "Type the client's name: ";
+		 getline(cin, name);
+		 for (size_t i = 0; i < getClients().size(); i++)
+			 if (getClients()[i].getName() == name) b_name = false;
+	 }
+
 	 cout << "Type the client's VAT number: ";
 	 getline(cin, number);
+
+	 while (b_number)
+	 {
+		 cout << "Incorrect VAT number" << endl;
+		 cout << "Type the client's vat number: ";
+		 getline(cin, number);
+		 for (size_t i = 0; i < getClients().size(); i++)
+			 if (getClients()[i].getName() == name)
+				 if (getClients()[i].getVATnumber() == stoi(number))
+					 b_number = false;
+	 }
+
 
 	 cout << "\nThis are all the packs available " << endl;
 
 	 showAllPackets();
 
-	 cout << endl << "Select the identifier of the pack you wish to purchase (type 0 to leave): ";
+	 cout << endl << "Select the identifier of the pack you wish to purchase: ";
 	 getline(cin, id);
 
+	 while (b_id)
+	 {
+		 cout << "Incorrect identifier" << endl;
+		 cout << "Select the identifier of the pack you wish to purchase (type 0 to leave) : ";
+		 getline(cin, id);
+		 for (size_t i = 0; i < getPackets().size(); i++)
+			 if (getPackets()[i].getId() == stoi(id) || stoi(id) == 0 )
+				 b_id = false;
+	 }
 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
@@ -705,9 +738,9 @@ void Agency::setAddress(Address address){
 						 v_packs.push_back(getClients()[j].getPacketList()[k]);
 					 }
 					 v_packs.push_back(id);
-					 getClients()[j].setPacketList(v_packs);
+					 clients[j].setPacketList(v_packs);
 					 total = getClients()[j].getTotalPurchased() + getClients()[j].getFamilySize() * getPackets()[i].getPricePerPerson();
-					 getClients()[j].setTotalPurchased(total);
+					 clients[j].setTotalPurchased(total);
 				 }
 			 }
 		 }	 
