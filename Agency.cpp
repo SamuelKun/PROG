@@ -670,7 +670,8 @@ void Agency::setAddress(Address address){
  /*********************************
 * BUYING PACKS method
 ********************************/
-
+ 
+ //NÃO SEI PQ MAS N FUNCIONA AJDASHLjadsçdashSHDAHDA
  void Agency::buyPack()
  {
 	 int  total;
