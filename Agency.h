@@ -58,6 +58,9 @@ public:
 	// AMMOUNT SOLD AND EARNED CURRENCY methods
 	void ammountSold();
 
+	// BUYING PACKS method
+	void buyPack();
+
 
 
  private:
