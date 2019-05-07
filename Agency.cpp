@@ -668,8 +668,9 @@ void Agency::setAddress(Address address){
 
  void Agency::buyPack()
  {
-	 int id;
-	 string name, number;
+	 int  total;
+	 string name, number, id;
+	 vector<string> v_packs;
 
 	 cin.ignore(1000, '\n');
 	 cout << "Type the client's name: ";
@@ -677,7 +678,7 @@ void Agency::setAddress(Address address){
 	 cout << "Type the client's VAT number: ";
 	 getline(cin, number);
 
-	 cout << "\n This are all the packs available " << endl;
+	 cout << "\nThis are all the packs available " << endl;
 
 	 showAllPackets();
 
@@ -686,10 +687,24 @@ void Agency::setAddress(Address address){
 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
-		 //if (getPackets()[i].getId() == id)
-			 
-	 }
-	 
+		 if (getPackets()[i].getId() == stoi(id))
+		 {
+			 for (size_t j = 0; j < getClients().size(); j++)
+			 {
+				 if (getClients()[j].getName() == name && getClients()[j].getVATnumber() == stoi(number))
+				 {
+					 for (size_t k = 0; k < getClients()[j].getPacketList().size(); k++)
+					 {
+						 v_packs.push_back(getClients()[j].getPacketList()[k]);
+					 }
+					 v_packs.push_back(id);
+					 getClients()[j].setPacketList(v_packs);
+					 total = getClients()[j].getTotalPurchased() +  getClients()[j].getFamilySize() * getPackets()[i].getId();
+					 getClients()[j].setTotalPurchased(total);
+				 }
+			 }
+		 }	 
+	 } 
  }
 
 
