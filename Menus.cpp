@@ -330,12 +330,16 @@ int viewInformation(Agency &agency)
  * [4] BUY PACKS
  ********************************/
 
-
-//
-//
-//
-//
-//
+int buyPacks(Agency &agency)
+{
+	char menu;
+	system("CLS");
+	agency.buyPack();
+	cout << "Done! Press a letter to go back to Main Menu! ";
+	cin >> menu;
+	cin.ignore(10000, '\n');
+	return 0;
+}
 
 
 
@@ -360,7 +364,6 @@ unsigned mainMenu(Agency &agency)
 		case '1':        //Manage Clients
 			manageClients(agency);
 			break;
-
 		case '2':        //Manage Packs
 			managePacks(agency);
 			break;
@@ -368,11 +371,7 @@ unsigned mainMenu(Agency &agency)
 			viewInformation(agency);
 			break;
 		case '4':        //Buy Packs
-			system("CLS");
-			agency.buyPack();
-			cout << "Done! Press a letter to go back to Main Menu! ";
-			cin >> menu;
-			cin.ignore(10000, '\n');
+			buyPacks(agency);
 			break;
 		case '0':
 			return 0;
