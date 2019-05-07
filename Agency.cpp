@@ -666,6 +666,11 @@ void Agency::setAddress(Address address){
 	 cout << "The total value of selling those " << counter << " packs is: " << total << endl;
  }
 
+
+ /*********************************
+* BUYING PACKS method
+********************************/
+
  void Agency::buyPack()
  {
 	 int  total;
@@ -683,7 +688,8 @@ void Agency::setAddress(Address address){
 	 showAllPackets();
 
 	 cout << endl << "Select the identifier of the pack you wish to purchase (type 0 to leave): ";
-	 cin >> id;
+	 getline(cin, id);
+
 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
@@ -699,7 +705,7 @@ void Agency::setAddress(Address address){
 					 }
 					 v_packs.push_back(id);
 					 getClients()[j].setPacketList(v_packs);
-					 total = getClients()[j].getTotalPurchased() +  getClients()[j].getFamilySize() * getPackets()[i].getId();
+					 total = getClients()[j].getTotalPurchased() + getClients()[j].getFamilySize() * getPackets()[i].getPricePerPerson();
 					 getClients()[j].setTotalPurchased(total);
 				 }
 			 }
