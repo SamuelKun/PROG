@@ -13,7 +13,7 @@ Client::Client(string name, unsigned VATnumber, unsigned short familySize, Addre
 	this->totalPurchased = 0;
 }
 
-Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<string> &packets, unsigned totalPurchased)
+Client::Client(string name, unsigned VATnumber, unsigned short familySize, Address address,vector<string> &packets, unsigned totalPurchased)
 {
 	//Open FILE
 	this->name = name;

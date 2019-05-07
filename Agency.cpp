@@ -320,15 +320,17 @@ void Agency::setAddress(Address address){
 	 clients[position].setVATnumber(client_VATnumber);
 	 clients[position].setFamilySize(client_familySize);
 	 clients[position].setAddress(client_address);
-	 vector<string> all_client_packs = clients[position].getPacketList();
+	 /*vector<string> all_client_packs = clients[position].getPacketList();
 
 	 cout << "New Packs: "; //DO LOOP HERE!!!
 	 cin >> client_packs;
 
 	 all_client_packs.push_back(client_packs);
-
 	 clients[position].setPacketList(all_client_packs);
-	 clients[position].setTotalPurchased(all_client_packs.size());
+
+	 //unsigned total_purchase;
+	 //	PERGUNTAR AO STOR
+	 clients[position].setTotalPurchased(0);*/
  }
 
  void Agency::removeClient(int position)
@@ -418,7 +420,7 @@ void Agency::setAddress(Address address){
  }
 
 
- /*********************************
+ /*******************************
 * SHOW ALL methods
 ********************************/
  void Agency::showAllClientsName() const
@@ -468,8 +470,9 @@ void Agency::setAddress(Address address){
 	 {
 		 cout << endl;
 		 cout << "Identifier: " << packets[i].getId() << endl;
-		 cout << "Places: " << packets[i].getPlaces() << endl;
-		 cout << "Departure Date: "; 
+		 cout << "Places: ";
+		 packets[i].showPlaces();
+		 cout << endl << "Departure Date: "; 
 		 packets[i].getBeginDate().showDate(); 
 		 cout << "Arrival Date: "; 
 		 packets[i].getEndDate().showDate(); 
@@ -493,19 +496,21 @@ void Agency::setAddress(Address address){
 
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 if (packets[i].getPlaces().find(destiny) != -1)
-		 {
-			 cout << endl;
-			 cout << "Identifier: " << packets[i].getId() << endl;
-			 cout << "Places: " << packets[i].getPlaces() << endl;
-			 cout << "Departure Date: ";
-			 packets[i].getBeginDate().showDate();
-			 cout << "Arrival Date: ";
-			 packets[i].getEndDate().showDate();
-			 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
-			 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-			 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
-		 }
+		 for (size_t j = 0; j < packets[i].getPlaces().size(); j++)
+			 if (packets[i].getPlaces()[j].find(destiny) != -1)
+			 {
+				 cout << endl;
+				 cout << "Identifier: " << packets[i].getId() << endl;
+				 cout << "Places: ";
+				 packets[i].showPlaces();
+				 cout << endl << "Departure Date: ";
+				 packets[i].getBeginDate().showDate();
+				 cout << "Arrival Date: ";
+				 packets[i].getEndDate().showDate();
+				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
+				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
+				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+			 }
 	 }
  }
 
@@ -526,8 +531,9 @@ void Agency::setAddress(Address address){
 		 {
 			 cout << endl;
 				 cout << "Identifier: " << packets[i].getId() << endl;
-				 cout << "Places: " << packets[i].getPlaces() << endl;
-				 cout << "Departure Date: ";
+				 cout << "Places: ";
+				 packets[i].showPlaces();
+				 cout << endl << "Departure Date: ";
 				 packets[i].getBeginDate().showDate();
 				 cout << "Arrival Date: ";
 				 packets[i].getEndDate().showDate();
@@ -553,18 +559,22 @@ void Agency::setAddress(Address address){
 
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 if (((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end))) && packets[i].getPlaces().find(destiny) != -1)
-		 {
-			 cout << endl;
-			 cout << "Identifier: " << packets[i].getId() << endl;
-			 cout << "Places: " << packets[i].getPlaces() << endl;
-			 cout << "Departure Date: ";
-			 packets[i].getBeginDate().showDate();
-			 cout << "Arrival Date: ";
-			 packets[i].getEndDate().showDate();
-			 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
-			 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-			 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+		 for (size_t j = 0; j < packets[i].getPlaces().size(); j++)
+		 { 
+			 if (((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end))) && packets[i].getPlaces()[j].find(destiny) != -1)
+			 {
+				 cout << endl;
+				 cout << "Identifier: " << packets[i].getId() << endl;
+				 cout << "Places: ";
+				 packets[i].showPlaces();
+				 cout << endl << "Departure Date: ";
+				 packets[i].getBeginDate().showDate();
+				 cout << "Arrival Date: ";
+				 packets[i].getEndDate().showDate();
+				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
+				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
+				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+			 }
 		 }
 	 }
 
@@ -592,8 +602,9 @@ void Agency::setAddress(Address address){
 					 {
 						 cout << endl;
 						 cout << "Identifier: " << packets[k].getId() << endl;
-						 cout << "Places: " << packets[k].getPlaces() << endl;
-						 cout << "Departure Date: ";
+						 cout << "Places: ";  
+						 packets[k].showPlaces();
+						 cout << endl << "Departure Date: ";
 						 packets[k].getBeginDate().showDate();
 						 cout << "Arrival Date: ";
 						 packets[k].getEndDate().showDate();
@@ -610,39 +621,37 @@ void Agency::setAddress(Address address){
  void Agency::show1Client() const
  {
 	 string name, number;
-
 	 cin.ignore(1000, '\n');
-	 cout << "Type the client's name: ";
-	 getline(cin, name);
-	 cout << "Type the client's VAT number: ";
-	 getline(cin, number);
+			 cout << "Type the client name: ";
+			 getline(cin, name);
 
-	 for (size_t i = 0; i < getClients().size(); i++)
-	 {
-		 if (getClients()[i].getName() == name && getClients()[i].getVATnumber() == stoi(number))
-		 {
-			 cout << endl;
-			 cout << "Name: " << getClients()[i].getName() << endl;
-			 cout << "NIF: " << getClients()[i].getVATnumber() << endl;
-			 cout << "FamilySize: " << getClients()[i].getFamilySize() << endl;
-			 cout << "Address: " << endl;
-			 cout << "     Street: " << getClients()[i].getAddress().getStreet() << endl;
-			 cout << "     Door Number: " << getClients()[i].getAddress().getDoorNumber() << endl;
-			 cout << "     Floor: " << getClients()[i].getAddress().getFloor() << endl;
-			 cout << "     Postal Code: " << getClients()[i].getAddress().getPostalCode() << endl;
-			 cout << "     Location: " << getClients()[i].getAddress().getLocation() << endl;
-			 cout << "Pack List: ";
-			 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+			 for (size_t i = 0; i < getClients().size(); i++)
 			 {
-				 cout << getClients()[i].getPacketList()[j];
-				 if (j != getClients()[i].getPacketList().size() - 1)
-					 cout << " , ";
+				 if (getClients()[i].getName().find(name) != -1)
+				 {
+					 cout << endl;
+					 cout << "Name: " << getClients()[i].getName() << endl;
+					 cout << "NIF: " << getClients()[i].getVATnumber() << endl;
+					 cout << "FamilySize: " << getClients()[i].getFamilySize() << endl;
+					 cout << "Address: " << endl;
+					 cout << "     Street: " << getClients()[i].getAddress().getStreet() << endl;
+					 cout << "     Door Number: " << getClients()[i].getAddress().getDoorNumber() << endl;
+					 cout << "     Floor: " << getClients()[i].getAddress().getFloor() << endl;
+					 cout << "     Postal Code: " << getClients()[i].getAddress().getPostalCode() << endl;
+					 cout << "     Location: " << getClients()[i].getAddress().getLocation() << endl;
+					 cout << "Pack List: ";
+					 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+					 {
+						 cout << getClients()[i].getPacketList()[j];
+						 if (j != getClients()[i].getPacketList().size() - 1)
+							 cout << " , ";
+					 }
+					 cout << endl;
+					 cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
+				 }
 			 }
-			 cout << endl;
-			 cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
-		 }
-	 }
  }
+
 
  /*********************************
 * AMMOUNT SOLD AND EARNED CURRENCY methods

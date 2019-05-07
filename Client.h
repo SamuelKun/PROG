@@ -15,7 +15,7 @@ class Client{
 
 public:
 	Client(string name, unsigned VATnumber, unsigned short familySize, Address address);  // for a new client
-	Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<string> & packets, unsigned totalPurchased);  // client read from file
+	Client(string name, unsigned VATnumber, unsigned short familySize, Address address, vector<string> &packets, unsigned totalPurchased);  // client read from file
 
 	// GET methods
 
@@ -42,7 +42,7 @@ public:
   unsigned short familySize;  // number of family members
   Address address; // client's address
   vector<string> packets; // vector to store client's packets bought
-  unsigned  totalPurchased; // total value spent by the client
+  unsigned totalPurchased; // total value spent by the client
 
  
 };

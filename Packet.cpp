@@ -1,8 +1,37 @@
+#include <fstream>
+#include <sstream>
 #include "Packet.h"
+
 
 using namespace std;
 
 Packet::Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
+{
+	this->id = id;
+
+	stringstream place_info(places);
+	string place;
+	vector<string> place_temp;
+
+	while (getline(place_info, place, '-'))
+	{
+		place_temp.push_back(place);
+	}
+
+	while (getline(place_info, place, ','))
+	{
+		place_temp.push_back(place);
+	}
+
+	this->places = place_temp;
+	this->begin = begin;
+	this->end = end;
+	this->pricePerPerson = pricePerPerson;
+	this->maxTickets = maxTickets;
+	this->availableTickets = availableTickets;
+}
+
+Packet::Packet(short id, vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
 	this->id = id;
 	this->places = places;
@@ -23,7 +52,7 @@ short Packet::getId() const
 	return id;
 }
 
-string Packet::getPlaces() const
+vector<string> Packet::getPlaces() const
 {
 	return places;
 }
@@ -64,7 +93,22 @@ void Packet::setId(unsigned id)
 
 void Packet::setPlaces(string sites)
 {
-	this->places = sites;
+	stringstream place_info(sites);
+	string place;
+	vector<string> place_temp;
+
+	while (getline(place_info, place, '-'))
+	{
+		place_temp.push_back(place);
+	}
+
+	while (getline(place_info, place, ','))
+	{
+		place_temp.push_back(place);
+	}
+
+	
+	this->places = place_temp;
 }
 
 void Packet::setBeginDate(Date begin)
@@ -96,8 +140,17 @@ void Packet::setAvailableTickets(unsigned availableTickets)
 	this->availableTickets = availableTickets;
 }
 
-
 /*********************************
  * Show Packet information
- ********************************/  
+ ********************************/
+
+void Packet::showPlaces() const
+{
+	for (size_t i = 0; i < places.size(); i++)
+	{
+		cout << places[i] << ',';
+	}
+}
+
+
 

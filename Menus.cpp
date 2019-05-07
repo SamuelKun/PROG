@@ -171,6 +171,8 @@ int viewSpecificPacks(Agency &agency)
 		break;
 	case '4':        //Client
 		system("CLS");
+		cout << "[1] View by name" << endl;
+		cout << "[2] View by VAT" << endl;
 		agency.show1ClientPacks();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
