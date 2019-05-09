@@ -596,7 +596,7 @@ void Agency::setAddress(Address address){
 			 {
 				 for (size_t k = 0; k < getPackets().size(); k++)
 				 {
-					 if (getPackets()[k].getId() == stoi(getClients()[i].getPacketList()[j]))
+					 if (getPackets()[k].getId() == stoi(getClients()[i].getPacketList()[j]) || getPackets()[k].getId() == -stoi(getClients()[i].getPacketList()[j]))
 					 {
 						 cout << endl;
 						 cout << "Identifier: " << packets[k].getId() << endl;
