@@ -830,10 +830,83 @@ void Agency::mostVisited(int n)
 		 if (counter == n) break;
 	 }
 
+	 cout << "Most visited:" << endl << endl;
+
 	 for (size_t i = 0; i < places.size(); i++)
 	 {
+		 cout << "Position  " << i + 1 << ":" << endl;
 		 cout << places[i] << endl << endl;
 	 }
  }
+
+void Agency::ClientMostVisited(int n)
+{
+	map <string, int> m;
+	vector <int> v;
+	vector <string> places;
+	int result = 1;
+	int counter = 0;
+
+	cout << endl;
+
+
+	for (size_t i = 0; i < getPackets().size(); i++)
+	{
+
+		if (m.find(getPackets()[i].getPlaces()) != m.end())
+		{
+			m[getPackets()[i].getPlaces()] = m[getPackets()[i].getPlaces()] + getPackets()[i].getAvailableTickets();
+		}
+		else
+		{
+			m.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+		}
+
+	}
+
+	for (auto p : m)
+	{
+		v.push_back(p.second);
+	}
+	sort(v.begin(), v.end(), greater<int>());
+	v.erase(unique(v.begin(), v.end()), v.end());
+
+	for (size_t i = 0; i < v.size(); i++)
+	{
+		for (auto p2 : m)
+		{
+			if (v[i] == p2.second)
+			{
+				places.push_back(p2.first);
+				counter++;
+			}
+			if (counter == n) break;
+		}
+		if (counter == n) break;
+	}
+
+	multimap <string, string> mm;
+
+	for (size_t i = 0; i < getClients().size(); i++)
+	{
+		for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+		{
+			for (size_t k = 0; k < getPackets().size(); k++)
+			{
+				if (stoi(getClients()[i].getPacketList()[j]) == getPackets()[k].getId())
+				{
+					for (size_t l = 0; l < places.size(); l++)
+					{
+
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+}
 
 
