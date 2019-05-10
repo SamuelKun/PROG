@@ -325,14 +325,38 @@ void Agency::setAddress(Address address){
 	 getline(cin, client_name);
 	 cout << "NIF: " << endl;
 	 cin >> client_VATnumber;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> client_VATnumber;
+	 }
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> client_familySize;
+	 }
 	 cin.ignore(1000, '\n');
 	 cout << "Adress:" << endl;
 	 cout << "	Street: ";
 	 getline(cin, client_street);
 	 cout << "	Door: ";
 	 cin >> client_doorNumber;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> client_doorNumber;
+	 }
 	 cout << "	Floor: ";
 	 cin.ignore(1000, '\n');
 	 getline(cin, client_floor);
@@ -379,6 +403,14 @@ void Agency::setAddress(Address address){
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_id;
+	 }
 	 cout << "Locals: " << endl;
 	 cin.ignore(1000, '\n');
 	 getline(cin, pack_places);
@@ -388,11 +420,35 @@ void Agency::setAddress(Address address){
 	 getline(cin, end_date);
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_pricePerPerson;
+	 }
 	 cout << "Capacity: " << endl;
 	 cin >> pack_maxTickets;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_maxTickets;
+	 }
 	 cout << "Sold Tickets: " << endl;
 	 cin >> pack_availableTickets;
-	
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_availableTickets;
+	 }
+
 	 Date pack_begin(begin_date);
 	 Date pack_end(end_date);
 	 
@@ -422,11 +478,34 @@ void Agency::setAddress(Address address){
 	 getline(cin, end_date);
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_pricePerPerson;
+	 }
 	 cout << "Capacity: " << endl;
 	 cin >> pack_maxTickets;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_maxTickets;
+	 }
 	 cout << "Places already reserved: : " << endl;
 	 cin >> pack_availableTickets;
-
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> pack_availableTickets;
+	 }
 	 Date pack_begin(begin_date);
 	 Date pack_end(end_date);
 
