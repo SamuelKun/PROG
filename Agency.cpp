@@ -799,11 +799,6 @@ void Agency::mostVisited(int n)
 	 sort(v.begin(), v.end(), greater<int>());
 	 v.erase(unique(v.begin(), v.end()), v.end());
 
-	 /*for (auto p3 : m)
-	 {
-		 cout << p3.first << "  " << p3.second << endl;
-	 }
-	 */
 	 for (size_t i = 0; i < v.size(); i++)
 	 {
 		 for (auto p2 : m)
