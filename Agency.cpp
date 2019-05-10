@@ -700,6 +700,11 @@ void Agency::setAddress(Address address){
 	 cout << "Type the client's VAT number: ";
 	 getline(cin, number);
 
+	 for (size_t i = 0; i < getClients().size(); i++)
+		 if (getClients()[i].getName() == name)
+			 if (getClients()[i].getVATnumber() == stoi(number))
+				 b_number = false;
+
 	 while (b_number)
 	 {
 		 cout << "Incorrect VAT number" << endl;
