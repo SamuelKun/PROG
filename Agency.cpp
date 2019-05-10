@@ -759,11 +759,16 @@ void Agency::setAddress(Address address){
 * N MOST VISITED method
 ********************************/
 
- void Agency::mostVisited(int n)
+void Agency::mostVisited(int n)
  {
 	 typedef pair<string, int>pai;
 	 map <string, int> m;
 	 vector <pai> vec;
+	 vector <int> v;
+	 vector <string> places;
+	 int result = 1;
+	 int counter = 0;
+
 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
@@ -771,29 +776,40 @@ void Agency::setAddress(Address address){
 		 {
 			 if (m.find(getPackets()[i].getPlaces()[j]) != m.end())
 			 {
-				 m[getPackets()[i].getPlaces()[j]]++;
+				 m[getPackets()[i].getPlaces()[j]] = m[getPackets()[i].getPlaces()[j]] + getPackets()[i].getAvailableTickets();
 			 }
 			 else
 			 {
-				 m.insert(pair<string, int>(getPackets()[i].getPlaces()[j], 1));
+				 m.insert(pair<string, int>(getPackets()[i].getPlaces()[j], getPackets()[i].getAvailableTickets()));
 			 }
 		 }
 	 }
 
-	 copy(m.begin(),m.end(),back_inserter<vector<pai>>(vec));
-	 sort(vec.begin(), vec.end(), [](const pai& l, const pai& r) 
+	 for (auto p : m)
 	 {
-		 if (l.second != r.second)
-			 return l.second < r.second;
+		 v.push_back(p.second);
+	 }	 sort(v.begin(), v.end(), greater<int>());
+	 v.erase(unique(v.begin(), v.end()), v.end());
 
-		 return l.first < r.first;
-	 });
-
-	 for (auto const &pai : vec)
+	 for (size_t i = 0; i < v.size(); i++)
 	 {
-		 cout << '{' << pai.first << "," << pai.second << '}' << '\n';
-
+		 for (auto p2 : m)
+		 {
+			 if (v[i] == p2.second)
+			 {
+				 places.push_back(p2.first);
+				 counter++;
+			 }
+			 if (counter == n) break;
+		 }
+		 if (counter == n) break;
 	 }
+
+	 for (size_t i = 0; i < places.size(); i++)
+	 {
+		 cout << places[i] << endl;
+	 }
+
  }
 
 
