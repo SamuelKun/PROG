@@ -861,128 +861,78 @@ void Agency::setAddress(Address address){
 * MOST VISITED method
 ********************************/
 
-void Agency::mostVisited(int n)
+void Agency::mostVisited(int n) const
  {
-	 map <string, int> locais;
-	 vector <int> v;
-	 vector <string> places;
-	 int result = 1;
-	 int counter = 0;
-
-	 cout << endl;
+	 multimap <int, string, greater<int>> locais;
+	 vector<int> timesvisited;
+	 vector<string> visitedLocals;
+	 
 	 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
-		 
-		if (locais.find(getPackets()[i].getPlaces()) != locais.end())
-		{
-			locais[getPackets()[i].getPlaces()] = locais[getPackets()[i].getPlaces()] + getPackets()[i].getAvailableTickets(); //Contador de bilhetes
-		}
-		else 
-		{
-			locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
-		}
+		locais.insert(pair<int, string>(getPackets()[i].getAvailableTickets(), getPackets()[i].getPlaces()));
 	 }
 
 	 for (auto p : locais)
 	 {
-		 v.push_back(p.second);
+		 timesvisited.push_back(p.first);
+		 visitedLocals.push_back(p.second);
 	 }
 
-	 sort(v.begin(), v.end(), greater<int>());
-	 v.erase(unique(v.begin(), v.end()), v.end());
+	 cout << endl;
 
-
-	 for (size_t i = 0; i < v.size(); i++)
+	 for (size_t i = 0; i < visitedLocals.size(); i++)
 	 {
-		 for (auto p2 : locais)
-		 {
-			 if (v[i] == p2.second)
-			 {
-				 places.push_back(p2.first);
-				 counter++;
-			 }
-			 if (counter == n) break;
+		 if (i < n) {
+			 cout << "Position  " << i + 1 << ":" << "[Visited " << timesvisited[i] <<" times.]" << endl;
+			 cout << visitedLocals[i] << endl << endl;
 		 }
-		 if (counter == n) break;
 	 }
+}
 
-	 cout << "Most visited:" << endl << endl;
-
-	 for (size_t i = 0; i < places.size(); i++)
-	 {
-		 cout << "Position  " << i + 1 << ":" << endl;
-		 cout << places[i] << endl << endl;
-	 }
- }
-
-void Agency::ClientMostVisited(int n)
+void Agency::ClientMostVisited(int n) const
 {
-	map <string, int> m;
-	vector <int> v;
-	vector <string> places;
-	int result = 1;
-	int counter = 0;
+	multimap <int, string, greater<int>> locais;
+	vector<int> timesvisited;
+	vector<string> visitedLocals;
+	vector<string> wishlocals;
 
 	cout << endl;
 
-
 	for (size_t i = 0; i < getPackets().size(); i++)
 	{
-
-		if (m.find(getPackets()[i].getPlaces()) != m.end())
-		{
-			m[getPackets()[i].getPlaces()] = m[getPackets()[i].getPlaces()] + getPackets()[i].getAvailableTickets();
-		}
-		else
-		{
-			m.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
-		}
-
+		locais.insert(pair<int, string>(getPackets()[i].getAvailableTickets(), getPackets()[i].getPlaces()));
 	}
 
-	for (auto p : m)
+	for (auto p : locais)
 	{
-		v.push_back(p.second);
+		timesvisited.push_back(p.first);
+		visitedLocals.push_back(p.second);
 	}
-	sort(v.begin(), v.end(), greater<int>());
-	v.erase(unique(v.begin(), v.end()), v.end());
 
-	for (size_t i = 0; i < v.size(); i++)
+	for (size_t i = 0; i < visitedLocals.size(); i++)
 	{
-		for (auto p2 : m)
+		if (i < n) {
+			wishlocals.push_back(visitedLocals[i]);
+		}
+	}
+	/*
+	for (size_t client_idx = 0; client_idx < getClients().size(); client_idx++)
+	{
+		cout << getClients()[client_idx].getName() << endl;
+		cout << "You have not yet visited the following places that are in the most visited " << n << ": " << endl;
+		for (size_t i = 0; i < wishlocals.size(); i++)
 		{
-			if (v[i] == p2.second)
+			if (...) 
 			{
-				places.push_back(p2.first);
-				counter++;
-			}
-			if (counter == n) break;
-		}
-		if (counter == n) break;
-	}
-
-	multimap <string, string> mm;
-
-	for (size_t i = 0; i < getClients().size(); i++)
-	{
-		for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
-		{
-			for (size_t k = 0; k < getPackets().size(); k++)
-			{
-				if (stoi(getClients()[i].getPacketList()[j]) == getPackets()[k].getId())
-				{
-					for (size_t l = 0; l < places.size(); l++)
-					{
-
-					}
-				}
+				cout << "Position  " << i + 1 << ":" << "[Visited " << timesvisited[i] << " times.]" << endl;
+				cout << visitedLocals[i] << endl;
+				cout << "Pack number: "<<	<< endl;
+				
 			}
 		}
-	}
 
-
-
+	}*/
 
 }
 

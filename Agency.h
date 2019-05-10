@@ -63,8 +63,8 @@ public:
 	void buyPack();
 
 	// N MOST VISITED method
-	void mostVisited(int n);
-	void ClientMostVisited(int n);
+	void mostVisited(int n) const;
+	void ClientMostVisited(int n) const;
 
 
  private:
