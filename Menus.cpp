@@ -371,6 +371,13 @@ unsigned mainMenu(Agency &agency)
 		case '4':        //Buy Packs
 			buyPacks(agency);
 			break;
+		case '5':
+			system("CLS");
+			agency.mostVisited(1);
+			cout << "Done! Press a letter to go back to Main Menu! ";
+			cin >> menu;
+			cin.ignore(10000, '\n');
+			break;
 		case '0':
 			return 0;
 			break;

@@ -2,6 +2,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -751,6 +753,47 @@ void Agency::setAddress(Address address){
 			 }
 		 }	 
 	 } 
+ }
+
+ /*********************************
+* N MOST VISITED method
+********************************/
+
+ void Agency::mostVisited(int n)
+ {
+	 typedef pair<string, int>pai;
+	 map <string, int> m;
+	 vector <pai> vec;
+
+	 for (size_t i = 0; i < getPackets().size(); i++)
+	 {
+		 for (size_t j = 0; j < getPackets()[i].getPlaces().size(); j++)
+		 {
+			 if (m.find(getPackets()[i].getPlaces()[j]) != m.end())
+			 {
+				 m[getPackets()[i].getPlaces()[j]]++;
+			 }
+			 else
+			 {
+				 m.insert(pair<string, int>(getPackets()[i].getPlaces()[j], 1));
+			 }
+		 }
+	 }
+
+	 copy(m.begin(),m.end(),back_inserter<vector<pai>>(vec));
+	 sort(vec.begin(), vec.end(), [](const pai& l, const pai& r) 
+	 {
+		 if (l.second != r.second)
+			 return l.second < r.second;
+
+		 return l.first < r.first;
+	 });
+
+	 for (auto const &pai : vec)
+	 {
+		 cout << '{' << pai.first << "," << pai.second << '}' << '\n';
+
+	 }
  }
 
 

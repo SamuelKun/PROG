@@ -55,11 +55,15 @@ public:
 	void showDestinyAndDatePacks() const;
 	void show1ClientPacks() const;
 	void show1Client() const;
+
 	// AMMOUNT SOLD AND EARNED CURRENCY methods
 	void ammountSold();
 
 	// BUYING PACKS method
 	void buyPack();
+
+	// N MOST VISITED method
+	void mostVisited(int n);
 
 
 
