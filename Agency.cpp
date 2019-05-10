@@ -261,6 +261,13 @@ void Agency::setAddress(Address address){
 	 getline(cin, client_name);
 	 cout << "NIF: " << endl;
 	 cin >> client_VATnumber;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> client_VATnumber;
+	 }
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
 	 cin.ignore(1000, '\n');
