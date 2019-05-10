@@ -498,8 +498,7 @@ void Agency::setAddress(Address address){
 
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 for (size_t j = 0; j < packets[i].getPlaces().size(); j++)
-			 if (packets[i].getPlaces()[j].find(destiny) != -1)
+			 if (packets[i].getPlaces().find(destiny) != -1)
 			 {
 				 cout << endl;
 				 cout << "Identifier: " << packets[i].getId() << endl;
@@ -561,9 +560,7 @@ void Agency::setAddress(Address address){
 
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 for (size_t j = 0; j < packets[i].getPlaces().size(); j++)
-		 { 
-			 if (((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end))) && packets[i].getPlaces()[j].find(destiny) != -1)
+			 if (((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end))) && packets[i].getPlaces().find(destiny) != -1)
 			 {
 				 cout << endl;
 				 cout << "Identifier: " << packets[i].getId() << endl;
@@ -576,8 +573,7 @@ void Agency::setAddress(Address address){
 				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
 				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
 				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
-			 }
-		 }
+		}
 	 }
 
  }
@@ -767,7 +763,7 @@ void Agency::mostVisited(int n)
 	 int result = 1;
 	 int counter = 0;
 
-
+	 /*
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
 		 for (size_t j = 0; j < getPackets()[i].getPlaces().size(); j++)
@@ -786,7 +782,8 @@ void Agency::mostVisited(int n)
 	 for (auto p : m)
 	 {
 		 v.push_back(p.second);
-	 }	 sort(v.begin(), v.end(), greater<int>());
+	 }
+	 sort(v.begin(), v.end(), greater<int>());
 	 v.erase(unique(v.begin(), v.end()), v.end());
 
 	 /*for (auto p3 : m)

@@ -12,11 +12,10 @@ using namespace std;
 class Packet{
  public:
 	 Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets);
-	 Packet(short id, vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets);
 
   // GET methods
   short getId() const;
-  vector<string> getPlaces() const;
+  string getPlaces() const;
   Date getBeginDate() const;
   Date getEndDate() const;
   double getPricePerPerson() const;
@@ -38,7 +37,7 @@ class Packet{
 
 private:
 	short id; // packet unique identifier
-	vector<string> places; // touristic sites to visit
+	string places; // touristic sites to visit
 	Date begin;  // begin date
 	Date end;  // end date
 	double pricePerPerson; // price per person

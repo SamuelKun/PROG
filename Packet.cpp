@@ -8,32 +8,6 @@ using namespace std;
 Packet::Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
 {
 	this->id = id;
-
-	stringstream place_info(places);
-	string place;
-	vector<string> place_temp;
-
-	while (getline(place_info, place, '-'))
-	{
-		place_temp.push_back(place);
-	}
-
-	while (getline(place_info, place, ','))
-	{
-		place_temp.push_back(place);
-	}
-
-	this->places = place_temp;
-	this->begin = begin;
-	this->end = end;
-	this->pricePerPerson = pricePerPerson;
-	this->maxTickets = maxTickets;
-	this->availableTickets = availableTickets;
-}
-
-Packet::Packet(short id, vector<string> places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
-{
-	this->id = id;
 	this->places = places;
 	this->begin = begin;
 	this->end = end;
@@ -41,6 +15,7 @@ Packet::Packet(short id, vector<string> places, Date begin, Date end, double pri
 	this->maxTickets = maxTickets;
 	this->availableTickets = availableTickets;
 }
+
 
 
 /*********************************
@@ -52,7 +27,7 @@ short Packet::getId() const
 	return id;
 }
 
-vector<string> Packet::getPlaces() const
+string Packet::getPlaces() const
 {
 	return places;
 }
@@ -93,22 +68,7 @@ void Packet::setId(unsigned id)
 
 void Packet::setPlaces(string sites)
 {
-	stringstream place_info(sites);
-	string place;
-	vector<string> place_temp;
-
-	while (getline(place_info, place, '-'))
-	{
-		place_temp.push_back(place);
-	}
-
-	while (getline(place_info, place, ','))
-	{
-		place_temp.push_back(place);
-	}
-
-	
-	this->places = place_temp;
+	this->places = places;
 }
 
 void Packet::setBeginDate(Date begin)
@@ -146,10 +106,7 @@ void Packet::setAvailableTickets(unsigned availableTickets)
 
 void Packet::showPlaces() const
 {
-	for (size_t i = 0; i < places.size(); i++)
-	{
-		cout << places[i] << ',';
-	}
+		cout << places;
 }
 
 
