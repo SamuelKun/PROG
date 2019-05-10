@@ -265,17 +265,34 @@ void Agency::setAddress(Address address){
 	 {
 		 cin.clear();
 		 cin.ignore();
+		 cin.ignore(1000, '\n');
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> client_VATnumber;
 	 }
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> client_familySize;
+	 }
 	 cin.ignore(1000, '\n');
 	 cout << "Adress:" << endl;
 	 cout << "	Street: ";
 	 getline(cin, client_street);
 	 cout << "	Door: ";
 	 cin >> client_doorNumber;
+	 while (cin.fail())
+	 {
+		 cin.clear();
+		 cin.ignore();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid number. Please reenter: ";
+		 cin >> client_doorNumber;
+	 }
 	 cout << "	Floor: ";
 	 cin.ignore(1000, '\n');
 	 getline(cin, client_floor);
