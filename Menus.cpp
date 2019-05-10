@@ -292,6 +292,7 @@ int viewInformation(Agency &agency)
 	cout << "[2] View Packs " << endl;
 	cout << "[3] Search for a Pack " << endl;
 	cout << "[4] View the ammount of packs sold and earned currency" << endl;
+	cout << "[5] View the most visited places" << endl;
 	cout << "[0] Back to Main Menu" << endl;
 
 	cin >> menu;
@@ -310,6 +311,16 @@ int viewInformation(Agency &agency)
 	case '4':        //View the ammount of packs sold and earned currency
 		system("CLS");
 		agency.ammountSold();
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
+		break;
+	case '5':        //View the most visited places
+		system("CLS");
+		int n;
+		cout << "How many places do you want to view? ";
+		cin >> n;
+		agency.mostVisited(n);
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
@@ -370,13 +381,6 @@ unsigned mainMenu(Agency &agency)
 			break;
 		case '4':        //Buy Packs
 			buyPacks(agency);
-			break;
-		case '5':
-			system("CLS");
-			agency.mostVisited(1);
-			cout << "Done! Press a letter to go back to Main Menu! ";
-			cin >> menu;
-			cin.ignore(10000, '\n');
 			break;
 		case '0':
 			return 0;
