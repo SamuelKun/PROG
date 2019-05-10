@@ -5,7 +5,8 @@
 using namespace std;
 
 Date::Date()
-{}
+{
+}
 
 Date::Date(string date)
 {
@@ -55,6 +56,45 @@ unsigned Date::getYear() const
 /*********************************
  * SET Methods
  ********************************/
+
+void Date::manualDate()
+{
+	int this_year, this_month, this_day;
+	cout << "	Year: ";
+	cin >> this_year;
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		cin.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		cin >> this_year;
+	}
+	cout << "	Month: ";
+	cin >> this_month;
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		cin.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		cin >> this_month;
+	}
+	cout << "	Day: ";
+	cin >> this_day;
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		cin.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		cin >> this_day;
+	}
+
+	year = this_year;
+	month = this_month;
+	day = this_day;
+}
 
 void Date::setDay(unsigned short day) 
 {

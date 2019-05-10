@@ -395,8 +395,6 @@ void Agency::setAddress(Address address){
  {
 	 short pack_id; // packet unique identifier
 	 string pack_places; // touristic sites to visit
-	 string begin_date;  // begin date
-	 string end_date;  // end date
 	 double pack_pricePerPerson; // price per person
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
 	 unsigned pack_availableTickets; // número de lugares já reservados
@@ -414,10 +412,12 @@ void Agency::setAddress(Address address){
 	 cout << "Locals: " << endl;
 	 cin.ignore(1000, '\n');
 	 getline(cin, pack_places);
-	 cout << "Start Date: (Year/Month/Day)" << endl;
-	 getline(cin, begin_date);
-	 cout << "End Date: (Year/Month/Day)" << endl;
-	 getline(cin, end_date);
+	 cout << "Start Date: " << endl;
+	 Date start_date;
+	 start_date.manualDate();
+	 cout << "End Date:" << endl;
+	 Date end_date;
+	 end_date.manualDate();
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
 	 while (cin.fail())
@@ -449,10 +449,8 @@ void Agency::setAddress(Address address){
 		 cin >> pack_availableTickets;
 	 }
 
-	 Date pack_begin(begin_date);
-	 Date pack_end(end_date);
 	 
-	 Packet newPack(pack_id, pack_places, pack_begin, pack_end, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
+	 Packet newPack(pack_id, pack_places, start_date, end_date, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
 
 	 this->packets.push_back(newPack);
  }
@@ -460,9 +458,7 @@ void Agency::setAddress(Address address){
  void Agency::changePack(int position)
  {
 	 short pack_id; // packet unique identifier
-	 string pack_places; // touristic sites to visit
-	 string begin_date;  // begin date
-	 string end_date;  // end date
+	 string pack_places;
 	 double pack_pricePerPerson; // price per person
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
 	 unsigned pack_availableTickets; // número de lugares já reservados
@@ -472,10 +468,14 @@ void Agency::setAddress(Address address){
 	 cout << "Locals: " << endl;
 	 cin.ignore(1000, '\n');
 	 getline(cin, pack_places);
-	 cout << "Start Date: (Year/Month/Day)" << endl;
-	 getline(cin, begin_date);
-	 cout << "End Date: (Year/Month/Day)" << endl;
-	 getline(cin, end_date);
+
+	 cout << "Start Date: " << endl;
+	 Date start_date;
+	 start_date.manualDate();
+	 cout << "End Date:" << endl;
+	 Date end_date;
+	 end_date.manualDate();
+
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
 	 while (cin.fail())
@@ -506,13 +506,11 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_availableTickets;
 	 }
-	 Date pack_begin(begin_date);
-	 Date pack_end(end_date);
 
 	 packets[position].setId(pack_id);
 	 packets[position].setPlaces(pack_places);
-	 packets[position].setBeginDate(pack_begin);
-	 packets[position].setEndDate(pack_end);
+	 packets[position].setBeginDate(start_date);
+	 packets[position].setEndDate(end_date);
 	 packets[position].setPricePerPerson(pack_pricePerPerson);
 	 packets[position].setMaxTickets(pack_maxTickets);
 	 packets[position].setAvailableTickets(pack_availableTickets);
@@ -780,7 +778,7 @@ void Agency::setAddress(Address address){
  
  void Agency::buyPack()
  {
-	 int  total;
+	 int total;
 	 string name, number, id;
 	 vector<string> v_packs;
 	 bool b_name = true , b_number = true , b_id = true;
@@ -860,44 +858,44 @@ void Agency::setAddress(Address address){
  }
 
  /*********************************
-* N MOST VISITED method
+* MOST VISITED method
 ********************************/
 
 void Agency::mostVisited(int n)
  {
-	 map <string, int> m;
+	 map <string, int> locais;
 	 vector <int> v;
 	 vector <string> places;
 	 int result = 1;
 	 int counter = 0;
 
 	 cout << endl;
-
 	 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
 		 
-		if (m.find(getPackets()[i].getPlaces()) != m.end())
+		if (locais.find(getPackets()[i].getPlaces()) != locais.end())
 		{
-			m[getPackets()[i].getPlaces()] = m[getPackets()[i].getPlaces()] + getPackets()[i].getAvailableTickets();
+			locais[getPackets()[i].getPlaces()] = locais[getPackets()[i].getPlaces()] + getPackets()[i].getAvailableTickets(); //Contador de bilhetes
 		}
-		else
+		else 
 		{
-			m.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+			locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
 		}
-		 
 	 }
 
-	 for (auto p : m)
+	 for (auto p : locais)
 	 {
 		 v.push_back(p.second);
 	 }
+
 	 sort(v.begin(), v.end(), greater<int>());
 	 v.erase(unique(v.begin(), v.end()), v.end());
 
+
 	 for (size_t i = 0; i < v.size(); i++)
 	 {
-		 for (auto p2 : m)
+		 for (auto p2 : locais)
 		 {
 			 if (v[i] == p2.second)
 			 {

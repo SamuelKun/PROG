@@ -20,6 +20,9 @@ class Date{
   unsigned short getMonth() const;
   unsigned getYear() const;
   
+  //Set Manual Date
+  void manualDate();
+
   // SET methods
   
   void setDay(unsigned short day);
@@ -33,6 +36,8 @@ class Date{
 
   //Show methods
   void showDate() const;
+
+  
 	
 private:
 	unsigned short day;
