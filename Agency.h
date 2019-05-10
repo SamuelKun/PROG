@@ -64,7 +64,7 @@ public:
 
 	// N MOST VISITED method
 	void mostVisited(int n);
-
+	void ClientMostVisited(int n);
 
 
  private:
