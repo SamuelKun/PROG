@@ -768,20 +768,21 @@ void Agency::mostVisited(int n)
 	 int result = 1;
 	 int counter = 0;
 
-	 /*
+	 cout << endl;
+
+	 
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
-		 for (size_t j = 0; j < getPackets()[i].getPlaces().size(); j++)
-		 {
-			 if (m.find(getPackets()[i].getPlaces()[j]) != m.end())
-			 {
-				 m[getPackets()[i].getPlaces()[j]] = m[getPackets()[i].getPlaces()[j]] + getPackets()[i].getAvailableTickets();
-			 }
-			 else
-			 {
-				 m.insert(pair<string, int>(getPackets()[i].getPlaces()[j], getPackets()[i].getAvailableTickets()));
-			 }
-		 }
+		 
+		if (m.find(getPackets()[i].getPlaces()) != m.end())
+		{
+			m[getPackets()[i].getPlaces()] = m[getPackets()[i].getPlaces()] + getPackets()[i].getAvailableTickets();
+		}
+		else
+		{
+			m.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+		}
+		 
 	 }
 
 	 for (auto p : m)
@@ -812,9 +813,8 @@ void Agency::mostVisited(int n)
 
 	 for (size_t i = 0; i < places.size(); i++)
 	 {
-		 cout << places[i] << endl;
+		 cout << places[i] << endl << endl;
 	 }
-
  }
 
 
