@@ -529,7 +529,7 @@ void Agency::setAddress(Address address){
  void Agency::showAllClientsName() const
  {
 	 for (size_t i = 0; i < getClients().size(); i++)
-		 cout << i << " - " << getClients()[i].getName() << endl;
+		 cout << "Order Number " <<i << " - " << getClients()[i].getName() << endl;
  }
 
  void Agency::showAllPacksID() const
@@ -537,7 +537,7 @@ void Agency::setAddress(Address address){
 	 cout << "Packs: " << endl;
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
-		 cout << i << " - " << getPackets()[i].getId() << endl;
+		 cout << "Order Number " << i << " - " << getPackets()[i].getId() << endl;
 	 }
  }
 
@@ -841,7 +841,7 @@ void Agency::setAddress(Address address){
 					 cout << "Done! ";
 					 break;
 				 case 'n':
-					 cout << "You need to create an account before buy packs!" << endl;
+					 cout << "You need to create an account before buy packs! Go to Manage Clients to create!" << endl;
 					 break;
 				 default:
 					 break;
