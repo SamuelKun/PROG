@@ -932,7 +932,7 @@ void Agency::ClientMostVisited(int n) const
 	for (size_t client_idx = 0; client_idx < getClients().size(); client_idx++)
 	{
 		cout << getClients()[client_idx].getName() << endl;
-		cout << "You have not yet visited the following places that are in the most visited " << n << ": " << endl;
+		cout << "You have not yet visited the following places that are in the most visited " << n << ": " << endl << endl;
 		temp = getClients()[client_idx].getPacketList();
 		
 
@@ -947,22 +947,22 @@ void Agency::ClientMostVisited(int n) const
 		for (size_t i = 0; i < idkwhatimdoing.size(); i++)
 		{
 			setbool = true;
-			/*	VER SE O VALOR DE idkwhatimdoing[i](N LOCAIS MAIS VISITADOS) NÃO ESTÁ EM SHORT_ID(LISTA DE PACOTES DO CLIENTE; SE NÃO ESTIVER DAR COUT AO QUE ESTÁ EM BAIXO COMENTADO*/
 			for (size_t j = 0; j < short_id.size(); j++)
 			{
-				cout << "Value " << (short_id[j] == idkwhatimdoing[i]) << "Value short " << short_id[j] << "Value idk " << idkwhatimdoing[i] << endl;
 				if (short_id[j] == idkwhatimdoing[i] || short_id[j] == -idkwhatimdoing[i])
 				{
 					setbool = false;
 				}
 			}
+
 			if (setbool)
 			{
 				cout << "Position  " << i + 1 << ": " << "[Visited " << timesvisited[i] << " times.]" << endl;
 				cout << "Locals: " << wishlocals[i] << endl;
-				cout << "Pack id: " << idkwhatimdoing[i] << endl;
+				cout << "Pack id: " << idkwhatimdoing[i] << endl << endl;
 			}
 		}
+		cout << endl;
 	}
 
 }
