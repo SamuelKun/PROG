@@ -794,18 +794,17 @@ void Agency::setAddress(Address address){
 
 	 int pack_number, client_number;
 	 int idx = getPackets().size();
-	 unsigned money_wasted;
 	 char confirm;
 	 showAllPackets();
 	 showAllPacksID();
-	 cout << "What do you want to buy? You can't buy packages with '-' before! Insert the order number to choice! " << endl;
+	 cout << "What do you want to buy? Insert the order number to choice! " << endl;
 
 	 do {
 		 do {
 			 cin.clear();
 			 cin.ignore(10000, '\n');
+			 cout << "You can't buy packages with ' - ' before! Order number: ";
 			 cin >> pack_number;
-			 pack_number = pack_number;
 		 } while (pack_number >= idx || pack_number < 0);
 	 } while (getPackets()[pack_number].getId() < 0);
 
@@ -834,7 +833,13 @@ void Agency::setAddress(Address address){
 				 {
 				 case 'y':
 					 cout << "Select your order number: ";
-					 cin >> client_number;
+					 do {
+						cin.clear();
+						cin.ignore(10000, '\n');
+						cin >> client_number;
+						if(client_number >= getClients().size() || pack_number < 0) cout << "Invalid order number! Order number: ";
+					} while (client_number >= getClients().size() || pack_number < 0);
+
 					 client_number = client_number;
 					 clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
 					 clients[client_number].addTotalPurchased(getPackets()[pack_number].getPricePerPerson());
