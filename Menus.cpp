@@ -285,7 +285,7 @@ int viewClients(Agency &agency)
 int viewInformation(Agency &agency)
 {
 	char menu;
-
+	int n;
 	system("CLS");    //Clear Screen
 
 	cout << "[1] View Clients " << endl;
@@ -293,6 +293,7 @@ int viewInformation(Agency &agency)
 	cout << "[3] Search for a Pack " << endl;
 	cout << "[4] View the ammount of packs sold and earned currency" << endl;
 	cout << "[5] View the most visited places" << endl;
+	cout << "[6] 10 whatever" << endl;
 	cout << "[0] Back to Main Menu" << endl;
 
 	cin >> menu;
@@ -317,10 +318,19 @@ int viewInformation(Agency &agency)
 		break;
 	case '5':        //View the most visited places
 		system("CLS");
-		int n;
 		cout << "How many places do you want to view? ";
 		cin >> n;
 		agency.mostVisited(n);
+		cout << "Done! Press a letter to go back to Main Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
+		break;
+	case '6':
+		system("CLS");
+		int n;
+		cout << "How many places do you want to view? ";
+		cin >> n;
+		agency.ClientMostVisited(n);
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
