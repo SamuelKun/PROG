@@ -355,7 +355,7 @@ int buyPacks(Agency &agency)
 	char menu;
 	system("CLS");
 	agency.buyPack();
-	cout << "Done! Press a letter to go back to Main Menu! ";
+	cout << "Press a letter to go back to Main Menu! ";
 	cin >> menu;
 	cin.ignore(10000, '\n');
 	return 0;

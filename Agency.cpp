@@ -790,12 +790,15 @@ void Agency::setAddress(Address address){
  
  void Agency::buyPack()
  {
+
+
 	 int pack_number, client_number;
-	 int lenght = getPackets().size();
+	 int idx = getPackets().size();
 	 unsigned money_wasted;
 	 char confirm;
+	 showAllPackets();
 	 showAllPacksID();
-	 cout << "What do you want to buy? You can't buy packages with '-' before!\n";
+	 cout << "What do you want to buy? You can't buy packages with '-' before! Insert the order number to choice! " << endl;
 
 	 do {
 		 do {
@@ -803,22 +806,50 @@ void Agency::setAddress(Address address){
 			 cin.ignore(10000, '\n');
 			 cin >> pack_number;
 			 pack_number = pack_number;
-		 } while (pack_number >= lenght || pack_number < 0);
+		 } while (pack_number >= idx || pack_number < 0);
 	 } while (getPackets()[pack_number].getId() < 0);
 
 	 
-	 cout << endl << "Are you sure about purchase " << getPackets()[pack_number].getId() << " pack? [Y/N] " << endl;
+	 cout << endl << "Are you sure about purchase the pack with identifier " << getPackets()[pack_number].getId() << "? [Y/N] " << endl;
 
-	 cin >> confirm;
-		 switch (confirm)
-		 {
-		 case 'y':
-			 cout << "Select the number that correspond to your name: ";
-			 cin >> client_number;
-			 client_number = client_number; 
-			 clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
-			 clients[client_number].addTotalPurchased(getPackets()[pack_number].getPricePerPerson());
-			 break;
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+		switch (confirm)
+		{
+		case 'y':
+			showAllClientsName();
+			cout << "Are you one of the above: [Y/N]" << endl;
+			do {
+				 cin >> confirm;
+				 confirm = tolower(confirm);
+			} while (!(confirm == 'y' || confirm == 'n'));
+
+
+				 switch (confirm)
+				 {
+				 case 'y':
+					 cout << "Select your order number: ";
+					 cin >> client_number;
+					 client_number = client_number;
+					 clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
+					 clients[client_number].addTotalPurchased(getPackets()[pack_number].getPricePerPerson());
+					 cout << "Done! ";
+					 break;
+				 case 'n':
+					 cout << "You need to create an account before buy packs!" << endl;
+					 break;
+				 default:
+					 break;
+			}
+			break;
+
+		 case 'n':
+			 cout << "Canceled! ";
 		 default:
 			 break;
 		 }
