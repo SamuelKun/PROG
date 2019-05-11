@@ -27,12 +27,13 @@ public:
 	unsigned getTotalPurchased() const;
 
 	// SET methods
-
 	void setName(string name);
 	void setVATnumber(unsigned VATnumber);
 	void setFamilySize(unsigned short familySize);
 	void setAddress(Address address);
+	void addPacket(string packets);
 	void setPacketList(vector<string> &packets);
+	void addTotalPurchased(unsigned totalPurchased);
 	void setTotalPurchased(unsigned totalPurchased);
 
 

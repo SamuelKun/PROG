@@ -543,6 +543,7 @@ void Agency::setAddress(Address address){
 
  void Agency::showAllClients() const
  {
+	 cout << "Clients: " << endl;
 	 for (size_t i = 0; i < getClients().size(); i++)
 	 {
 		 cout << endl;
@@ -563,12 +564,15 @@ void Agency::setAddress(Address address){
 				 cout << " , ";
 		 }
 		 cout << endl;
-		 cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
+		 cout << "Money spent with purchases: " << getClients()[i].getTotalPurchased() << endl;
+		 cout << endl << "----------------------------------------------------" << endl;
 	 }
+	 cout << endl;
  }
 
  void Agency::showAllPackets() const
  {
+	 cout << "All Packs: " << endl;
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
 		 cout << endl;
@@ -582,7 +586,9 @@ void Agency::setAddress(Address address){
 		 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
 		 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
 		 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+		 cout << endl << "----------------------------------------------------" << endl;
 	 }
+	 cout << endl;
  }
 
  /*********************************
@@ -612,7 +618,10 @@ void Agency::setAddress(Address address){
 				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
 				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
 				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+				 cout << endl << "----------------------------------------------------" << endl;
+				 cout << endl;
 			 }
+
 	 }
  }
 
@@ -708,6 +717,8 @@ void Agency::setAddress(Address address){
 						 cout << "Price per Person: " << packets[k].getPricePerPerson() << endl;
 						 cout << "Capacity: " << packets[k].getMaxTickets() << endl;
 						 cout << "Places already reserved: " << packets[k].getAvailableTickets() << endl;
+						 cout << endl;
+						
 					 }
 				 }
 			 }
@@ -743,7 +754,8 @@ void Agency::setAddress(Address address){
 			if (j != getClients()[i].getPacketList().size() - 1) cout << " , ";
 		}
 		cout << endl;
-		cout << "Total Purchases: " << getClients()[i].getTotalPurchased() << endl;
+		cout << "Money spent with purchases: " << getClients()[i].getTotalPurchased() << endl;
+		cout << endl;
 		}
 	}
  }
@@ -778,83 +790,38 @@ void Agency::setAddress(Address address){
  
  void Agency::buyPack()
  {
-	 int total;
-	 string name, number, id;
-	 vector<string> v_packs;
-	 bool b_name = true , b_number = true , b_id = true;
+	 int pack_number, client_number;
+	 int lenght = getPackets().size();
+	 unsigned money_wasted;
+	 char confirm;
+	 showAllPacksID();
+	 cout << "What do you want to buy? You can't buy packages with '-' before!\n";
 
-	 cin.ignore(1000, '\n');
-	 cout << "Type the client's name: ";
-	 getline(cin, name);
-	 for (size_t i = 0; i < getClients().size(); i++)
-		 if (getClients()[i].getName() == name) b_name = false;
+	 do {
+		 do {
+			 cin.clear();
+			 cin.ignore(10000, '\n');
+			 cin >> pack_number;
+			 pack_number = pack_number;
+		 } while (pack_number >= lenght || pack_number < 0);
+	 } while (getPackets()[pack_number].getId() < 0);
 
-	 while (b_name)
-	 {
-		 cout << "Incorrect name" << endl;
-		 cout << "Type the client's name: ";
-		 getline(cin, name);
-		 for (size_t i = 0; i < getClients().size(); i++)
-			 if (getClients()[i].getName() == name) b_name = false;
-	 }
+	 
+	 cout << endl << "Are you sure about purchase " << getPackets()[pack_number].getId() << " pack? [Y/N] " << endl;
 
-	 cout << "Type the client's VAT number: ";
-	 getline(cin, number);
-
-	 for (size_t i = 0; i < getClients().size(); i++)
-		 if (getClients()[i].getName() == name)
-			 if (getClients()[i].getVATnumber() == stoi(number))
-				 b_number = false;
-
-	 while (b_number)
-	 {
-		 cout << "Incorrect VAT number" << endl;
-		 cout << "Type the client's vat number: ";
-		 getline(cin, number);
-		 for (size_t i = 0; i < getClients().size(); i++)
-			 if (getClients()[i].getName() == name)
-				 if (getClients()[i].getVATnumber() == stoi(number))
-					 b_number = false;
-	 }
-
-
-	 cout << "\nThis are all the packs available " << endl;
-
-	 showAllPackets();
-
-	 cout << endl << "Select the identifier of the pack you wish to purchase: ";
-	 getline(cin, id);
-
-	 while (b_id)
-	 {
-		 cout << "Incorrect identifier" << endl;
-		 cout << "Select the identifier of the pack you wish to purchase (type 0 to leave) : ";
-		 getline(cin, id);
-		 for (size_t i = 0; i < getPackets().size(); i++)
-			 if (getPackets()[i].getId() == stoi(id) || stoi(id) == 0 )
-				 b_id = false;
-	 }
-
-	 for (size_t i = 0; i < getPackets().size(); i++)
-	 {
-		 if (getPackets()[i].getId() == stoi(id))
+	 cin >> confirm;
+		 switch (confirm)
 		 {
-			 for (size_t j = 0; j < getClients().size(); j++)
-			 {
-				 if (getClients()[j].getName() == name && getClients()[j].getVATnumber() == stoi(number))
-				 {
-					 for (size_t k = 0; k < getClients()[j].getPacketList().size(); k++)
-					 {
-						 v_packs.push_back(getClients()[j].getPacketList()[k]);
-					 }
-					 v_packs.push_back(id);
-					 clients[j].setPacketList(v_packs);
-					 total = getClients()[j].getTotalPurchased() + getClients()[j].getFamilySize() * getPackets()[i].getPricePerPerson();
-					 clients[j].setTotalPurchased(total);
-				 }
-			 }
-		 }	 
-	 } 
+		 case 'y':
+			 cout << "Select the number that correspond to your name: ";
+			 cin >> client_number;
+			 client_number = client_number; 
+			 clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
+			 clients[client_number].addTotalPurchased(getPackets()[pack_number].getPricePerPerson());
+			 break;
+		 default:
+			 break;
+		 }
  }
 
  /*********************************

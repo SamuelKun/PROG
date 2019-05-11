@@ -73,7 +73,7 @@ int managePacks(Agency &agency)
 {
 	char menu;
 	int idx;
-	system("CLS");    //Clear Screen
+	system("CLS");
 	cout << "Introduza a operacao que deseja efetuar  " << endl << endl;
 
 	cout << "[1] Add Packs " << endl;
@@ -86,6 +86,7 @@ int managePacks(Agency &agency)
 	switch (menu)
 	{
 	case'1':        //Add Packs
+		system("CLS");
 		agency.addPack();
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
@@ -239,7 +240,7 @@ int viewClients(Agency &agency)
 	system("CLS");    //Clear Screen
 
 	cout << "[1] View all clients " << endl;
-	cout << "[2] View all clients' name " << endl;
+	cout << "[2] View all clients name " << endl;
 	cout << "[3] View one client " << endl;
 	cout << "[0] Back to Main Menu" << endl;
 

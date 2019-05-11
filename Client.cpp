@@ -80,9 +80,19 @@ void Client::setAddress(Address address)
 {
 	this->address = address;
 }
+void Client::addPacket(string pack)
+{
+	this->packets.push_back(pack);
+}
+
 void Client::setPacketList(vector<string> &packets)
 {
 	this->packets = packets;
+}
+
+void Client::addTotalPurchased(unsigned totalPurchased)
+{
+	this->totalPurchased += totalPurchased;
 }
 
 void Client::setTotalPurchased(unsigned totalPurchased)

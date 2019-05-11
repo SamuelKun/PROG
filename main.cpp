@@ -40,7 +40,7 @@ int main()
 	AgencyFile.open(filename);
 	while (AgencyFile.fail())
 	{
-		//AgencyFile.clear();
+		cin.clear();
 		cout << "Incorrect filename, please enter again: ";
 		cin >> filename;
 		AgencyFile.open(filename);
