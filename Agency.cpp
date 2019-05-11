@@ -917,13 +917,13 @@ void Agency::ClientMostVisited(int n) const
 		}
 	}
 
-	vector<string> idkwhatimdoing;
+	vector<short> idkwhatimdoing;
 	for (size_t i = 0; i < wishlocals.size(); i++)
 	{
 		for (size_t idx = 0; idx < getPackets().size(); idx++)
 		{
 			if (getPackets()[idx].getPlaces() == wishlocals[i])
-				idkwhatimdoing.push_back(to_string(getPackets()[idx].getId()));
+				idkwhatimdoing.push_back(getPackets()[idx].getId());
 		}
 	}
 
@@ -934,19 +934,26 @@ void Agency::ClientMostVisited(int n) const
 		cout << "You have not yet visited the following places that are in the most visited " << n << ": " << endl;
 		temp = getClients()[client_idx].getPacketList();
 		
+
+		vector<short> short_id;
+		short num;
+		for (size_t i = 0; i < temp.size(); i++)
+		{
+			num = stoi(temp[i]);
+			cout << num << endl << endl << endl;
+			short_id.push_back(num);
+		}
+		
 		for (size_t i = 0; i < idkwhatimdoing.size(); i++)
 		{
 			cout << idkwhatimdoing[i] << " " << temp[0] << " " << temp[1] << " " << temp[2] << endl << endl;
-			if (find(temp.begin(), temp.end(), idkwhatimdoing[i]) != temp.end())
-			{
-				cout << "False" << endl;
-			}
-			else
+			/*	VER SE O VALOR DE idkwhatimdoing[i](N LOCAIS MAIS VISITADOS) NÃO ESTÁ EM SHORT_ID(LISTA DE PACOTES DO CLIENTE; SE NÃO ESTIVER DAR COUT AO QUE ESTÁ EM BAIXO COMENTADO
+			if (...........)
 			{
 				cout << "Position  " << i + 1 << ": " << "[Visited " << timesvisited[i] << " times.]" << endl;
 				cout << "Locals: " << wishlocals[i] << endl;
 				cout << "Pack id: " << idkwhatimdoing[i] << endl;
-			}
+			}*/
 		}
 	}
 
