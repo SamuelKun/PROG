@@ -293,7 +293,7 @@ int viewInformation(Agency &agency)
 	cout << "[3] Search for a Pack " << endl;
 	cout << "[4] View the ammount of packs sold and earned currency" << endl;
 	cout << "[5] View the most visited places" << endl;
-	cout << "[6] 10 whatever" << endl;
+	cout << "[6] Popular places not yet visited by all clients" << endl;
 	cout << "[0] Back to Main Menu" << endl;
 
 	cin >> menu;
@@ -328,7 +328,7 @@ int viewInformation(Agency &agency)
 	case '6':
 		system("CLS");
 		int n;
-		cout << "How many places do you want to view? ";
+		cout << "How many places do you want to view of top? ";
 		cin >> n;
 		agency.ClientMostVisited(n);
 		cout << "Done! Press a letter to go back to Main Menu! ";
