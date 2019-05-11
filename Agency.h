@@ -13,7 +13,6 @@
 using namespace std;
 
 class Agency{
-
 public:
 	Agency(string fileName);
 
@@ -57,7 +56,7 @@ public:
 	void show1Client() const;
 
 	// AMMOUNT SOLD AND EARNED CURRENCY methods
-	void ammountSold();
+	void ammountSold() const;
 
 	// BUYING PACKS method
 	void buyPack();
@@ -65,7 +64,6 @@ public:
 	// N MOST VISITED method
 	void mostVisited(int n) const;
 	void ClientMostVisited(int n) const;
-
 
  private:
   string name; // name of the  agency

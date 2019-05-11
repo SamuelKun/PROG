@@ -22,9 +22,9 @@ Agency::Agency(string file_name)
 		}
 		info.close();
 	}
-	else cout << "Unable to open file"; //Add later: TRY AGAIN
+	else cout << "Unable to open file"; 
 	
-
+	//Add name, VATnumver, URL and address to agency
 	this->name = agency_info[0];
 	this->VATnumber = stoi(agency_info[1]);
 	this->URL = agency_info[2];
@@ -32,19 +32,14 @@ Agency::Agency(string file_name)
 	this->address = AgencyAddress;
 	
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////// DONT TOUCH THIS FOR NOW MAGIC HAPPENS HERE
 	//
 	// Client Information
 	//
 	string name_client;
 	unsigned VAT;
 	unsigned short household;
-	//Address ClientAddress(client_list[3]);
 	vector<string> packs_bought;
 	unsigned total_purchases;
-	//
-	//
-	//
 
 
 	ifstream client_info(agency_info[4]);
@@ -62,7 +57,6 @@ Agency::Agency(string file_name)
 			Address ClientAddress(client_list[3]);
 
 			//Get Packs
-			
 			stringstream pack_info(client_list[4]);
 			string temp;
 			while (getline(pack_info, temp, ';'))
@@ -91,7 +85,6 @@ Agency::Agency(string file_name)
 	Address ClientAddress(client_list[3]);
 
 	//Get Packs
-	
 	stringstream getpackla(client_list[4]);
 	string temp;
 	while (getline(getpackla, temp, ';'))
@@ -103,30 +96,24 @@ Agency::Agency(string file_name)
 		packs_bought.push_back(temp);
 	}
 
-
 	total_purchases = total_purchases = stoi(client_list[5]);
 	Client temp_client(name_client, VAT, household, ClientAddress, packs_bought, total_purchases);
 
 	vector_client.push_back(temp_client);
 	client_list.clear();
 
+	//Add clients
 	this->clients = vector_client;
 
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////// AND HERE TOO
 	
 	//
 	// Packs Information
 	//
 	unsigned id;
 	string locals;
-	//Date start_date(pack_list[2]);
-	//Date end_date(pack_list[3]);
 	double price;
 	unsigned max;
 	unsigned available;
-	//
-	//
 
 	ifstream pack_info(agency_info[5]);
 	vector<string> pack_list;
@@ -154,6 +141,7 @@ Agency::Agency(string file_name)
 			pack_list.clear();
 		}
 	}
+
 	//Add last pack
 	id = stoi(pack_list[0]);
 	locals = pack_list[1];
@@ -167,14 +155,12 @@ Agency::Agency(string file_name)
 	vector_pack.push_back(temp_packet);
 	pack_list.clear();
 
+	//Add packets do Agency
 	this->packets = vector_pack;
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////// OKAY YOU ARE SAFE */
-		///////////////////////////////////////////////////////////////////////////////////////////////////////// FOR NOW HAHAHA
 }
 
 /*********************************
- * GET Methods
+ * GET Methods					 *
  ********************************/
 string Agency::getName() const
 {
@@ -207,21 +193,21 @@ vector<Packet> Agency::getPackets() const{
 }
 
 /*********************************
- * SET Methods
+ * SET Methods                   *
  ********************************/
 
-void Agency::setName(string name){
-
+void Agency::setName(string name)
+{
 	this->name = name;
 }
 
-void Agency::setVATnumber(unsigned VATnumber){
-
+void Agency::setVATnumber(unsigned VATnumber)
+{
 	this->VATnumber = VATnumber;
 }
 
-void Agency::setAddress(Address address){
-
+void Agency::setAddress(Address address)
+{
 	this->address= address;
 }
 
@@ -234,22 +220,21 @@ void Agency::setAddress(Address address){
  {
 	 this->clients = clients;
  }
+
  void Agency::setPackets(vector<Packet> & packets)
  {
 	 this->packets = packets;
  }
 
  /*********************************
- * MANAGE CLIENTS methods
- ********************************/
+ * MANAGE CLIENTS methods         *
+ **********************************/
 
  void Agency::addClient()
  {
 	 string client_name; // name of the client
 	 unsigned client_VATnumber; // VAT number of client
 	 unsigned short client_familySize;  // number of family members
-	 //Address client_address(); 
-	 // Client Address
 	 string client_street;
 	 unsigned short client_doorNumber;
 	 string client_floor;
@@ -261,7 +246,7 @@ void Agency::setAddress(Address address){
 	 getline(cin, client_name);
 	 cout << "NIF: " << endl;
 	 cin >> client_VATnumber;
-	 while (cin.fail())
+	 while (cin.fail()) // Used to test if user write a invalid input
 	 {
 		 cin.clear();
 		 cin.ignore();
@@ -271,6 +256,7 @@ void Agency::setAddress(Address address){
 	 }
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
+
 	 while (cin.fail())
 	 {
 		 cin.clear();
@@ -283,6 +269,7 @@ void Agency::setAddress(Address address){
 	 cout << "Adress:" << endl;
 	 cout << "	Street: ";
 	 getline(cin, client_street);
+
 	 cout << "	Door: ";
 	 cin >> client_doorNumber;
 	 while (cin.fail())
@@ -293,11 +280,14 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> client_doorNumber;
 	 }
+
 	 cout << "	Floor: ";
 	 cin.ignore(1000, '\n');
 	 getline(cin, client_floor);
+
 	 cout << "	Postal Code: ";
 	 getline(cin, client_postalCode);
+
 	 cout << "	Locality: ";
 	 getline(cin, client_location);
 
@@ -312,8 +302,6 @@ void Agency::setAddress(Address address){
 	 string client_name; // name of the client
 	 unsigned client_VATnumber; // VAT number of client
 	 unsigned short client_familySize;  // number of family members
-	 //Address client_address(); 
-	 // Client Address
 	 string client_street;
 	 unsigned short client_doorNumber;
 	 string client_floor;
@@ -323,6 +311,7 @@ void Agency::setAddress(Address address){
 
 	 cout << "Name: " << endl;
 	 getline(cin, client_name);
+
 	 cout << "NIF: " << endl;
 	 cin >> client_VATnumber;
 	 while (cin.fail())
@@ -333,6 +322,7 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> client_VATnumber;
 	 }
+
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
 	 while (cin.fail())
@@ -343,10 +333,12 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> client_familySize;
 	 }
+
 	 cin.ignore(1000, '\n');
 	 cout << "Adress:" << endl;
 	 cout << "	Street: ";
 	 getline(cin, client_street);
+
 	 cout << "	Door: ";
 	 cin >> client_doorNumber;
 	 while (cin.fail())
@@ -357,11 +349,14 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> client_doorNumber;
 	 }
+
 	 cout << "	Floor: ";
 	 cin.ignore(1000, '\n');
 	 getline(cin, client_floor);
+
 	 cout << "	Postal Code: ";
 	 getline(cin, client_postalCode);
+
 	 cout << "	Locality: ";
 	 getline(cin, client_location);
 
@@ -370,6 +365,7 @@ void Agency::setAddress(Address address){
 	 clients[position].setVATnumber(client_VATnumber);
 	 clients[position].setFamilySize(client_familySize);
 	 clients[position].setAddress(client_address);
+	 //PERGUNTAR AO STOR SOBRE ISTO
 	 /*vector<string> all_client_packs = clients[position].getPacketList();
 
 	 cout << "New Packs: "; //DO LOOP HERE!!!
@@ -388,8 +384,8 @@ void Agency::setAddress(Address address){
 	 clients.erase(clients.begin() + position);
  }
 
- /*********************************
-* MANAGE PACKS methods
+ /*******************************
+* MANAGE PACKS methods          *
 ********************************/
  void Agency::addPack()
  {
@@ -401,6 +397,7 @@ void Agency::setAddress(Address address){
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
+
 	 while (cin.fail())
 	 {
 		 cin.clear();
@@ -409,15 +406,19 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_id;
 	 }
+
 	 cout << "Locals: " << endl;
 	 cin.ignore(1000, '\n');
 	 getline(cin, pack_places);
+
 	 cout << "Start Date: " << endl;
 	 Date start_date;
 	 start_date.manualDate();
+
 	 cout << "End Date:" << endl;
 	 Date end_date;
 	 end_date.manualDate();
+
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
 	 while (cin.fail())
@@ -428,6 +429,7 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_pricePerPerson;
 	 }
+
 	 cout << "Capacity: " << endl;
 	 cin >> pack_maxTickets;
 	 while (cin.fail())
@@ -438,6 +440,7 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_maxTickets;
 	 }
+
 	 cout << "Sold Tickets: " << endl;
 	 cin >> pack_availableTickets;
 	 while (cin.fail())
@@ -448,7 +451,6 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_availableTickets;
 	 }
-
 	 
 	 Packet newPack(pack_id, pack_places, start_date, end_date, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
 
@@ -465,6 +467,7 @@ void Agency::setAddress(Address address){
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
+
 	 cout << "Locals: " << endl;
 	 cin.ignore(1000, '\n');
 	 getline(cin, pack_places);
@@ -472,6 +475,7 @@ void Agency::setAddress(Address address){
 	 cout << "Start Date: " << endl;
 	 Date start_date;
 	 start_date.manualDate();
+
 	 cout << "End Date:" << endl;
 	 Date end_date;
 	 end_date.manualDate();
@@ -486,6 +490,7 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_pricePerPerson;
 	 }
+
 	 cout << "Capacity: " << endl;
 	 cin >> pack_maxTickets;
 	 while (cin.fail())
@@ -496,6 +501,7 @@ void Agency::setAddress(Address address){
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_maxTickets;
 	 }
+
 	 cout << "Places already reserved: : " << endl;
 	 cin >> pack_availableTickets;
 	 while (cin.fail())
@@ -524,7 +530,7 @@ void Agency::setAddress(Address address){
 
 
  /*******************************
-* SHOW ALL methods
+* SHOW ALL CLIETNS AND PACKS    *
 ********************************/
  void Agency::showAllClientsName() const
  {
@@ -563,6 +569,7 @@ void Agency::setAddress(Address address){
 			 if (j != getClients()[i].getPacketList().size()-1)
 				 cout << " , ";
 		 }
+
 		 cout << endl;
 		 cout << "Money spent with purchases: " << getClients()[i].getTotalPurchased() << endl;
 		 cout << endl << "----------------------------------------------------" << endl;
@@ -591,8 +598,8 @@ void Agency::setAddress(Address address){
 	 cout << endl;
  }
 
- /*********************************
-* SHOW SPECIFIC methods
+ /*******************************
+* SEARCH SPECIFIC PACKS methods *
 ********************************/
 
  void Agency::showDestinyPacks() const
@@ -763,11 +770,11 @@ void Agency::setAddress(Address address){
  }
 
 
- /*********************************
-* AMMOUNT SOLD AND EARNED CURRENCY method
-********************************/
+ /******************************************
+* AMMOUNT SOLD AND EARNED CURRENCY method  *
+*******************************************/
 
- void Agency::ammountSold()
+ void Agency::ammountSold() const
  {
 	 int counter = 0, total = 0;
 
@@ -786,14 +793,12 @@ void Agency::setAddress(Address address){
  }
 
 
- /*********************************
-* BUYING PACKS method
+ /*******************************
+* BUYING PACKS method           *
 ********************************/
  
  void Agency::buyPack()
  {
-
-
 	 int pack_number, client_number;
 	 int idx = getPackets().size();
 	 char confirm;
