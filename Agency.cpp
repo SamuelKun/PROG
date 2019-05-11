@@ -940,13 +940,12 @@ void Agency::ClientMostVisited(int n) const
 		for (size_t i = 0; i < temp.size(); i++)
 		{
 			num = stoi(temp[i]);
-			cout << num << endl << endl << endl;
 			short_id.push_back(num);
 		}
 		
 		for (size_t i = 0; i < idkwhatimdoing.size(); i++)
 		{
-			cout << idkwhatimdoing[i] << " " << temp[0] << " " << temp[1] << " " << temp[2] << endl << endl;
+			cout << idkwhatimdoing[i] << " " << short_id[0] << " " << short_id[1] << " " << short_id[2] << endl << endl;
 			/*	VER SE O VALOR DE idkwhatimdoing[i](N LOCAIS MAIS VISITADOS) NÃO ESTÁ EM SHORT_ID(LISTA DE PACOTES DO CLIENTE; SE NÃO ESTIVER DAR COUT AO QUE ESTÁ EM BAIXO COMENTADO
 			if (...........)
 			{
