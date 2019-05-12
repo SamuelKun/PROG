@@ -1,0 +1,1 @@
+Quando se muda um cliente, altera-se os pacotes também ou não?
