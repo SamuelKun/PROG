@@ -31,6 +31,10 @@ Agency::Agency(string file_name)
 	Address AgencyAddress(agency_info[3]);
 	this->address = AgencyAddress;
 	
+	//Get the name of file with clients and packs info
+	this->clientsFile = agency_info[4];
+	this->packsFile = agency_info[5];
+
 
 	//
 	// Client Information
@@ -122,6 +126,8 @@ Agency::Agency(string file_name)
 	string lastTravelPack;
 
 	getline(pack_info, lastTravelPack);
+
+	this->lastId = stoi(lastTravelPack); //Get the last Pack added -> First line of packs file
 	
 	while (getline(pack_info, name_pack))
 	{
@@ -397,6 +403,8 @@ void Agency::setAddress(Address address)
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
+
+	 this->lastId = pack_id;
 
 	 while (cin.fail())
 	 {
@@ -977,4 +985,46 @@ void Agency::ClientMostVisited(int n) const
 
 }
 
+
+/*********************************
+* SAVE TO FILE method
+********************************/
+
+void Agency::writeAgency() const
+{
+	ofstream write_clients(this->clientsFile);
+	ofstream write_packs(this->packsFile);
+
+	//Clients
+	for (size_t i = 0; i < getClients().size(); i++)
+	{
+		write_clients << getClients()[i].getName() << endl;
+		write_clients << getClients()[i].getVATnumber() << endl;
+		write_clients << getClients()[i].getFamilySize() << endl;
+		write_clients << getClients()[i].getAddress().getStreet() << " / " << getClients()[i].getAddress().getDoorNumber() << " / " << getClients()[i].getAddress().getFloor() << " / " << getClients()[i].getAddress().getPostalCode() << " / " << getClients()[i].getAddress().getLocation() << endl;
+		for (int j = 0; j < getClients()[i].getPacketList().size(); j++)
+		{
+			write_clients << getClients()[i].getPacketList()[j];
+			if (j != getClients()[i].getPacketList().size() - 1) write_clients << " ; ";
+		}
+		write_clients << endl << getClients()[i].getTotalPurchased() << endl;
+		if (i != getClients().size() - 1) write_clients << "::::::::::" << endl;
+	}
+	
+	//TravelPacks
+
+	write_packs << this->lastId << endl; // ADD LAST PACK DO IT LATER
+
+	for (size_t i = 0; i < getPackets().size(); i++)
+	{
+		write_packs << getPackets()[i].getId() << endl;
+		write_packs << getPackets()[i].getPlaces() << endl;
+		write_packs << getPackets()[i].getBeginDate().getYear() <<'/' << getPackets()[i].getBeginDate().getMonth() << '/' << getPackets()[i].getBeginDate().getDay() << endl;
+		write_packs << getPackets()[i].getEndDate().getYear() << '/' << getPackets()[i].getEndDate().getMonth() << '/' << getPackets()[i].getEndDate().getDay() << endl;
+		write_packs << getPackets()[i].getPricePerPerson() << endl;
+		write_packs << getPackets()[i].getMaxTickets() << endl;
+		write_packs << getPackets()[i].getAvailableTickets();
+		if (i != getPackets().size() - 1) write_packs << endl << "::::::::::" << endl;
+	}
+}
 

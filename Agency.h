@@ -65,6 +65,9 @@ public:
 	void mostVisited(int n) const;
 	void ClientMostVisited(int n) const;
 
+	//SAVE TO FILE method
+	void writeAgency() const;
+
  private:
   string name; // name of the  agency
   unsigned int VATnumber; // VAT number of the agency
@@ -72,4 +75,12 @@ public:
   string URL; // URL of the agency Web site
   vector<Client> clients; // vector to store the existing clients
   vector<Packet> packets; // vector to store the existing packets
+
+  short lastId; //Last pack added
+
+  //Name of file with clients and packs info - Used to save
+  string clientsFile;
+  string packsFile;
+
+ 
 };

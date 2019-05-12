@@ -394,6 +394,7 @@ unsigned mainMenu(Agency &agency)
 			buyPacks(agency);
 			break;
 		case '0':
+			agency.writeAgency();
 			return 0;
 			break;
 		default:
