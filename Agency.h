@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 
-
-#include "defs.h"
 #include "Address.h"
 #include "Client.h"
 #include "Packet.h"
