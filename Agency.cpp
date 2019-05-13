@@ -808,7 +808,7 @@ void Agency::setAddress(Address address)
  void Agency::buyPack()
  {
 	 int pack_number, client_number;
-	 int idx = getPackets().size();
+	 int idx = getPackets().size(), price;
 	 char confirm;
 	 showAllPackets();
 	 showAllPacksID();
@@ -856,8 +856,9 @@ void Agency::setAddress(Address address)
 					} while (client_number >= getClients().size() || pack_number < 0);
 
 					 client_number = client_number;
+					 price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize();
 					 clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
-					 clients[client_number].addTotalPurchased(getPackets()[pack_number].getPricePerPerson());
+					 clients[client_number].addTotalPurchased(price);
 					 cout << "Done! ";
 					 break;
 				 case 'n':
