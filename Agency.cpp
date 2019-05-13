@@ -808,7 +808,8 @@ void Agency::setAddress(Address address)
  void Agency::buyPack()
  {
 	 int pack_number, client_number;
-	 int idx = getPackets().size(), price;
+	 int idx = getPackets().size();
+	 int price, totalsold;
 	 char confirm;
 	 showAllPackets();
 	 showAllPacksID();
@@ -855,11 +856,20 @@ void Agency::setAddress(Address address)
 						if(client_number >= getClients().size() || pack_number < 0) cout << "Invalid order number! Order number: ";
 					} while (client_number >= getClients().size() || pack_number < 0);
 
-					 client_number = client_number;
-					 price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize();
-					 clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
-					 clients[client_number].addTotalPurchased(price);
+					if (getPackets()[pack_number].getMaxTickets() >= getPackets()[pack_number].getAvailableTickets() + getClients()[client_number].getFamilySize())
+					{
+						price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize();
+						totalsold = getPackets()[pack_number].getAvailableTickets() + getClients()[client_number].getFamilySize();
+						clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
+						clients[client_number].addTotalPurchased(price);
+						packets[pack_number].setAvailableTickets(totalsold);
 					 cout << "Done! ";
+					}
+					else
+					{
+						cout << "Due to your family size it is not possible to buy packages for everyone! Try to buy another package! "; 
+					}
+
 					 break;
 				 case 'n':
 					 cout << "You need to create an account before buy packs! Go to Manage Clients to create!" << endl;
