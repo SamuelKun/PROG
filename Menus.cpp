@@ -94,6 +94,7 @@ int managePacks(Agency &agency)
 		break;
 	case'2':        //Remove Packs
 		system("CLS");
+		agency.showAllPackets();
 		agency.showAllPacksID();
 		cout << "Wich one you want to remove? ";
 		cin >> idx;
@@ -105,6 +106,7 @@ int managePacks(Agency &agency)
 		break;
 	case'3':        //Change Packs
 		system("CLS");
+		agency.showAllPackets();
 		agency.showAllPacksID();
 		cout << "Wich one you want to change? ";
 		cin >> idx;
