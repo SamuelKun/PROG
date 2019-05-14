@@ -134,16 +134,11 @@ bool Date::isBefore(const Date &date)
 }
 
 /*********************************
- * Show Date
+ * ostream 
  ********************************/ 
-
-void Date::showDate() const
-{
-	cout << year << '/' << month << '/' << day << endl;
-}
 
 ostream& operator<<(ostream& out, const Date &date) 
 {
-	out << date.year << '/' << date.month << '/' << date.day << endl;
+	out << date.getYear() << '/' << date.getMonth() << '/' << date.getDay() << endl;
 	return out;
 }

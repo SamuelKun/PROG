@@ -4,9 +4,6 @@
 #include <string>
 #include <vector>
 
-
-#include "defs.h"
-
 using namespace std;
 
 class Date{
@@ -34,9 +31,7 @@ class Date{
   bool isAfter(const Date &date);
   bool isBefore(const Date &date);
 
-  //Show methods
-  void showDate() const;
-
+  // ostream
   friend ostream& operator<<(ostream& out, const Date & date);
   
 	
