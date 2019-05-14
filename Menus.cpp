@@ -323,6 +323,14 @@ int viewInformation(Agency &agency)
 		system("CLS");
 		cout << "How many places do you want to view? ";
 		cin >> n;
+		while (n < 0)
+		{
+			cout << "Value must be positive: ";
+			cin.ignore();
+			cin.ignore(1000, '\n');
+			cin.clear();
+			cin >> n;
+		}
 		agency.mostVisited(n);
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
@@ -333,6 +341,14 @@ int viewInformation(Agency &agency)
 		int n;
 		cout << "How many places do you want to view of top? ";
 		cin >> n;
+		while (n < 0)
+		{
+			cout << "Value must be positive: ";
+			cin.ignore();
+			cin.ignore(1000, '\n');
+			cin.clear();
+			cin >> n;
+		}
 		agency.ClientMostVisited(n);
 		cout << "Done! Press a letter to go back to Main Menu! ";
 		cin >> menu;
