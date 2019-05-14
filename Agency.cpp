@@ -1,4 +1,5 @@
 #include "Agency.h"
+
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -892,21 +893,41 @@ void Agency::setAddress(Address address)
 
 void Agency::mostVisited(int n) const
  {
-	 multimap <int, string, greater<int>> locais;
-	 vector<int> timesvisited;
-	 vector<string> visitedLocals;
-	 
-	 
-	 for (size_t i = 0; i < getPackets().size(); i++)
-	 {
-		locais.insert(pair<int, string>(getPackets()[i].getAvailableTickets(), getPackets()[i].getPlaces()));
-	 }
+	multimap <int, string> locais;
+	map <string, int> new_locals;
+	multimap <int, string, greater<int>> finally_i_promise;
+	vector<int> timesvisited;
+	vector<string> visitedLocals;
 
-	 for (auto p : locais)
-	 {
-		 timesvisited.push_back(p.first);
-		 visitedLocals.push_back(p.second);
-	 }
+
+	for (size_t i = 0; i < getPackets().size(); i++)
+	{
+		locais.insert(pair<int, string>(getPackets()[i].getAvailableTickets(), getPackets()[i].getPlaces()));
+	}
+
+	for (auto a : locais)
+	{
+		if (new_locals.find(a.second) != new_locals.end())
+		{
+			new_locals[a.second] += a.first;
+		}
+		else
+		{
+			new_locals.insert(pair<string, int>(a.second, a.first));
+		}
+	}
+
+	for (auto change : new_locals)
+	{
+		finally_i_promise.insert(pair<int, string>(change.second, change.first));
+	}
+
+	for (auto p : finally_i_promise)
+	{
+		timesvisited.push_back(p.first);
+		visitedLocals.push_back(p.second);
+	}
+
 
 	 cout << endl;
 
