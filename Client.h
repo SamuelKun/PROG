@@ -36,6 +36,7 @@ public:
 	void addTotalPurchased(unsigned totalPurchased);
 	void setTotalPurchased(unsigned totalPurchased);
 
+	friend ostream& operator<<(ostream& out, const Client &client);
 
  private:
   string name; // name of the client

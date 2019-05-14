@@ -662,29 +662,9 @@ void Agency::setAddress(Address address)
  void Agency::showAllClients() const
  {
 	 cout << "Clients: " << endl;
-	 for (size_t i = 0; i < getClients().size(); i++)
+	 for (size_t i = 0; i < clients.size(); i++)
 	 {
-		 cout << endl;
-		 cout << "Name: " << getClients()[i].getName() << endl;
-		 cout << "NIF: "  << getClients()[i].getVATnumber() << endl;
-		 cout << "FamilySize: " << getClients()[i].getFamilySize() << endl;
-		 cout << "Address: " << endl;
-		 cout << "     Street: " << getClients()[i].getAddress().getStreet() << endl;
-		 cout << "     Door Number: " << getClients()[i].getAddress().getDoorNumber() << endl;
-		 cout << "     Floor: " << getClients()[i].getAddress().getFloor() << endl;
-		 cout << "     Postal Code: " << getClients()[i].getAddress().getPostalCode() << endl;
-		 cout << "     Location: " << getClients()[i].getAddress().getLocation() << endl;
-		 cout << "Pack List: ";
-		 for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
-		 {
-			 cout << getClients()[i].getPacketList()[j];
-			 if (j != getClients()[i].getPacketList().size()-1)
-				 cout << " , ";
-		 }
-
-		 cout << endl;
-		 cout << "Money spent with purchases: " << getClients()[i].getTotalPurchased() << endl;
-		 cout << endl << "----------------------------------------------------" << endl;
+		 cout << clients[i];
 	 }
 	 cout << endl;
  }
@@ -694,18 +674,7 @@ void Agency::setAddress(Address address)
 	 cout << "All Packs: " << endl;
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 cout << endl;
-		 cout << "Identifier: " << packets[i].getId() << endl;
-		 cout << "Places: ";
-		 packets[i].showPlaces();
-		 cout << endl << "Departure Date: "; 
-		 packets[i].getBeginDate().showDate(); 
-		 cout << "Arrival Date: "; 
-		 packets[i].getEndDate().showDate(); 
-		 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
-		 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-		 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
-		 cout << endl << "----------------------------------------------------" << endl;
+		 cout << packets[i];
 	 }
 	 cout << endl;
  }
@@ -726,19 +695,7 @@ void Agency::setAddress(Address address)
 	 {
 			 if (packets[i].getPlaces().find(destiny) != -1)
 			 {
-				 cout << endl;
-				 cout << "Identifier: " << packets[i].getId() << endl;
-				 cout << "Places: ";
-				 packets[i].showPlaces();
-				 cout << endl << "Departure Date: ";
-				 packets[i].getBeginDate().showDate();
-				 cout << "Arrival Date: ";
-				 packets[i].getEndDate().showDate();
-				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
-				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
-				 cout << endl << "----------------------------------------------------" << endl;
-				 cout << endl;
+				 cout << packets[i];
 			 }
 
 	 }
@@ -759,17 +716,7 @@ void Agency::setAddress(Address address)
 	 {
 		 if ((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end)))
 		 {
-			 cout << endl;
-				 cout << "Identifier: " << packets[i].getId() << endl;
-				 cout << "Places: ";
-				 packets[i].showPlaces();
-				 cout << endl << "Departure Date: ";
-				 packets[i].getBeginDate().showDate();
-				 cout << "Arrival Date: ";
-				 packets[i].getEndDate().showDate();
-				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
-				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+			 cout << packets[i];
 		 }
 	 }
  }
@@ -793,17 +740,7 @@ void Agency::setAddress(Address address)
 	 {
 			 if (((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end))) && packets[i].getPlaces().find(destiny) != -1)
 			 {
-				 cout << endl;
-				 cout << "Identifier: " << packets[i].getId() << endl;
-				 cout << "Places: ";
-				 packets[i].showPlaces();
-				 cout << endl << "Departure Date: ";
-				 packets[i].getBeginDate().showDate();
-				 cout << "Arrival Date: ";
-				 packets[i].getEndDate().showDate();
-				 cout << "Price per Person: " << packets[i].getPricePerPerson() << endl;
-				 cout << "Capacity: " << packets[i].getMaxTickets() << endl;
-				 cout << "Places already reserved: " << packets[i].getAvailableTickets() << endl;
+				 cout << packets[i];
 		}
 	 }
 
@@ -827,18 +764,7 @@ void Agency::setAddress(Address address)
 				 {
 					 if (getPackets()[k].getId() == stoi(getClients()[i].getPacketList()[j]) || getPackets()[k].getId() == -stoi(getClients()[i].getPacketList()[j]))
 					 {
-						 cout << endl;
-						 cout << "Identifier: " << packets[k].getId() << endl;
-						 cout << "Places: ";
-						 packets[k].showPlaces();
-						 cout << endl << "Departure Date: ";
-						 packets[k].getBeginDate().showDate();
-						 cout << "Arrival Date: ";
-						 packets[k].getEndDate().showDate();
-						 cout << "Price per Person: " << packets[k].getPricePerPerson() << endl;
-						 cout << "Capacity: " << packets[k].getMaxTickets() << endl;
-						 cout << "Places already reserved: " << packets[k].getAvailableTickets() << endl;
-						 cout << endl;
+						 cout << packets[k];
 						
 					 }
 				 }
@@ -856,27 +782,9 @@ void Agency::setAddress(Address address)
 
 	for (size_t i = 0; i < getClients().size(); i++)
 	{
-		if (getClients()[i].getName().find(name) != -1)
+		if (clients[i].getName().find(name) != -1)
 		{
-		cout << endl;
-		cout << "Name: " << getClients()[i].getName() << endl;
-		cout << "NIF: " << getClients()[i].getVATnumber() << endl;
-		cout << "FamilySize: " << getClients()[i].getFamilySize() << endl;
-		cout << "Address: " << endl;
-		cout << "     Street: " << getClients()[i].getAddress().getStreet() << endl;
-		cout << "     Door Number: " << getClients()[i].getAddress().getDoorNumber() << endl;
-		cout << "     Floor: " << getClients()[i].getAddress().getFloor() << endl;
-		cout << "     Postal Code: " << getClients()[i].getAddress().getPostalCode() << endl;
-		cout << "     Location: " << getClients()[i].getAddress().getLocation() << endl;
-		cout << "Pack List: ";
-		for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
-		{
-			cout << getClients()[i].getPacketList()[j];
-			if (j != getClients()[i].getPacketList().size() - 1) cout << " , ";
-		}
-		cout << endl;
-		cout << "Money spent with purchases: " << getClients()[i].getTotalPurchased() << endl;
-		cout << endl;
+			cout << clients[i];
 		}
 	}
  }

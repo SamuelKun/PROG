@@ -34,6 +34,7 @@ class Packet{
   //Show methods
   void showPlaces() const;
 
+  friend ostream& operator<<(ostream& out, const Packet &packet);
 
 private:
 	short id; // packet unique identifier

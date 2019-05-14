@@ -142,3 +142,8 @@ void Date::showDate() const
 	cout << year << '/' << month << '/' << day << endl;
 }
 
+ostream& operator<<(ostream& out, const Date &date) 
+{
+	out << date.year << '/' << date.month << '/' << date.day << endl;
+	return out;
+}

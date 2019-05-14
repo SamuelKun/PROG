@@ -102,3 +102,23 @@ void Client::setTotalPurchased(unsigned totalPurchased)
   
   // outros metodos
 
+ostream& operator<<(ostream& out, const Client &client)
+{
+	out << endl;
+	out << "Name: " << client.getName() << endl;
+	out << "NIF: " << client.getVATnumber() << endl;
+	out << "FamilySize: " << client.getFamilySize() << endl;
+	out << client.getAddress();
+	out << "Pack List: ";
+	for (size_t j = 0; j < client.getPacketList().size(); j++)
+	{
+		cout << client.getPacketList()[j];
+		if (j != client.getPacketList().size() - 1) cout << " , ";
+	}
+	out << endl;
+	out << "Money spent with purchases: " << client.getTotalPurchased() << endl;
+	out << endl << "----------------------------------------------------" << endl;
+
+	return out;
+}
+

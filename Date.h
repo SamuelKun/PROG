@@ -37,6 +37,7 @@ class Date{
   //Show methods
   void showDate() const;
 
+  friend ostream& operator<<(ostream& out, const Date & date);
   
 	
 private:

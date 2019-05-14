@@ -112,3 +112,13 @@ void Address::setLocation(string  location)
  * Mostrar Address
  ********************************/  
 
+ostream &operator<<(ostream & out, const Address & address)
+{
+	out << "Address: " << endl;
+	out << "     Street: " << address.getStreet() << endl;
+	out << "     Door Number: " << address.getDoorNumber() << endl;
+	out << "     Floor: " << address.getFloor() << endl;
+	out << "     Postal Code: " << address.getPostalCode() << endl;
+	out << "     Location: " << address.getLocation() << endl;
+	return out;
+}

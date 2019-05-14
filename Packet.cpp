@@ -110,4 +110,19 @@ void Packet::showPlaces() const
 }
 
 
-
+ostream& operator<<(ostream& out, const Packet &packet)
+{
+	out << endl;
+	out << "Identifier: " << packet.getId() << endl;
+	out << "Places: ";
+	packet.showPlaces();
+	out << endl << "Departure Date: ";
+	out << packet.getBeginDate();
+	out << "Arrival Date: ";
+	out << packet.getEndDate();
+	out << "Price per Person: " << packet.getPricePerPerson() << endl;
+	out << "Capacity: " << packet.getMaxTickets() << endl;
+	out << "Places already reserved: " << packet.getAvailableTickets() << endl;
+	out << endl << "----------------------------------------------------" << endl;
+	return out;
+}
