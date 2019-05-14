@@ -451,6 +451,8 @@ void Agency::setAddress(Address address)
 	 short pack_id; // packet unique identifier
 	 string pack_places; // touristic sites to visit
 	 double pack_pricePerPerson; // price per person
+	 Date start_date;
+	 Date end_date;
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
 	 unsigned pack_availableTickets; // número de lugares já reservados
 	 char confirm; // verificador [Y/N]
@@ -474,12 +476,10 @@ void Agency::setAddress(Address address)
 	 getline(cin, pack_places);
 
 	 cout << "Start Date: " << endl;
-	 Date start_date;
-	 start_date.manualDate();
+	 cin >> start_date;
 
 	 cout << "End Date:" << endl;
-	 Date end_date;
-	 end_date.manualDate();
+	 cin >> end_date;
 
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
@@ -538,6 +538,8 @@ void Agency::setAddress(Address address)
  {
 	 short pack_id; // packet unique identifier
 	 string pack_places;
+	 Date start_date;
+	 Date end_date;
 	 double pack_pricePerPerson; // price per person
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
 	 unsigned pack_availableTickets; // número de lugares já reservados
@@ -551,12 +553,10 @@ void Agency::setAddress(Address address)
 	 getline(cin, pack_places);
 
 	 cout << "Start Date: " << endl;
-	 Date start_date;
-	 start_date.manualDate();
+	 cin >> start_date;
 
 	 cout << "End Date:" << endl;
-	 Date end_date;
-	 end_date.manualDate();
+	 cin >> end_date;
 
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
@@ -703,15 +703,13 @@ void Agency::setAddress(Address address)
 
  void Agency::showDatePacks() const
  {
-
+	 Date start, end;
 	 cin.ignore(1000, '\n');
 	 cout << "Choose the date interval you desire: " << endl;
 	 cout << "Choose the start date: " << endl;
-	 Date start;
-	 start.manualDate();
+	 cin >> start;
 	 cout << "Choose the end date: " << endl;
-	 Date end;
-	 end.manualDate();
+	 cin >> end;
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {
 		 if ((packets[i].getBeginDate().isEqualTo(start) || packets[i].getBeginDate().isAfter(start)) && (packets[i].getEndDate().isEqualTo(end) || packets[i].getEndDate().isBefore(end)))
@@ -724,17 +722,16 @@ void Agency::setAddress(Address address)
  void Agency::showDestinyAndDatePacks() const
  {
 	 string destiny;
+	 Date start, end;
 
 	 cin.ignore(1000, '\n');
 	 cout << "Choose the destiny you desire: ";
 	 getline(cin, destiny);
 	 cout << "Choose the date interval you desire: " << endl;
 	 cout << "Choose the start date: " << endl;
-	 Date start;
-	 start.manualDate();
+	 cin >> start;
 	 cout << "Choose the end date: " << endl;
-	 Date end;
-	 end.manualDate();
+	 cin >> end;
 
 	 for (size_t i = 0; i < packets.size(); i++)
 	 {

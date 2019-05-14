@@ -16,9 +16,7 @@ class Date{
   unsigned short getDay() const;
   unsigned short getMonth() const;
   unsigned getYear() const;
-  
-  //Set Manual Date
-  void manualDate();
+
 
   // SET methods
   
@@ -33,7 +31,7 @@ class Date{
 
   // ostream
   friend ostream& operator<<(ostream& out, const Date & date);
-  
+  friend istream& operator>>(istream& in, Date & date);
 	
 private:
 	unsigned short day;
