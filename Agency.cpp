@@ -817,6 +817,7 @@ void Agency::setAddress(Address address)
  void Agency::buyPack()
  {
 	 int pack_number, client_number;
+	 map<short, Packet> packs_map; // DO THIS TO
 	 int idx = getPackets().size();
 	 int price, totalsold;
 	 char confirm;
@@ -825,7 +826,7 @@ void Agency::setAddress(Address address)
 	 cout << "What do you want to buy? Insert the order number to choice! " << endl;
 
 	 do {
-		 do {
+		 do {//PUT WHILE CIN FAIL
 			 cin.clear();
 			 cin.ignore(10000, '\n');
 			 cout << "You can't buy packages with ' - ' before! Order number: ";
@@ -902,7 +903,6 @@ void Agency::setAddress(Address address)
 void Agency::mostVisited(int n) const
  {
 	 map <string, int> locais;
-	 
 	 multimap<int, string, greater<int>> locais_ordered;
 	 vector<int> timesvisited;
 	 vector<string> visitedLocals;
@@ -943,19 +943,30 @@ void Agency::mostVisited(int n) const
 
 void Agency::ClientMostVisited(int n) const
 {
-	multimap <int, string, greater<int>> locais;
+	map <string, int> locais;
+	multimap<int, string, greater<int>> locais_ordered;
 	vector<int> timesvisited;
 	vector<string> visitedLocals;
 	vector<string> wishlocals;
 
-	cout << endl;
-
 	for (size_t i = 0; i < getPackets().size(); i++)
 	{
-		locais.insert(pair<int, string>(getPackets()[i].getAvailableTickets(), getPackets()[i].getPlaces()));
+		if (locais.find(getPackets()[i].getPlaces()) != locais.end())
+		{
+			locais[getPackets()[i].getPlaces()] += getPackets()[i].getAvailableTickets();
+		}
+		else
+		{
+			locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+		}
 	}
 
-	for (auto p : locais)
+	for (auto change : locais)
+	{
+		locais_ordered.insert(pair<int, string>(change.second, change.first));
+	}
+
+	for (auto p : locais_ordered)
 	{
 		timesvisited.push_back(p.first);
 		visitedLocals.push_back(p.second);

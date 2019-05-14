@@ -377,6 +377,24 @@ int buyPacks(Agency &agency)
 	return 1;
 }
 
+/*********************************
+ * [5] Agency Information
+ ********************************/
+
+int agencyInformation(Agency &agency)
+{
+	char menu;
+	system("CLS");
+	cout << "Agency: " << agency.getName() << endl << endl;
+	cout << "URL: " << agency.getURL() << endl;
+	cout << "NIF: " << agency.getVATnumber() << endl;
+	cout << agency.getAddress() << endl;
+	cout << "Press a letter to go back to Main Menu! ";
+	cin >> menu;
+	cin.ignore(10000, '\n');
+	return 1;
+}
+
 
 
 unsigned mainMenu(Agency &agency)
@@ -391,6 +409,7 @@ unsigned mainMenu(Agency &agency)
 	cout << "[2] Manage Packs" << endl;
 	cout << "[3] View Information " << endl;
 	cout << "[4] Buy Packs " << endl;
+	cout << "[5] Agency Information" << endl;
 	cout << "[0] Close Program " << endl;
 
 		cin >> menu;
@@ -408,6 +427,9 @@ unsigned mainMenu(Agency &agency)
 			break;
 		case '4':        //Buy Packs
 			while(!buyPacks(agency));
+			break;
+		case '5':        //Agency Information
+			while (!agencyInformation(agency));
 			break;
 		case '0':
 			agency.writeAgency();

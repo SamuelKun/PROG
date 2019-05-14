@@ -10,3 +10,4 @@ int viewInformation(Agency &agency);
 int viewClients(Agency &agency);
 int viewPacks(Agency &agency);
 int viewSpecificPacks(Agency &agency);
+int agencyInformation(Agency &agency);
