@@ -57,7 +57,7 @@ int manageClients(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '0':
-		return 0;
+		return 1;
 		break;
 	default:
 		manageClients(agency);
@@ -117,7 +117,7 @@ int managePacks(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '0':
-		return 0;
+		return 1;
 		break;
 	default:
 		managePacks(agency);
@@ -180,7 +180,7 @@ int viewSpecificPacks(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '0':
-		return 0;
+		return 1;
 	default:
 		viewSpecificPacks(agency);
 		break;
@@ -225,7 +225,7 @@ int viewPacks(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '0':
-		return 0;
+		return 1;
 		break;
 	default:
 		viewPacks(agency);
@@ -272,7 +272,7 @@ int viewClients(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '0':
-		return 0;
+		return 1;
 		break;
 	default:
 		viewClients(agency);
@@ -304,13 +304,13 @@ int viewInformation(Agency &agency)
 	switch (menu)
 	{
 	case '1':        //View Clients
-		viewClients(agency);
+		while(!viewClients(agency));
 		break;
 	case '2':        //View Packs
-		viewPacks(agency);
+		while(!viewPacks(agency));
 		break;
 	case '3':
-		viewSpecificPacks(agency);
+		while(!viewSpecificPacks(agency));
 		break;
 	case '4':        //View the ammount of packs sold and earned currency
 		system("CLS");
@@ -355,7 +355,7 @@ int viewInformation(Agency &agency)
 		cin.ignore(10000, '\n');
 		break;
 	case '0':
-		return 0;
+		return 1;
 		break;
 	default:
 		viewInformation(agency);
@@ -400,16 +400,16 @@ unsigned mainMenu(Agency &agency)
 		switch (menu)
 		{
 		case '1':        //Manage Clients
-			manageClients(agency);
+			while(!manageClients(agency));
 			break;
 		case '2':        //Manage Packs
-			managePacks(agency);
+			while(!managePacks(agency));
 			break;
 		case '3':        //View Information
-			viewInformation(agency);
+			while(!viewInformation(agency));
 			break;
 		case '4':        //Buy Packs
-			buyPacks(agency);
+			while(!buyPacks(agency));
 			break;
 		case '0':
 			agency.writeAgency();
