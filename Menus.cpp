@@ -41,18 +41,18 @@ int manageClients(Agency &agency)
 		cin >> idx;
 		cin.ignore(10000, '\n');
 		agency.removeClient(idx);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '3':
+	case '3':        //Change clients
 		system("CLS");
 		agency.showAllClientsName();
 		cout << "Wich one you want to change? ";
 		cin >> idx;
 		cin.ignore(1000, '\n');
 		agency.changeClient(idx);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;

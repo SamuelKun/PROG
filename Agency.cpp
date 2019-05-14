@@ -332,6 +332,7 @@ void Agency::setAddress(Address address)
 	 string client_postalCode;
 	 string client_location;
 	 string client_packs;
+	 char confirm;
 
 	 cout << "Name: " << endl;
 	 getline(cin, client_name);
@@ -384,11 +385,28 @@ void Agency::setAddress(Address address)
 	 cout << "	Locality: ";
 	 getline(cin, client_location);
 
-	 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
-	 clients[position].setName(client_name);
-	 clients[position].setVATnumber(client_VATnumber);
-	 clients[position].setFamilySize(client_familySize);
-	 clients[position].setAddress(client_address);
+	 cout << endl << "Are you sure about adding " << client_name << "? [Y/N] " << endl;
+
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+
+	 if (confirm == 'y')
+	 {
+		 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
+		 clients[position].setName(client_name);
+		 clients[position].setVATnumber(client_VATnumber);
+		 clients[position].setFamilySize(client_familySize);
+		 clients[position].setAddress(client_address);
+		 cout << "Done! ";
+	 }
+	 else if (confirm == 'n')
+		 cout << "Canceled! ";
+
 	 //PERGUNTAR AO STOR SOBRE ISTO
 	 /*vector<string> all_client_packs = clients[position].getPacketList();
 
