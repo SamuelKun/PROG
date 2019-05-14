@@ -819,8 +819,7 @@ void Agency::setAddress(Address address)
  
  void Agency::buyPack()
  {
-	 int pack_number;
-	 unsigned client_number;
+	 int pack_number, client_number;
 	 int idx = getPackets().size();
 	 int price, totalsold;
 	 char confirm;
@@ -865,7 +864,7 @@ void Agency::setAddress(Address address)
 					 do {
 						cin.clear();
 						cin.ignore(10000, '\n');
-						cin >> client_number; //SE FOR MENOR QUE 0 VOLTAR A PEDIR!!!!!!!!
+						cin >> client_number;
 						if(client_number >= getClients().size() || pack_number < 0) cout << "Invalid order number! Order number: ";
 					} while (client_number >= getClients().size() || pack_number < 0);
 
