@@ -376,7 +376,7 @@ int buyPacks(Agency &agency)
 	cout << "Press a letter to go back to Main Menu! ";
 	cin >> menu;
 	cin.ignore(10000, '\n');
-	return 0;
+	return 1;
 }
 
 
