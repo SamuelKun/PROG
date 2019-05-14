@@ -30,7 +30,7 @@ int manageClients(Agency &agency)
 	case '1':        //Add Clients
 		system("CLS");
 		agency.addClient();
-		cout << "Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -41,7 +41,7 @@ int manageClients(Agency &agency)
 		cin >> idx;
 		cin.ignore(10000, '\n');
 		agency.removeClient(idx);
-		cout << "Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -52,7 +52,7 @@ int manageClients(Agency &agency)
 		cin >> idx;
 		cin.ignore(1000, '\n');
 		agency.changeClient(idx);
-		cout << "Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -88,7 +88,7 @@ int managePacks(Agency &agency)
 	case'1':        //Add Packs
 		system("CLS");
 		agency.addPack();
-		cout << "Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -100,7 +100,7 @@ int managePacks(Agency &agency)
 		cin >> idx;
 		cin.ignore(10000, '\n');
 		agency.removePack(idx);
-		cout << "Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -112,7 +112,7 @@ int managePacks(Agency &agency)
 		cin >> idx;
 		cin.ignore(10000, '\n');
 		agency.changePack(idx);
-		cout << "Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -144,7 +144,7 @@ int viewSpecificPacks(Agency &agency)
 	cout << "[2] Date " << endl;
 	cout << "[3] Destiny and Date" << endl;
 	cout << "[4] Client" << endl;
-	cout << "[0] Back to Main Menu" << endl;
+	cout << "[0] Back to the previous Menu" << endl;
 
 	cin >> menu;
 
@@ -154,28 +154,28 @@ int viewSpecificPacks(Agency &agency)
 
 		system("CLS");
 		agency.showDestinyPacks();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '2':        //Date
 		system("CLS");
 		agency.showDatePacks();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '3':        //Destiny and Date
 		system("CLS");
 		agency.showDestinyAndDatePacks();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '4':        //Client
 		system("CLS");
 		agency.show1ClientPacks();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -197,7 +197,7 @@ int viewPacks(Agency &agency)
 	cout << "[1] View all packs " << endl;
 	cout << "[2] View all packs IDs " << endl;
 	cout << "[3] View Specific Packs " << endl;
-	cout << "[0] Back to Main Menu" << endl;
+	cout << "[0] Back to the previous Menu" << endl;
 
 	cin >> menu;
 
@@ -206,21 +206,21 @@ int viewPacks(Agency &agency)
 	case '1':        //View All Packs
 		system("CLS");
 		agency.showAllPackets();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '2':
 		system("CLS");
 		agency.showAllPacksID();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '3':        //View Specific Packs
 		system("CLS");
 		viewSpecificPacks(agency);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -244,7 +244,7 @@ int viewClients(Agency &agency)
 	cout << "[1] View all clients " << endl;
 	cout << "[2] View all clients name " << endl;
 	cout << "[3] View one client " << endl;
-	cout << "[0] Back to Main Menu" << endl;
+	cout << "[0] Back to the previous Menu" << endl;
 
 	cin >> menu;
 
@@ -253,21 +253,21 @@ int viewClients(Agency &agency)
 	case '1':        //View All Clients
 		system("CLS");
 		agency.showAllClients();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '2':
 		system("CLS");
 		agency.showAllClientsName();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
 	case '3':        //View 1 Client
 		system("CLS");
 		agency.show1Client();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -315,7 +315,7 @@ int viewInformation(Agency &agency)
 	case '4':        //View the ammount of packs sold and earned currency
 		system("CLS");
 		agency.ammountSold();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -326,13 +326,12 @@ int viewInformation(Agency &agency)
 		while (n < 0)
 		{
 			cout << "Value must be positive: ";
-			cin.ignore();
 			cin.ignore(1000, '\n');
 			cin.clear();
 			cin >> n;
 		}
 		agency.mostVisited(n);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -344,13 +343,12 @@ int viewInformation(Agency &agency)
 		while (n < 0)
 		{
 			cout << "Value must be positive: ";
-			cin.ignore();
 			cin.ignore(1000, '\n');
 			cin.clear();
 			cin >> n;
 		}
 		agency.ClientMostVisited(n);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
