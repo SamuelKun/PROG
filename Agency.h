@@ -60,8 +60,8 @@ public:
 	void buyPack();
 
 	// N MOST VISITED method
-	void mostVisited(int n) const;
-	void ClientMostVisited(int n) const;
+	void mostVisited(unsigned n) const;
+	void ClientMostVisited(unsigned n) const;
 
 	//SAVE TO FILE method
 	void writeAgency() const;
