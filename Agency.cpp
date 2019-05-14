@@ -453,6 +453,7 @@ void Agency::setAddress(Address address)
 	 double pack_pricePerPerson; // price per person
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
 	 unsigned pack_availableTickets; // número de lugares já reservados
+	 char confirm; // verificador [Y/N]
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
@@ -512,10 +513,25 @@ void Agency::setAddress(Address address)
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_availableTickets;
 	 }
-	 
-	 Packet newPack(pack_id, pack_places, start_date, end_date, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
 
-	 this->packets.push_back(newPack);
+	 cout << endl << "Are you sure about adding the pack with identifier " << pack_id << "? [Y/N] " << endl;
+
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+
+	 if (confirm == 'y')
+	 {
+		 Packet newPack(pack_id, pack_places, start_date, end_date, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
+		 this->packets.push_back(newPack);
+		 cout << "Done! ";
+	 }
+	 else if (confirm == 'n')
+		 cout << "Canceled! ";
  }
 
  void Agency::changePack(int position)
@@ -525,6 +541,7 @@ void Agency::setAddress(Address address)
 	 double pack_pricePerPerson; // price per person
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
 	 unsigned pack_availableTickets; // número de lugares já reservados
+	 char confirm; // verifier [Y/N]
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
@@ -573,25 +590,59 @@ void Agency::setAddress(Address address)
 		 cout << "Not a valid number. Please reenter: ";
 		 cin >> pack_availableTickets;
 	 }
+	 cout << endl << "Are you sure about changing the pack with identifier " << pack_id << "? [Y/N] " << endl;
 
-	 packets[position].setId(pack_id);
-	 packets[position].setPlaces(pack_places);
-	 packets[position].setBeginDate(start_date);
-	 packets[position].setEndDate(end_date);
-	 packets[position].setPricePerPerson(pack_pricePerPerson);
-	 packets[position].setMaxTickets(pack_maxTickets);
-	 packets[position].setAvailableTickets(pack_availableTickets);
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+
+	 if (confirm == 'y')
+	 {
+		 packets[position].setId(pack_id);
+		 packets[position].setPlaces(pack_places);
+		 packets[position].setBeginDate(start_date);
+		 packets[position].setEndDate(end_date);
+		 packets[position].setPricePerPerson(pack_pricePerPerson);
+		 packets[position].setMaxTickets(pack_maxTickets);
+		 packets[position].setAvailableTickets(pack_availableTickets);
+		 cout << "Done! ";
+	 }
+	 else if (confirm == 'n')
+		 cout << "Canceled! ";
+
  }
 
  void Agency::removePack(int position)
  {
-	 int newId = -packets[position].getId();
-	 this->packets[position].setId(newId);
+	 char confirm;
+	 cout << endl << "Are you sure about removing the pack with identifier " << getPackets()[position].getId() << "? [Y/N] " << endl;
+
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+
+	 if (confirm == 'y')
+	 {
+		 int newId = -packets[position].getId();
+		 this->packets[position].setId(newId);
+		 cout << "Done! ";
+	 }
+	 else if (confirm == 'n')
+		 cout << "Canceled! ";
+
  }
 
 
  /*******************************
-* SHOW ALL CLIETNS AND PACKS    *
+* SHOW ALL CLIENTS AND PACKS    *
 ********************************/
  void Agency::showAllClientsName() const
  {

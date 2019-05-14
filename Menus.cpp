@@ -88,7 +88,7 @@ int managePacks(Agency &agency)
 	case'1':        //Add Packs
 		system("CLS");
 		agency.addPack();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -99,7 +99,7 @@ int managePacks(Agency &agency)
 		cin >> idx;
 		cin.ignore(10000, '\n');
 		agency.removePack(idx);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
@@ -110,7 +110,7 @@ int managePacks(Agency &agency)
 		cin >> idx;
 		cin.ignore(10000, '\n');
 		agency.changePack(idx);
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
