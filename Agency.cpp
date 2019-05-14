@@ -423,7 +423,24 @@ void Agency::setAddress(Address address)
 
  void Agency::removeClient(int position)
  {
-	 clients.erase(clients.begin() + position);
+	 char confirm;
+	 cout << endl << "Are you sure about adding " << getClients()[position].getName() << "? [Y/N] " << endl;
+
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+
+	 if (confirm == 'y')
+	 {
+		 clients.erase(clients.begin() + position);
+		 cout << "Done! ";
+	 }
+	 else if (confirm == 'n')
+		 cout << "Canceled! ";
  }
 
  /*******************************
