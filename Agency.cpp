@@ -247,6 +247,7 @@ void Agency::setAddress(Address address)
 	 string client_floor;
 	 string client_postalCode;
 	 string client_location;
+	 char confirm;
 
 	 cin.ignore(1000, '\n');
 	 cout << "Name: " << endl;
@@ -298,10 +299,26 @@ void Agency::setAddress(Address address)
 	 cout << "	Locality: ";
 	 getline(cin, client_location);
 
-	 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
-	 Client newclient(client_name, client_VATnumber, client_familySize, client_address);
-	 
-	 this->clients.push_back(newclient);
+	 cout << endl << "Are you sure about adding " << client_name << "? [Y/N] " << endl;
+
+	 do {
+		 cin.clear();
+		 cin >> confirm;
+		 confirm = tolower(confirm);
+	 } while (!(confirm == 'y' || confirm == 'n'));
+
+	 system("CLS");
+
+	 if (confirm == 'y')
+	 {
+		 Address client_address(client_street, client_doorNumber, client_floor, client_postalCode, client_location);
+		 Client newclient(client_name, client_VATnumber, client_familySize, client_address);
+		 this->clients.push_back(newclient);
+		 cout << "Done! ";
+	 }
+	 else if(confirm == 'n')
+		 cout << "Canceled! ";
+
  }
 
  void Agency::changeClient(int position)

@@ -30,7 +30,7 @@ int manageClients(Agency &agency)
 	case '1':        //Add Clients
 		system("CLS");
 		agency.addClient();
-		cout << "Done! Press a letter to go back to Main Menu! ";
+		cout << "Press a letter to go back to Main Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
