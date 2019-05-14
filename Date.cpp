@@ -57,45 +57,6 @@ unsigned Date::getYear() const
  * SET Methods
  ********************************/
 
-void Date::manualDate()
-{
-	int this_year, this_month, this_day;
-	cout << "	Year: ";
-	cin >> this_year;
-	while (cin.fail())
-	{
-		cin.clear();
-		cin.ignore();
-		cin.ignore(1000, '\n');
-		cout << "Not a valid number. Please reenter: ";
-		cin >> this_year;
-	}
-	cout << "	Month: ";
-	cin >> this_month;
-	while (cin.fail())
-	{
-		cin.clear();
-		cin.ignore();
-		cin.ignore(1000, '\n');
-		cout << "Not a valid number. Please reenter: ";
-		cin >> this_month;
-	}
-	cout << "	Day: ";
-	cin >> this_day;
-	while (cin.fail())
-	{
-		cin.clear();
-		cin.ignore();
-		cin.ignore(1000, '\n');
-		cout << "Not a valid number. Please reenter: ";
-		cin >> this_day;
-	}
-
-	year = this_year;
-	month = this_month;
-	day = this_day;
-}
-
 void Date::setDay(unsigned short day) 
 {
 	this->day = day;
@@ -141,4 +102,45 @@ ostream& operator<<(ostream& out, const Date &date)
 {
 	out << date.getYear() << '/' << date.getMonth() << '/' << date.getDay() << endl;
 	return out;
+}
+
+istream& operator>>(istream& in, Date &date)
+{
+	int this_year, this_month, this_day;
+	cout << "	Year: ";
+	in >> this_year;
+	while (in.fail())
+	{
+		in.clear();
+		in.ignore();
+		in.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		in >> this_year;
+	}
+	cout << "	Month: ";
+	in >> this_month;
+	while (cin.fail())
+	{
+		in.clear();
+		in.ignore();
+		in.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		in >> this_month;
+	}
+	cout << "	Day: ";
+	in >> this_day;
+	while (in.fail())
+	{
+		in.clear();
+		in.ignore();
+		in.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		in >> this_day;
+	}
+
+	date.year = this_year;
+	date.month = this_month;
+	date.day = this_day;
+
+	return in;
 }
