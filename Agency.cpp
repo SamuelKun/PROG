@@ -903,7 +903,7 @@ void Agency::setAddress(Address address)
 * MOST VISITED method
 ********************************/
 
-void Agency::mostVisited(unsigned n) const
+void Agency::mostVisited(int n) const
  {
 	 map <string, int> locais;
 	 
@@ -945,7 +945,7 @@ void Agency::mostVisited(unsigned n) const
 	 }
 }
 
-void Agency::ClientMostVisited(unsigned n) const
+void Agency::ClientMostVisited(int n) const
 {
 	multimap <int, string, greater<int>> locais;
 	vector<int> timesvisited;
@@ -1039,7 +1039,7 @@ void Agency::writeAgency() const
 		write_clients << getClients()[i].getVATnumber() << endl;
 		write_clients << getClients()[i].getFamilySize() << endl;
 		write_clients << getClients()[i].getAddress().getStreet() << " / " << getClients()[i].getAddress().getDoorNumber() << " / " << getClients()[i].getAddress().getFloor() << " / " << getClients()[i].getAddress().getPostalCode() << " / " << getClients()[i].getAddress().getLocation() << endl;
-		for (size_t j = 0; j < getClients()[i].getPacketList().size(); j++)
+		for (int j = 0; j < getClients()[i].getPacketList().size(); j++)
 		{
 			write_clients << getClients()[i].getPacketList()[j];
 			if (j != getClients()[i].getPacketList().size() - 1) write_clients << " ; ";
