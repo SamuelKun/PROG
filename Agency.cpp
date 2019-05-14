@@ -893,41 +893,34 @@ void Agency::setAddress(Address address)
 
 void Agency::mostVisited(int n) const
  {
-	multimap <int, string> locais;
-	map <string, int> new_locals;
-	multimap <int, string, greater<int>> finally_i_promise;
-	vector<int> timesvisited;
-	vector<string> visitedLocals;
+	 map <string, int> locais;
+	 
+	 multimap<int, string, greater<int>> locais_ordered;
+	 vector<int> timesvisited;
+	 vector<string> visitedLocals;
 
+	 for (size_t i = 0; i < getPackets().size(); i++)
+	 {
+			 if (locais.find(getPackets()[i].getPlaces()) != locais.end())
+			 {
+				 locais[getPackets()[i].getPlaces()] += getPackets()[i].getAvailableTickets();
+			 }
+			 else
+			 {
+				 locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+			 }
+	 }
 
-	for (size_t i = 0; i < getPackets().size(); i++)
-	{
-		locais.insert(pair<int, string>(getPackets()[i].getAvailableTickets(), getPackets()[i].getPlaces()));
-	}
+	 for (auto change : locais)
+	 {
+		 locais_ordered.insert(pair<int, string>(change.second, change.first));
+	 }
 
-	for (auto a : locais)
-	{
-		if (new_locals.find(a.second) != new_locals.end())
-		{
-			new_locals[a.second] += a.first;
-		}
-		else
-		{
-			new_locals.insert(pair<string, int>(a.second, a.first));
-		}
-	}
-
-	for (auto change : new_locals)
-	{
-		finally_i_promise.insert(pair<int, string>(change.second, change.first));
-	}
-
-	for (auto p : finally_i_promise)
-	{
-		timesvisited.push_back(p.first);
-		visitedLocals.push_back(p.second);
-	}
-
+	 for (auto p : locais_ordered)
+	 {
+		 timesvisited.push_back(p.first);
+		 visitedLocals.push_back(p.second);
+	 }
 
 	 cout << endl;
 
