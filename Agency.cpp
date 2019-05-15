@@ -436,6 +436,7 @@ void Agency::setAddress(Address address)
  void Agency::addPack()
  {
 	 short pack_id; // packet unique identifier
+	 vector<int> allIds;
 	 string pack_places; // touristic sites to visit
 	 double pack_pricePerPerson; // price per person
 	 Date start_date;
@@ -447,17 +448,19 @@ void Agency::setAddress(Address address)
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
 
-	 this->lastId = pack_id;
-
-	 while (cin.fail())
+	 for (size_t i = 0; i < packets.size(); i++)
 	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_id;
+		 allIds.push_back(packets[i].getId());
 	 }
 
+	 while (cin.fail() || find(allIds.begin(), allIds.end(), pack_id) != allIds.end() || find(allIds.begin(), allIds.end(), -pack_id) != allIds.end())
+	 {
+		 cin.clear();
+		 cin.ignore(1000, '\n');
+		 cout << "Not a valid identifier. Please reenter: ";
+		 cin >> pack_id;
+	 }
+	 this->lastId = pack_id;
 	 cout << "Locals: " << endl;
 	 cin.ignore(1000, '\n');
 	 getline(cin, pack_places);
