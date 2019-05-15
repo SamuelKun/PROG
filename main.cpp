@@ -36,13 +36,31 @@ int main()
 		AgencyFile.open(filename);
 	}
 
-  Agency agency(filename);   // create the agency
 
-  bool dontEnd = true;
-  while (dontEnd)
-  {
-	  dontEnd = mainMenu(agency);
-  }
+	ifstream agencyfile(filename);
+
+	vector<string> agency_info;
+	string name_temp;
+	if (agencyfile.is_open())
+	{
+		while (getline(agencyfile, name_temp))
+		{
+			agency_info.push_back(name_temp);
+		}
+
+		ifstream clientsfile(agency_info[4]);
+		ifstream packsfile(agency_info[5]);
+		if (clientsfile.is_open() && packsfile.is_open())
+		{
+			Agency agency(filename);   // create the agency
+			while (!mainMenu(agency)); // Run the main menu
+		}
+		else cout << "Unable to open clients file or/and packsfile!";
+		
+	}
+	else cout << "Unable to open agency file!";
+
+  
   _getwch();
   return 0;
 

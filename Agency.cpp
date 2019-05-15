@@ -8,6 +8,26 @@
 
 using namespace std;
 
+/*********************************
+* TEST WRONG INPUTS
+********************************/
+int failInput(int input)
+{
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore();
+		cin.ignore(1000, '\n');
+		cout << "Not a valid number. Please reenter: ";
+		cin >> input;
+	}
+	return 1;
+}
+
+/*********************************
+* AGENCY methods
+********************************/
+
 Agency::Agency(string file_name)
 {
 	
@@ -15,15 +35,8 @@ Agency::Agency(string file_name)
 	ifstream info(file_name);
 	vector<string> agency_info;
 	string name_temp;
-	if (info.is_open())
-	{
-		while (getline(info, name_temp))
-		{
-			agency_info.push_back(name_temp);
-		}
-		info.close();
-	}
-	else cout << "Unable to open file"; 
+	while (getline(info, name_temp)) agency_info.push_back(name_temp);
+
 	
 	//Add name, VATnumver, URL and address to agency
 	this->name = agency_info[0];
@@ -252,27 +265,15 @@ void Agency::setAddress(Address address)
 	 cin.ignore(1000, '\n');
 	 cout << "Name: " << endl;
 	 getline(cin, client_name);
+
 	 cout << "NIF: " << endl;
 	 cin >> client_VATnumber;
-	 while (cin.fail()) // Used to test if user write a invalid input
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> client_VATnumber;
-	 }
+	 failInput(client_VATnumber);
+
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
+	 failInput(client_familySize);
 
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> client_familySize;
-	 }
 	 cin.ignore(1000, '\n');
 	 cout << "Adress:" << endl;
 	 cout << "	Street: ";
@@ -280,14 +281,7 @@ void Agency::setAddress(Address address)
 
 	 cout << "	Door: ";
 	 cin >> client_doorNumber;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> client_doorNumber;
-	 }
+	 failInput(client_doorNumber);
 
 	 cout << "	Floor: ";
 	 cin.ignore(1000, '\n');
@@ -339,25 +333,11 @@ void Agency::setAddress(Address address)
 
 	 cout << "NIF: " << endl;
 	 cin >> client_VATnumber;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> client_VATnumber;
-	 }
+	 failInput(client_VATnumber);
 
 	 cout << "Size of household: " << endl;
 	 cin >> client_familySize;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> client_familySize;
-	 }
+	 failInput(client_familySize);
 
 	 cin.ignore(1000, '\n');
 	 cout << "Adress:" << endl;
@@ -366,14 +346,7 @@ void Agency::setAddress(Address address)
 
 	 cout << "	Door: ";
 	 cin >> client_doorNumber;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> client_doorNumber;
-	 }
+	 failInput(client_doorNumber);
 
 	 cout << "	Floor: ";
 	 cin.ignore(1000, '\n');
@@ -442,7 +415,7 @@ void Agency::setAddress(Address address)
 	 Date start_date;
 	 Date end_date;
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
-	 unsigned pack_availableTickets; // número de lugares já reservados
+	 unsigned pack_remainingTickets; // número de lugares já reservados
 	 char confirm; // verificador [Y/N]
 
 	 cout << "Identifier: " << endl;
@@ -473,36 +446,15 @@ void Agency::setAddress(Address address)
 
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_pricePerPerson;
-	 }
+	 failInput(pack_pricePerPerson);
 
 	 cout << "Capacity: " << endl;
 	 cin >> pack_maxTickets;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_maxTickets;
-	 }
+	 failInput(pack_maxTickets);
 
 	 cout << "Sold Tickets: " << endl;
-	 cin >> pack_availableTickets;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_availableTickets;
-	 }
+	 cin >> pack_remainingTickets;
+	 failInput(pack_remainingTickets);
 
 	 cout << endl << "Are you sure about adding the pack with identifier " << pack_id << "? [Y/N] " << endl;
 
@@ -516,7 +468,7 @@ void Agency::setAddress(Address address)
 
 	 if (confirm == 'y')
 	 {
-		 Packet newPack(pack_id, pack_places, start_date, end_date, pack_pricePerPerson, pack_maxTickets, pack_availableTickets);
+		 Packet newPack(pack_id, pack_places, start_date, end_date, pack_pricePerPerson, pack_maxTickets, pack_remainingTickets);
 		 this->packets.push_back(newPack);
 		 cout << "Done! ";
 	 }
@@ -532,7 +484,7 @@ void Agency::setAddress(Address address)
 	 Date end_date;
 	 double pack_pricePerPerson; // price per person
 	 unsigned pack_maxTickets; // máximo de lugares disponíveis
-	 unsigned pack_availableTickets; // número de lugares já reservados
+	 unsigned pack_remainingTickets; // número de lugares já reservados
 	 char confirm; // verifier [Y/N]
 
 	 cout << "Identifier: " << endl;
@@ -550,36 +502,16 @@ void Agency::setAddress(Address address)
 
 	 cout << "Price: " << endl;
 	 cin >> pack_pricePerPerson;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_pricePerPerson;
-	 }
+	 failInput(pack_pricePerPerson);
 
 	 cout << "Capacity: " << endl;
 	 cin >> pack_maxTickets;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_maxTickets;
-	 }
+	 failInput(pack_maxTickets);
 
 	 cout << "Places already reserved: : " << endl;
-	 cin >> pack_availableTickets;
-	 while (cin.fail())
-	 {
-		 cin.clear();
-		 cin.ignore();
-		 cin.ignore(1000, '\n');
-		 cout << "Not a valid number. Please reenter: ";
-		 cin >> pack_availableTickets;
-	 }
+	 cin >> pack_remainingTickets;
+	 failInput(pack_remainingTickets);
+	
 	 cout << endl << "Are you sure about changing the pack with identifier " << pack_id << "? [Y/N] " << endl;
 
 	 do {
@@ -598,7 +530,7 @@ void Agency::setAddress(Address address)
 		 packets[position].setEndDate(end_date);
 		 packets[position].setPricePerPerson(pack_pricePerPerson);
 		 packets[position].setMaxTickets(pack_maxTickets);
-		 packets[position].setAvailableTickets(pack_availableTickets);
+		 packets[position].setremainingTickets(pack_remainingTickets);
 		 cout << "Done! ";
 	 }
 	 else if (confirm == 'n')
@@ -807,85 +739,92 @@ void Agency::setAddress(Address address)
  void Agency::buyPack()
  {
 	 int pack_number, client_number;
-	 map<short, Packet> packs_map; // DO THIS TO
 	 int idx = getPackets().size();
 	 int price, totalsold;
 	 char confirm;
+	 //Show Packets and packets order number!
 	 showAllPackets();
 	 showAllPacksID();
-	 cout << "What do you want to buy? Insert the order number to choice! " << endl;
 
-	 do {
-		 do {
-			 do {
-				 cin.clear();
-				 cin.ignore(10000, '\n');
-				 cout << "You can't buy packages with ' - ' before! Order number: ";
-				 cin >> pack_number;
-			 } while (cin.fail());
-		 } while (pack_number >= idx || pack_number < 0);
-	 } while (getPackets()[pack_number].getId() < 0);
-
-	 
-	 cout << endl << "Are you sure about purchase the pack with identifier " << getPackets()[pack_number].getId() << "? [Y/N] " << endl;
-
-	 do {
-		 cin.clear();
-		 cin >> confirm;
-		 confirm = tolower(confirm);
-	 } while (!(confirm == 'y' || confirm == 'n'));
-
-	 system("CLS");
-		switch (confirm)
+	 cout << "What do you want to buy? Insert the order number to choice! You can't buy packages with ' - ' before! Order number: " << endl;
+	 cin >> pack_number;
+	
+		if (cin.fail() || (pack_number >= idx) || (pack_number < 0) || (getPackets()[pack_number].getId() < 0))
 		{
-		case 'y':
-			showAllClientsName();
-			cout << "Are you one of the above: [Y/N]" << endl;
+			cout << "You can't buy that pack because: \n-> It's unvailable \n-> There is not packet with that order number \n-> No remaing tickets to be sold!\n";
+		}
+		else
+		{
+			cout << endl << "Are you sure about purchase the pack with identifier " << getPackets()[pack_number].getId() << "? [Y/N] " << endl;
+
+
 			do {
-				 cin >> confirm;
-				 confirm = tolower(confirm);
+				cin.clear();
+				cin >> confirm;
+				confirm = tolower(confirm);
 			} while (!(confirm == 'y' || confirm == 'n'));
 
+			system("CLS");
+			switch (confirm)
+			{
+			case 'y':
 
-				 switch (confirm)
-				 {
-				 case 'y':
-					 cout << "Select your order number: ";
-					 do {
+				//If user choose to buy a pack;
+				showAllClientsName();
+				cout << "Are you one of the above: [Y/N]" << endl;
+				do {
+					cin >> confirm;
+					confirm = tolower(confirm);
+				} while (!(confirm == 'y' || confirm == 'n'));
+
+				//Switch -> Yes [y] if user has a profile on agency; No [n] if not
+				switch (confirm)
+				{
+				case 'y':
+					cout << "Select your order number: ";
+					//To handle invalid inputs if user put a non-existing order number
+					do {
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cin >> client_number;
-						if(client_number >= getClients().size() || pack_number < 0) cout << "Invalid order number! Order number: ";
+						if (client_number >= getClients().size() || pack_number < 0) cout << "Invalid order number! Order number: ";
 					} while (client_number >= getClients().size() || pack_number < 0);
 
-					if (getPackets()[pack_number].getMaxTickets() >= getPackets()[pack_number].getAvailableTickets() + getClients()[client_number].getFamilySize())
+					if (getPackets()[pack_number].getMaxTickets() >= getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize())
 					{
+						//Calculate the total price that person spent
 						price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize();
-						totalsold = getPackets()[pack_number].getAvailableTickets() + getClients()[client_number].getFamilySize();
+						//Calculate the number total of packets sold
+						totalsold = getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize();
+						//Update the class
 						clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
 						clients[client_number].addTotalPurchased(price);
-						packets[pack_number].setAvailableTickets(totalsold);
-					 cout << "Done! ";
+						packets[pack_number].setremainingTickets(totalsold);
+						cout << "Done! ";
 					}
 					else
 					{
-						cout << "Due to your family size it is not possible to buy packages for everyone! Try to buy another package! "; 
+						//If family Size is to big and theres no packets for all family!
+						cout << "Due to your family size it is not possible to buy packages for everyone! Try to buy another package! ";
 					}
 
-					 break;
-				 case 'n':
-					 cout << "You need to create an account before buy packs! Go to Manage Clients to create!" << endl;
-					 break;
-				 default:
-					 break;
-			}
-			break;
+					break;
+				case 'n':
 
-		 case 'n':
-			 cout << "Canceled! ";
-		 default:
-			 break;
-		 }
+					cout << "You need to create an account before buy packs! Go to Manage Clients to create!" << endl;
+					break;
+				default:
+					break;
+				}
+				break;
+
+			case 'n':
+				
+				cout << "Canceled! ";
+			default:
+				break;
+			}
+		}
  }
 
  /*********************************
@@ -903,11 +842,11 @@ void Agency::mostVisited(int n) const
 	 {
 			 if (locais.find(getPackets()[i].getPlaces()) != locais.end())
 			 {
-				 locais[getPackets()[i].getPlaces()] += getPackets()[i].getAvailableTickets();
+				 locais[getPackets()[i].getPlaces()] += getPackets()[i].getremainingTickets();
 			 }
 			 else
 			 {
-				 locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+				 locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getremainingTickets()));
 			 }
 	 }
 
@@ -945,11 +884,11 @@ void Agency::ClientMostVisited(int n) const
 	{
 		if (locais.find(getPackets()[i].getPlaces()) != locais.end())
 		{
-			locais[getPackets()[i].getPlaces()] += getPackets()[i].getAvailableTickets();
+			locais[getPackets()[i].getPlaces()] += getPackets()[i].getremainingTickets();
 		}
 		else
 		{
-			locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getAvailableTickets()));
+			locais.insert(pair<string, int>(getPackets()[i].getPlaces(), getPackets()[i].getremainingTickets()));
 		}
 	}
 
@@ -1032,35 +971,35 @@ void Agency::writeAgency() const
 	ofstream write_packs(this->packsFile);
 
 	//Clients
-	for (size_t i = 0; i < getClients().size(); i++)
+	for (size_t i = 0; i < clients.size(); i++)
 	{
-		write_clients << getClients()[i].getName() << endl;
-		write_clients << getClients()[i].getVATnumber() << endl;
-		write_clients << getClients()[i].getFamilySize() << endl;
-		write_clients << getClients()[i].getAddress().getStreet() << " / " << getClients()[i].getAddress().getDoorNumber() << " / " << getClients()[i].getAddress().getFloor() << " / " << getClients()[i].getAddress().getPostalCode() << " / " << getClients()[i].getAddress().getLocation() << endl;
-		for (int j = 0; j < getClients()[i].getPacketList().size(); j++)
+		write_clients << clients[i].getName() << endl;
+		write_clients << clients[i].getVATnumber() << endl;
+		write_clients << clients[i].getFamilySize() << endl;
+		write_clients << clients[i].getAddress().getStreet() << " / " << clients[i].getAddress().getDoorNumber() << " / " << clients[i].getAddress().getFloor() << " / " << clients[i].getAddress().getPostalCode() << " / " << clients[i].getAddress().getLocation() << endl;
+		for (int j = 0; j < clients[i].getPacketList().size(); j++)
 		{
-			write_clients << getClients()[i].getPacketList()[j];
-			if (j != getClients()[i].getPacketList().size() - 1) write_clients << " ; ";
+			write_clients << clients[i].getPacketList()[j];
+			if (j != clients[i].getPacketList().size() - 1) write_clients << " ; ";
 		}
-		write_clients << endl << getClients()[i].getTotalPurchased() << endl;
-		if (i != getClients().size() - 1) write_clients << "::::::::::" << endl;
+		write_clients << endl << clients[i].getTotalPurchased() << endl;
+		if (i != clients.size() - 1) write_clients << "::::::::::" << endl;
 	}
 	
 	//TravelPacks
 
 	write_packs << this->lastId << endl; // ADD LAST PACK DO IT LATER
 
-	for (size_t i = 0; i < getPackets().size(); i++)
+	for (size_t i = 0; i < packets.size(); i++)
 	{
-		write_packs << getPackets()[i].getId() << endl;
-		write_packs << getPackets()[i].getPlaces() << endl;
-		write_packs << getPackets()[i].getBeginDate().getYear() <<'/' << getPackets()[i].getBeginDate().getMonth() << '/' << getPackets()[i].getBeginDate().getDay() << endl;
-		write_packs << getPackets()[i].getEndDate().getYear() << '/' << getPackets()[i].getEndDate().getMonth() << '/' << getPackets()[i].getEndDate().getDay() << endl;
-		write_packs << getPackets()[i].getPricePerPerson() << endl;
-		write_packs << getPackets()[i].getMaxTickets() << endl;
-		write_packs << getPackets()[i].getAvailableTickets();
-		if (i != getPackets().size() - 1) write_packs << endl << "::::::::::" << endl;
+		write_packs << packets[i].getId() << endl;
+		write_packs << packets[i].getPlaces() << endl;
+		write_packs << packets[i].getBeginDate().getYear() <<'/' << packets[i].getBeginDate().getMonth() << '/' << packets[i].getBeginDate().getDay() << endl;
+		write_packs << packets[i].getEndDate().getYear() << '/' << packets[i].getEndDate().getMonth() << '/' << packets[i].getEndDate().getDay() << endl;
+		write_packs << packets[i].getPricePerPerson() << endl;
+		write_packs << packets[i].getMaxTickets() << endl;
+		write_packs << packets[i].getremainingTickets();
+		if (i != packets.size() - 1) write_packs << endl << "::::::::::" << endl;
 	}
 }
 

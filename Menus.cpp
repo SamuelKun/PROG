@@ -470,12 +470,12 @@ unsigned mainMenu(Agency &agency)
 			break;
 		case '0':
 			agency.writeAgency();
-			return 0;
+			return 1;
 			break;
 		default:
 			mainMenu(agency);
 			break;
 		}
 
-	return 1;
+		return 0;
 }

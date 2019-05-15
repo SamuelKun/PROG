@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Packet::Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets)
+Packet::Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned remainingTickets)
 {
 	this->id = id;
 	this->places = places;
@@ -13,7 +13,7 @@ Packet::Packet(short id, string places, Date begin, Date end, double pricePerPer
 	this->end = end;
 	this->pricePerPerson = pricePerPerson;
 	this->maxTickets = maxTickets;
-	this->availableTickets = availableTickets;
+	this->remainingTickets = remainingTickets;
 }
 
 
@@ -52,9 +52,9 @@ unsigned Packet::getMaxTickets() const
 	return maxTickets;
 }
 
-unsigned Packet::getAvailableTickets() const
+unsigned Packet::getremainingTickets() const
 {
-	return availableTickets;
+	return remainingTickets;
 }
 
 /*********************************
@@ -95,9 +95,9 @@ void Packet::setMaxTickets(unsigned maxTickets)
 	this->maxTickets = maxTickets;
 }
 
-void Packet::setAvailableTickets(unsigned availableTickets)
+void Packet::setremainingTickets(unsigned remainingTickets)
 {
-	this->availableTickets = availableTickets;
+	this->remainingTickets = remainingTickets;
 }
 
 /*********************************
@@ -122,7 +122,7 @@ ostream& operator<<(ostream& out, const Packet &packet)
 	out << packet.getEndDate();
 	out << "Price per Person: " << packet.getPricePerPerson() << endl;
 	out << "Capacity: " << packet.getMaxTickets() << endl;
-	out << "Places already reserved: " << packet.getAvailableTickets() << endl;
+	out << "Places already reserved: " << packet.getremainingTickets() << endl;
 	out << endl << "----------------------------------------------------" << endl;
 	return out;
 }

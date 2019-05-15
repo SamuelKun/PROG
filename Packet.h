@@ -10,7 +10,7 @@ using namespace std;
 
 class Packet{
  public:
-	 Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned availableTickets);
+	 Packet(short id, string places, Date begin, Date end, double pricePerPerson, unsigned maxTickets, unsigned remainingTickets);
 
   // GET methods
   short getId() const;
@@ -19,7 +19,7 @@ class Packet{
   Date getEndDate() const;
   double getPricePerPerson() const;
   unsigned getMaxTickets() const;
-  unsigned getAvailableTickets() const;
+  unsigned getremainingTickets() const;
 
   // SET methods
   void setId(unsigned id);  // to set negatve if "deprecated"
@@ -28,7 +28,7 @@ class Packet{
   void setEndDate(Date end);
   void setPricePerPerson(double pricePerPerson);
   void setMaxTickets(unsigned maxTickets);
-  void setAvailableTickets(unsigned avaiabaleTickets);
+  void setremainingTickets(unsigned avaiabaleTickets);
 
   //Show methods
   void showPlaces() const;
@@ -42,5 +42,5 @@ private:
 	Date end;  // end date
 	double pricePerPerson; // price per person
 	unsigned maxTickets; // máximo de lugares disponíveis
-	unsigned availableTickets; // número de lugares já reservados
+	unsigned remainingTickets; // número de lugares já reservados
 };
