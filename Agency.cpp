@@ -813,11 +813,13 @@ void Agency::setAddress(Address address)
 	 cout << "What do you want to buy? Insert the order number to choice! " << endl;
 
 	 do {
-		 do {//PUT WHILE CIN FAIL
-			 cin.clear();
-			 cin.ignore(10000, '\n');
-			 cout << "You can't buy packages with ' - ' before! Order number: ";
-			 cin >> pack_number;
+		 do {
+			 do {
+				 cin.clear();
+				 cin.ignore(10000, '\n');
+				 cout << "You can't buy packages with ' - ' before! Order number: ";
+				 cin >> pack_number;
+			 } while (cin.fail());
 		 } while (pack_number >= idx || pack_number < 0);
 	 } while (getPackets()[pack_number].getId() < 0);
 

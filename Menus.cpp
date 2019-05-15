@@ -39,7 +39,15 @@ int manageClients(Agency &agency)
 		agency.showAllClients();
 		agency.showAllClientsName();
 		cout << "Wich one you want to remove? ";
-		cin >> idx;
+		do {
+			do {
+				cin.clear();
+				cin.ignore(10000, '\n');
+				cout << "Order number: ";
+				cin >> idx;
+			} while (cin.fail());
+		} while (idx >= agency.getClients().size() || idx < 0);
+
 		cin.ignore(10000, '\n');
 		agency.removeClient(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
@@ -51,8 +59,15 @@ int manageClients(Agency &agency)
 		agency.showAllClients();
 		agency.showAllClientsName();
 		cout << "Wich one you want to change? ";
-		cin >> idx;
-		cin.ignore(1000, '\n');
+		do {
+			do {
+				cin.clear();
+				cin.ignore(10000, '\n');
+				cout << "Order number: ";
+				cin >> idx;
+			} while (cin.fail());
+		} while (idx >= agency.getClients().size() || idx < 0);
+
 		agency.changeClient(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
@@ -99,8 +114,15 @@ int managePacks(Agency &agency)
 		agency.showAllPackets();
 		agency.showAllPacksID();
 		cout << "Wich one you want to remove? ";
-		cin >> idx;
-		cin.ignore(10000, '\n');
+			do {
+				do {
+					cin.clear();
+					cin.ignore(10000, '\n');
+					cout << "Order number: ";
+					cin >> idx;
+				} while (cin.fail());
+			} while (idx >= agency.getPackets().size() || idx < 0);
+
 		agency.removePack(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
@@ -111,8 +133,15 @@ int managePacks(Agency &agency)
 		agency.showAllPackets();
 		agency.showAllPacksID();
 		cout << "Wich one you want to change? ";
-		cin >> idx;
-		cin.ignore(10000, '\n');
+		do {
+			do {
+				cin.clear();
+				cin.ignore(10000, '\n');
+				cout << "Order number: ";
+				cin >> idx;
+			} while (cin.fail());
+		} while (idx >= agency.getPackets().size() || idx < 0);
+
 		agency.changePack(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
 		cin >> menu;
