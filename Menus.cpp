@@ -22,7 +22,6 @@ int manageClients(Agency &agency)
 	cout << "[2] Remove clients " << endl;
 	cout << "[3] Change clients " << endl;
 	cout << "[0] Back to Main Menu " << endl;
-
 	cin >> menu;
 
 
@@ -78,6 +77,8 @@ int manageClients(Agency &agency)
 		return 1;
 		break;
 	default:
+		cin.ignore(1000, '\n');
+		cin.clear();
 		manageClients(agency);
 		break;
 	}
@@ -152,6 +153,7 @@ int managePacks(Agency &agency)
 		return 1;
 		break;
 	default:
+		
 		managePacks(agency);
 		break;
 	}
