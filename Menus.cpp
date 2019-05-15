@@ -170,6 +170,7 @@ int viewSpecificPacks(Agency &agency)
 	char menu;
 
 	system("CLS");    //Clear Screen
+	cout << "View Specific Packs" << endl << endl;
 
 	cout << "[1] Destiny " << endl;
 	cout << "[2] Date " << endl;
@@ -224,6 +225,7 @@ int viewPacks(Agency &agency)
 	char menu;
 
 	system("CLS");    //Clear Screen
+	cout << "View Packs" << endl << endl;
 
 	cout << "[1] View all packs " << endl;
 	cout << "[2] View all packs IDs " << endl;
@@ -271,6 +273,8 @@ int viewClients(Agency &agency)
 	char menu;
 
 	system("CLS");    //Clear Screen
+	cout << "View Clients" << endl << endl;
+	
 
 	cout << "[1] View all clients " << endl;
 	cout << "[2] View all clients name " << endl;
@@ -321,6 +325,7 @@ int viewInformation(Agency &agency)
 	char menu;
 	int n;
 	system("CLS");    //Clear Screen
+	cout << "View Information" << endl << endl;
 
 	cout << "[1] View Clients " << endl;
 	cout << "[2] View Packs " << endl;
