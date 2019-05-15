@@ -16,6 +16,7 @@ int manageClients(Agency &agency)
 	char menu;
 	int idx;
 	system("CLS");   //Clear Screen
+	cout << "Manage Clients" << endl << endl;
 
 	cout << "[1] Add clients " << endl;
 	cout << "[2] Remove clients " << endl;
@@ -91,7 +92,7 @@ int managePacks(Agency &agency)
 	char menu;
 	int idx;
 	system("CLS");
-	cout << "Introduza a operacao que deseja efetuar  " << endl << endl;
+	cout << "Manage Packs" << endl << endl;
 
 	cout << "[1] Add Packs " << endl;
 	cout << "[2] Remove Packs " << endl;
@@ -274,7 +275,6 @@ int viewClients(Agency &agency)
 
 	system("CLS");    //Clear Screen
 	cout << "View Clients" << endl << endl;
-	
 
 	cout << "[1] View all clients " << endl;
 	cout << "[2] View all clients name " << endl;
