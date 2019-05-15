@@ -171,7 +171,7 @@ int viewSpecificPacks(Agency &agency)
 	char menu;
 
 	system("CLS");    //Clear Screen
-	cout << "View Specific Packs" << endl << endl;
+	cout << "Search for a pack" << endl << endl;
 
 	cout << "[1] Destiny " << endl;
 	cout << "[2] Date " << endl;
