@@ -433,7 +433,6 @@ unsigned mainMenu(Agency &agency)
 	char menu;
 
 	system("CLS");    //Clear Screen
-
 	cout << "Main Menu" << endl << endl;
 
 	cout << "[1] Manage Clients" << endl;
