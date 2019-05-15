@@ -307,6 +307,7 @@ int viewInformation(Agency &agency)
 	{
 	case '1':        //View Clients
 		while(!viewClients(agency));
+		return 0;
 		break;
 	case '2':        //View Packs
 		while(!viewPacks(agency));
