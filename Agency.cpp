@@ -406,25 +406,12 @@ void Agency::setAddress(Address address)
 	 }
 	 else if (confirm == 'n')
 		 cout << "Canceled! ";
-
-	 //PERGUNTAR AO STOR SOBRE ISTO
-	 /*vector<string> all_client_packs = clients[position].getPacketList();
-
-	 cout << "New Packs: "; //DO LOOP HERE!!!
-	 cin >> client_packs;
-
-	 all_client_packs.push_back(client_packs);
-	 clients[position].setPacketList(all_client_packs);
-
-	 //unsigned total_purchase;
-	 //	PERGUNTAR AO STOR
-	 clients[position].setTotalPurchased(0);*/
  }
 
  void Agency::removeClient(int position)
  {
 	 char confirm;
-	 cout << endl << "Are you sure about adding " << getClients()[position].getName() << "? [Y/N] " << endl;
+	 cout << endl << "Are you sure about remove " << getClients()[position].getName() << "? [Y/N] " << endl;
 
 	 do {
 		 cin.clear();

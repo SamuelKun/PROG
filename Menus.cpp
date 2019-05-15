@@ -36,6 +36,7 @@ int manageClients(Agency &agency)
 		break;
 	case '2':        //Remove Clients
 		system("CLS");
+		agency.showAllClients();
 		agency.showAllClientsName();
 		cout << "Wich one you want to remove? ";
 		cin >> idx;
@@ -47,6 +48,7 @@ int manageClients(Agency &agency)
 		break;
 	case '3':        //Change clients
 		system("CLS");
+		agency.showAllClients();
 		agency.showAllClientsName();
 		cout << "Wich one you want to change? ";
 		cin >> idx;
