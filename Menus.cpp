@@ -22,6 +22,8 @@ int manageClients(Agency &agency)
 	cout << "[2] Remove clients " << endl;
 	cout << "[3] Change clients " << endl;
 	cout << "[0] Back to Main Menu " << endl;
+
+	cin.clear();
 	cin >> menu;
 
 
@@ -78,8 +80,7 @@ int manageClients(Agency &agency)
 		break;
 	default:
 		cin.ignore(1000, '\n');
-		cin.clear();
-		manageClients(agency);
+		return 0;
 		break;
 	}
 	return 0;
@@ -100,6 +101,7 @@ int managePacks(Agency &agency)
 	cout << "[3] Change Packs " << endl;
 	cout << "[0] Back to Main Menu" << endl;
 
+	cin.clear();
 	cin >> menu;
 
 	switch (menu)
@@ -153,8 +155,8 @@ int managePacks(Agency &agency)
 		return 1;
 		break;
 	default:
-		
-		managePacks(agency);
+		cin.ignore(1000, '\n');
+		return 0;
 		break;
 	}
 	return 0;
@@ -181,6 +183,7 @@ int viewSpecificPacks(Agency &agency)
 	cout << "[4] Client" << endl;
 	cout << "[0] Back to the previous Menu" << endl;
 
+	cin.clear();
 	cin >> menu;
 
 	switch (menu)
@@ -217,7 +220,8 @@ int viewSpecificPacks(Agency &agency)
 	case '0':
 		return 1;
 	default:
-		viewSpecificPacks(agency);
+		cin.ignore(1000, '\n');
+		return 0;
 		break;
 	}
 	return 0;
@@ -235,6 +239,7 @@ int viewPacks(Agency &agency)
 	cout << "[3] View Specific Packs " << endl;
 	cout << "[0] Back to the previous Menu" << endl;
 
+	cin.clear();
 	cin >> menu;
 
 	switch (menu)
@@ -264,7 +269,8 @@ int viewPacks(Agency &agency)
 		return 1;
 		break;
 	default:
-		viewPacks(agency);
+		cin.ignore(1000, '\n');
+		return 0;
 		break;
 	}
 	return 0;
@@ -277,12 +283,12 @@ int viewClients(Agency &agency)
 
 	system("CLS");    //Clear Screen
 	cout << "View Clients" << endl << endl;
-
 	cout << "[1] View all clients " << endl;
 	cout << "[2] View all clients name " << endl;
 	cout << "[3] View one client " << endl;
 	cout << "[0] Back to the previous Menu" << endl;
 
+	cin.clear();
 	cin >> menu;
 
 	switch (menu)
@@ -312,7 +318,8 @@ int viewClients(Agency &agency)
 		return 1;
 		break;
 	default:
-		viewClients(agency);
+		cin.ignore(1000, '\n');
+		return 0;
 		break;
 	}
 	return 0;
@@ -337,6 +344,7 @@ int viewInformation(Agency &agency)
 	cout << "[6] Popular places not yet visited by all clients" << endl;
 	cout << "[0] Back to Main Menu" << endl;
 
+	cin.clear();
 	cin >> menu;
 
 	switch (menu)
@@ -394,7 +402,8 @@ int viewInformation(Agency &agency)
 		return 1;
 		break;
 	default:
-		viewInformation(agency);
+		cin.ignore(1000, '\n');
+		return 0;
 		break;
 	}
 	return 0;
@@ -449,6 +458,7 @@ unsigned mainMenu(Agency &agency)
 	cout << "[5] Agency Information" << endl;
 	cout << "[0] Close Program " << endl;
 
+		cin.clear();
 		cin >> menu;
 
 		switch (menu)
@@ -473,7 +483,8 @@ unsigned mainMenu(Agency &agency)
 			return 1;
 			break;
 		default:
-			mainMenu(agency);
+			cin.ignore(1000, '\n');
+			return 0;
 			break;
 		}
 
