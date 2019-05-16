@@ -75,10 +75,10 @@ int manageClients(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '0':
+	case '0':        //Back to Main Menu
 		return 1;
 		break;
-	default:
+	default:         //Invalid input, try again
 		cin.ignore(1000, '\n');
 		return 0;
 		break;
@@ -151,10 +151,10 @@ int managePacks(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '0':
+	case '0':        //Back to Main Menu
 		return 1;
 		break;
-	default:
+	default:         //Invalid input, try again
 		cin.ignore(1000, '\n');
 		return 0;
 		break;
@@ -217,9 +217,9 @@ int viewSpecificPacks(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '0':
+	case '0':        //Back to the previous menu
 		return 1;
-	default:
+	default:         //Invalid input, try again
 		cin.ignore(1000, '\n');
 		return 0;
 		break;
@@ -251,7 +251,7 @@ int viewPacks(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '2':
+	case '2':        //View All Packs IDs
 		system("CLS");
 		agency.showAllPacksID();
 		cout << "Done! Press a letter to go back to the previous Menu! ";
@@ -265,10 +265,10 @@ int viewPacks(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '0':
+	case '0':        //Back to the previous menu
 		return 1;
 		break;
-	default:
+	default:         //Invalid input, try again
 		cin.ignore(1000, '\n');
 		return 0;
 		break;
@@ -300,24 +300,24 @@ int viewClients(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '2':
+	case '2':        //View all Clients name
 		system("CLS");
 		agency.showAllClientsName();
 		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '3':        //View 1 Client
+	case '3':        //View one Client
 		system("CLS");
 		agency.show1Client();
 		cout << "Done! Press a letter to go back to the previous Menu! ";
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '0':
+	case '0':        //Back to the previous menu
 		return 1;
 		break;
-	default:
+	default:         //Invalid input, try again
 		cin.ignore(1000, '\n');
 		return 0;
 		break;
@@ -355,7 +355,7 @@ int viewInformation(Agency &agency)
 	case '2':        //View Packs
 		while(!viewPacks(agency));
 		break;
-	case '3':
+	case '3':        //Search for a Pack
 		while(!viewSpecificPacks(agency));
 		break;
 	case '4':        //View the ammount of packs sold and earned currency
@@ -381,7 +381,7 @@ int viewInformation(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '6':
+	case '6':        //Popular places not yet visited by all clients
 		system("CLS");
 		int n;
 		cout << "How many places do you want to view of top? ";
@@ -398,10 +398,10 @@ int viewInformation(Agency &agency)
 		cin >> menu;
 		cin.ignore(10000, '\n');
 		break;
-	case '0':
+	case '0':        //Back to main menu
 		return 1;
 		break;
-	default:
+	default:         //Invalid input, try again
 		cin.ignore(1000, '\n');
 		return 0;
 		break;
@@ -478,11 +478,11 @@ unsigned mainMenu(Agency &agency)
 		case '5':        //Agency Information
 			while (!agencyInformation(agency));
 			break;
-		case '0':
+		case '0':        //Close Program and Save
 			agency.writeAgency();
 			return 1;
 			break;
-		default:
+		default:         //Invalid input, try again
 			cin.ignore(1000, '\n');
 			return 0;
 			break;
