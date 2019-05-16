@@ -741,7 +741,8 @@ void Agency::setAddress(Address address)
  {
 	 int pack_number, client_number;
 	 int idx = getPackets().size();
-	 int price, totalsold;
+	 double price;
+	 int totalsold;
 	 char confirm;
 	 //Show Packets and packets order number!
 	 showAllPackets();
@@ -788,13 +789,13 @@ void Agency::setAddress(Address address)
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cin >> client_number;
-						if (client_number >= getClients().size() || pack_number < 0) cout << "Invalid order number! Order number: ";
-					} while (client_number >= getClients().size() || pack_number < 0);
+						if (client_number >= getClients().size() || client_number < 0) cout << "Invalid order number! Order number: "; //Warning without danger. If input is a negative number, cicle is done again.Otherwise it will compare two positive numbers
+					} while (client_number >= getClients().size() || client_number < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
 					if (getPackets()[pack_number].getMaxTickets() >= getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize())
 					{
 						//Calculate the total price that person spent
-						price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize();
+						price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize(); //Warning without danger. The client money spent will always be a integer value and not a float value.
 						//Calculate the number total of packets sold
 						totalsold = getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize();
 						//Update the class
@@ -832,7 +833,7 @@ void Agency::setAddress(Address address)
 * MOST VISITED method
 ********************************/
 
-void Agency::mostVisited(int n) const
+void Agency::mostVisited(unsigned n) const
  {
 	 map <string, int> locais;
 	 multimap<int, string, greater<int>> locais_ordered;
@@ -873,7 +874,7 @@ void Agency::mostVisited(int n) const
 	 }
 }
 
-void Agency::ClientMostVisited(int n) const
+void Agency::ClientMostVisited(unsigned n) const
 {
 	map <string, int> locais;
 	multimap<int, string, greater<int>> locais_ordered;
@@ -906,7 +907,7 @@ void Agency::ClientMostVisited(int n) const
 
 	for (size_t i = 0; i < visitedLocals.size(); i++)
 	{
-		if (i < n) {
+		if (i < n) { //WARNING HERE
 			wishlocals.push_back(visitedLocals[i]);
 		}
 	}
@@ -978,7 +979,7 @@ void Agency::writeAgency() const
 		write_clients << clients[i].getVATnumber() << endl;
 		write_clients << clients[i].getFamilySize() << endl;
 		write_clients << clients[i].getAddress().getStreet() << " / " << clients[i].getAddress().getDoorNumber() << " / " << clients[i].getAddress().getFloor() << " / " << clients[i].getAddress().getPostalCode() << " / " << clients[i].getAddress().getLocation() << endl;
-		for (int j = 0; j < clients[i].getPacketList().size(); j++)
+		for (size_t j = 0; j < clients[i].getPacketList().size(); j++)
 		{
 			write_clients << clients[i].getPacketList()[j];
 			if (j != clients[i].getPacketList().size() - 1) write_clients << " ; ";

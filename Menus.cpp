@@ -48,7 +48,7 @@ int manageClients(Agency &agency)
 				cout << "Order number: ";
 				cin >> idx;
 			} while (cin.fail());
-		} while (idx >= agency.getClients().size() || idx < 0);
+		} while (idx >= agency.getClients().size() || idx < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
 		cin.ignore(10000, '\n');
 		agency.removeClient(idx);
@@ -68,7 +68,7 @@ int manageClients(Agency &agency)
 				cout << "Order number: ";
 				cin >> idx;
 			} while (cin.fail());
-		} while (idx >= agency.getClients().size() || idx < 0);
+		} while (idx >= agency.getClients().size() || idx < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
 		agency.changeClient(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
@@ -125,7 +125,7 @@ int managePacks(Agency &agency)
 					cout << "Order number: ";
 					cin >> idx;
 				} while (cin.fail());
-			} while (idx >= agency.getPackets().size() || idx < 0);
+			} while (idx >= agency.getPackets().size() || idx < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
 		agency.removePack(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
@@ -144,7 +144,7 @@ int managePacks(Agency &agency)
 				cout << "Order number: ";
 				cin >> idx;
 			} while (cin.fail());
-		} while (idx >= agency.getPackets().size() || idx < 0);
+		} while (idx >= agency.getPackets().size() || idx < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
 		agency.changePack(idx);
 		cout << "Press a letter to go back to the previous Menu! ";
