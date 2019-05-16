@@ -11,7 +11,8 @@ using namespace std;
 /*********************************
 * TEST WRONG INPUTS
 ********************************/
-int failInput(int input)
+template <class form>
+int failInput(form input)
 {
 	while (cin.fail())
 	{
