@@ -415,9 +415,9 @@ void Agency::setAddress(Address address)
 	 double pack_pricePerPerson; // price per person
 	 Date start_date;
 	 Date end_date;
-	 unsigned pack_maxTickets; // máximo de lugares disponíveis
-	 unsigned pack_remainingTickets; // número de lugares já reservados
-	 char confirm; // verificador [Y/N]
+	 unsigned pack_maxTickets; // maximum ammount of ticket entries
+	 unsigned pack_remainingTickets; // remaining tickets
+	 char confirm; // verifier [Y/N]
 
 	 cout << "Identifier: " << endl;
 	 cin >> pack_id;
@@ -484,8 +484,8 @@ void Agency::setAddress(Address address)
 	 Date start_date;
 	 Date end_date;
 	 double pack_pricePerPerson; // price per person
-	 unsigned pack_maxTickets; // máximo de lugares disponíveis
-	 unsigned pack_remainingTickets; // número de lugares já reservados
+	 unsigned pack_maxTickets; // maximum ammount of ticket entries
+	 unsigned pack_remainingTickets; // remaining tickets
 	 char confirm; // verifier [Y/N]
 
 	 cout << "Identifier: " << endl;
