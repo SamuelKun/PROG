@@ -12,7 +12,7 @@ using namespace std;
 * TEST WRONG INPUTS
 ********************************/
 template <class form>
-int failInput(form input)
+void failInput(form input)
 {
 	while (cin.fail())
 	{
@@ -22,7 +22,6 @@ int failInput(form input)
 		cout << "Not a valid number. Please reenter: ";
 		cin >> input;
 	}
-	return 1;
 }
 
 /*********************************
@@ -328,7 +327,7 @@ void Agency::setAddress(Address address)
 	 string client_location;
 	 string client_packs;
 	 char confirm;
-
+	 cin.ignore(1000, '\n');
 	 cout << "Name: " << endl;
 	 getline(cin, client_name);
 
@@ -359,7 +358,7 @@ void Agency::setAddress(Address address)
 	 cout << "	Locality: ";
 	 getline(cin, client_location);
 
-	 cout << endl << "Are you sure about adding " << client_name << "? [Y/N] " << endl;
+	 cout << endl << "Are you sure about changing " << client_name << "? [Y/N] " << endl;
 
 	 do {
 		 cin.clear();
