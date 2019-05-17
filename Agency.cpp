@@ -793,6 +793,7 @@ void Agency::setAddress(Address address)
 						if (client_number >= getClients().size() || client_number < 0) cout << "Invalid order number! Order number: "; //Warning without danger. If input is a negative number, cicle is done again.Otherwise it will compare two positive numbers
 					} while (client_number >= getClients().size() || client_number < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
+					//See if client already have bought that pack
 					for (size_t i = 0; i < clients[client_number].getPacketList().size(); i++)
 					{
 						if (stoi(clients[client_number].getPacketList()[i]) == getPackets()[pack_number].getId())
@@ -856,6 +857,8 @@ void Agency::mostVisited(unsigned n) const
 	 vector<int> timesvisited;
 	 vector<string> visitedLocals;
 
+
+	 // Get a map with all locals and their number of visits
 	 for (size_t i = 0; i < getPackets().size(); i++)
 	 {
 			 if (locais.find(getPackets()[i].getPlaces()) != locais.end())
@@ -868,11 +871,13 @@ void Agency::mostVisited(unsigned n) const
 			 }
 	 }
 
+	 //Put the number of visits in key, to get a map ordered number of visits
 	 for (auto change : locais)
 	 {
 		 locais_ordered.insert(pair<int, string>(change.second, change.first));
 	 }
 
+	 //Put locals visited in a vector, and in other the visited locals
 	 for (auto p : locais_ordered)
 	 {
 		 timesvisited.push_back(p.first);
@@ -881,6 +886,7 @@ void Agency::mostVisited(unsigned n) const
 
 	 cout << endl;
 
+	 //Print to screen
 	 for (size_t i = 0; i < visitedLocals.size(); i++)
 	 {
 		 if (i < n) {
@@ -898,6 +904,7 @@ void Agency::ClientMostVisited(unsigned n) const
 	vector<string> visitedLocals;
 	vector<string> wishlocals;
 
+	// Get a map with all locals and their number of visits
 	for (size_t i = 0; i < getPackets().size(); i++)
 	{
 		if (locais.find(getPackets()[i].getPlaces()) != locais.end())
@@ -910,33 +917,39 @@ void Agency::ClientMostVisited(unsigned n) const
 		}
 	}
 
+	//Put the number of visits in key, to get a map ordered number of visits
 	for (auto change : locais)
 	{
 		locais_ordered.insert(pair<int, string>(change.second, change.first));
 	}
 
+	//Put locals visited in a vector, and in other the visited locals
 	for (auto p : locais_ordered)
 	{
 		timesvisited.push_back(p.first);
 		visitedLocals.push_back(p.second);
 	}
 
+	//Get the N most visited only in vector wishlocals
 	for (size_t i = 0; i < visitedLocals.size(); i++)
 	{
-		if (i < n) { //WARNING HERE
+		if (i < n) { 
 			wishlocals.push_back(visitedLocals[i]);
 		}
 	}
 
-	vector<short> idkwhatimdoing;
+	//Get the packets ID given the local
+	vector<short> packs_Id_Local;
 	for (size_t i = 0; i < wishlocals.size(); i++)
 	{
 		for (size_t idx = 0; idx < getPackets().size(); idx++)
 		{
 			if (getPackets()[idx].getPlaces() == wishlocals[i])
-				idkwhatimdoing.push_back(getPackets()[idx].getId());
+				packs_Id_Local.push_back(getPackets()[idx].getId());
 		}
 	}
+
+
 
 	vector<string> temp;
 	bool setbool;
@@ -955,12 +968,12 @@ void Agency::ClientMostVisited(unsigned n) const
 			short_id.push_back(num);
 		}
 		
-		for (size_t i = 0; i < idkwhatimdoing.size(); i++)
+		for (size_t i = 0; i < packs_Id_Local.size(); i++)
 		{
 			setbool = true;
 			for (size_t j = 0; j < short_id.size(); j++)
 			{
-				if (short_id[j] == idkwhatimdoing[i] || short_id[j] == -idkwhatimdoing[i])
+				if (short_id[j] == packs_Id_Local[i] || short_id[j] == -packs_Id_Local[i])
 				{
 					setbool = false;
 				}
@@ -970,7 +983,7 @@ void Agency::ClientMostVisited(unsigned n) const
 			{
 				cout << "Position  " << i + 1 << ": " << "[Visited " << timesvisited[i] << " times.]" << endl;
 				cout << "Locals: " << wishlocals[i] << endl;
-				cout << "Pack id: " << idkwhatimdoing[i] << endl << endl;
+				cout << "Pack id: " << packs_Id_Local[i] << endl << endl;
 			}
 		}
 		cout << endl;
