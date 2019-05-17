@@ -361,6 +361,9 @@ int viewInformation(Agency &agency)
 	case '4':        //View the ammount of packs sold and earned currency
 		system("CLS");
 		agency.ammountSold();
+		cout << "Done! Press a letter to go back to the previous Menu! ";
+		cin >> menu;
+		cin.ignore(10000, '\n');
 		break;
 	case '5':        //View the most visited places
 		system("CLS");
