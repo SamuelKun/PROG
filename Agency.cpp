@@ -670,7 +670,7 @@ void Agency::setAddress(Address address)
 	 string name, number;
 
 	 cin.ignore(1000, '\n');
-	 cout << "Type the client's name: ";
+	 cout << "Type the client's name: [Case Sensitive] " << endl;
 	 getline(cin, name);
 
 	 for (size_t i = 0; i < getClients().size(); i++)
@@ -696,7 +696,7 @@ void Agency::setAddress(Address address)
  {
 	string name, number;
 	cin.ignore(1000, '\n');
-	cout << "Type the client name: ";
+	cout << "Type the client name: [Case Sensitive] " << endl;
 	getline(cin, name);
 
 	for (size_t i = 0; i < getClients().size(); i++)
