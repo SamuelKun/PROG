@@ -744,6 +744,7 @@ void Agency::setAddress(Address address)
 	 double price;
 	 int totalsold;
 	 char confirm;
+	 bool verify = true;  //verify if the user already has that packet
 	 //Show Packets and packets order number!
 	 showAllPackets();
 	 showAllPacksID();
@@ -792,22 +793,37 @@ void Agency::setAddress(Address address)
 						if (client_number >= getClients().size() || client_number < 0) cout << "Invalid order number! Order number: "; //Warning without danger. If input is a negative number, cicle is done again.Otherwise it will compare two positive numbers
 					} while (client_number >= getClients().size() || client_number < 0); //Warning without danger. If input is a negative number, cicle is done again. Otherwise it will compare two positive numbers
 
-					if (getPackets()[pack_number].getMaxTickets() >= getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize())
+					for (size_t i = 0; i < clients[client_number].getPacketList().size(); i++)
 					{
-						//Calculate the total price that person spent
-						price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize(); //Warning without danger. The client money spent will always be a integer value and not a float value.
-						//Calculate the number total of packets sold
-						totalsold = getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize();
-						//Update the class
-						clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
-						clients[client_number].addTotalPurchased(price);
-						packets[pack_number].setremainingTickets(totalsold);
-						cout << "Done! ";
+						if (stoi(clients[client_number].getPacketList()[i]) == getPackets()[pack_number].getId())
+						{
+							verify = false;
+						}
+					}
+
+					if (verify)
+					{
+						if (getPackets()[pack_number].getMaxTickets() >= getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize())
+						{
+							//Calculate the total price that person spent
+							price = getPackets()[pack_number].getPricePerPerson() * getClients()[client_number].getFamilySize(); //Warning without danger. The client money spent will always be a integer value and not a float value.
+							//Calculate the number total of packets sold
+							totalsold = getPackets()[pack_number].getremainingTickets() + getClients()[client_number].getFamilySize();
+							//Update the class
+							clients[client_number].addPacket(to_string(getPackets()[pack_number].getId()));
+							clients[client_number].addTotalPurchased(price);
+							packets[pack_number].setremainingTickets(totalsold);
+							cout << "Done! ";
+						}
+						else
+						{
+							//If family Size is to big and theres no packets for all family!
+							cout << "Due to your family size it is not possible to buy packages for everyone! Try to buy another package! ";
+						}
 					}
 					else
 					{
-						//If family Size is to big and theres no packets for all family!
-						cout << "Due to your family size it is not possible to buy packages for everyone! Try to buy another package! ";
+						cout << "Canceled! You have already purchased that packet!! " << endl;
 					}
 
 					break;
