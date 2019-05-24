@@ -1,0 +1,29 @@
+Rui Manuel
+234987156
+4
+Rua Sem Fim / 200 / 5Esq /1200-001 / Lisboa
+10 ; 36 ; 1
+::::::::::
+Belmiro Miguel
+111987666
+2
+Avenida dos Grilos / 100 / - /2300-101 / Coimbra
+100 ; 136 ; 20
+::::::::::
+Paulo Ribeiro
+123456789
+4
+Avenida Casa dos Frangos
+0
+::::::::::
+Pedro Ferreira
+123123123
+4
+Avenida Agu‡a Doura
+0
+::::::::::
+Hugo Guimaraes
+345678231
+4
+Avenida Eca de Queiros
+0
